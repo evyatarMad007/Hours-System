@@ -1,0 +1,21 @@
+.add-row > * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.add-row {
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 70%;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.add-row > p {
+    margin: 0;
+    display: inline-block;
+}

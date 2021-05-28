@@ -1,0 +1,14 @@
+h1 {
+    color: navy;
+    text-align: center;
+    font-family: arial;
+    font-size: 35px;
+    margin-top: 50px;
+}
+.add-project-box {
+    width: 75%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 60px;
+}
