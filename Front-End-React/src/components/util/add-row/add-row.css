@@ -7,15 +7,23 @@
 .add-row {
     margin: 0 auto;
     margin-top: 50px;
-    width: 70%;
+    width: 83.5%;
     /* background-color: red; */
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
-.add-row > p {
-    margin: 0;
-    display: inline-block;
+
+.add-project-name {
+display: flex;
+justify-content: center;
+align-items: center;
+
+
 }
+
+
+
+
