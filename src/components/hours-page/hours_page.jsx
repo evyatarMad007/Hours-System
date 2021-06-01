@@ -1,27 +1,107 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import ViewTable from '../util/view-table/view_table';
-import AddRow from '../util/add-row/add_row';
+import React, { Component } from 'react';
+import AddProject from '../util/add-project/add-project';
+import ViewProject from '../util/view-project/view-project';
+import Switches from '../tools/switch';
 
-function HoursPage() {
-    return ( 
-        <div className="hours-page">
-            <h1 className="display-4 mt-3">מערכת ספירת שעות</h1>
 
-            <div className="row">
-                <div className="col-12">
-                    <AddRow/>
+
+class HoursPage extends Component {
+
+    state = { 
+        switchMode: false
+     }
+
+    switchBtnMode = () => {
+        let { switchMode } = this.state;
+        let switchElement = document.querySelector('.MuiSwitch-root');
+        let switchBtn = switchElement.children[0].classList;
+        switchBtn.forEach( classValue => {
+            if(! classValue.includes('Mui-checked')) {
+                switchMode = true;
+                return this.setState({ switchMode })
+            } 
+            if( classValue.includes('Mui-checked')) {
+                switchMode = false;
+                return this.setState({ switchMode })
+            }
+        })
+    }
+
+     data = [
+        {
+            id: '235-985',
+            projectName: 'בניית אתר תדמית',
+            projectTime: 3600,
+            projectRate: 250
+        },
+        {
+            id:'659-897',
+            projectName: 'CRM SYSTEM',
+            projectTime: 3600,
+            projectRate: 100
+        },
+        {
+            id: '598-201',
+            projectName: 'Facebook SYSTEM',
+            projectTime: 3600,
+            projectRate: 750
+        }                          
+    ]
+
+    render() { 
+        // console.log(this.state.switchMode);
+
+        return ( 
+            <div className="hours-page">
+    
+                <div className="box">
+                    <h1 className="display-4 mt-3">מערכת ספירת שעות</h1>
+                </div>
+                
+                <div className="box">
+                        <AddProject/>
+                </div>
+    
+    
+                <div className="box">
+                    <div className="view-project title-box">
+                        <div className="title-fix">#</div>
+                        <div className="title-fix">מזהה</div>
+                        <div className="title-project">פרוייקט</div>
+                        <div className="title-fix" >תעריף</div>
+                        <div className="title-fix" >זמן</div>
+                        <div className="title-fix" >סה''כ</div>
+                        <div className="title-fix" >הפעלה</div>
+                        <div className="title-fix" >השהיה</div>
+                        <div className="title-fix" >לתשלום</div>
+                        <div className="title-fix" >מחיקה</div>
+                        <div className="title-fix" ></div>
+                     </div> 
+                </div>
+    
+                <div className="box">
+                    {
+                        this.data.map( (project, index) => <ViewProject key={index+1}
+                            index={index+1}
+                            id={project.id}
+                            projectName={project.projectName}
+                            projectTime={project.projectTime}
+                            projectRate={project.projectRate}
+                            switchMode={this.state.switchMode}
+                        /> )
+                    }
+                </div>
+                <div className="line-bottom">
+                    <div className="dense-padding">
+                        <i>צופף שורות</i>
+                        <span onClick={ this.switchBtnMode }><Switches/></span>
+                        
+                        
+                    </div>
                 </div>
             </div>
-
-            <div className="row">
-                <div className="col-10" style={{display: 'block', margin: '0 auto'}}>
-                    <ViewTable/>
-                </div>
-            </div>
-        
-        </div>
-     );
+         );
+    }
 }
  
 export default HoursPage;

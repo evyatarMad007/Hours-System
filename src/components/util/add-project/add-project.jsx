@@ -1,16 +1,15 @@
 import React from 'react';
-import './add-row.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { MdCreateNewFolder } from 'react-icons/md';
 
 
-
-function AddRow() {
+function AddProject() {
   
     return (
       <div className="add-row">
           <div className="add-project-name">
             
-            <button className="btn btn-success m-2">+ הוסף פרוייקט</button>
+            <button className="btn btn-success">צור פרוייקט  <span><MdCreateNewFolder/></span></button>
             <div className="inputs">
                <input  className="form-control" type="text"  placeholder="שם הפרוייקט"/>
             </div>
@@ -22,4 +21,4 @@ function AddRow() {
     );
   }
   
-  export default AddRow;
+  export default AddProject;

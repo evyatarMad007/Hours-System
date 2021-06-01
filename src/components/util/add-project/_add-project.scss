@@ -1,0 +1,36 @@
+.add-row  {
+    margin: 0 auto;
+    margin: 50px 0 25px 0;
+    width: 100%;
+    // background-color: navy;
+
+    
+    .add-project-name {
+        width: max-content;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // background-color: lime;
+
+        button {
+            span {
+                display: inline-block;
+                transform: translateY(-1.9px) translateX(-3px);
+            }
+        }
+
+        .inputs {
+            margin: 0 15px 0 0;
+        }
+        
+    }
+}
+
+
+
+
+
+
+
+
+
