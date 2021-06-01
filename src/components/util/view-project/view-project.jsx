@@ -36,25 +36,35 @@ class ViewProject extends Component {
     
     const {props} = this;
     const {count, startBtn, pauseBtn, paymentBtn, removeBtn,dropDown} = this.state;
-    let price = count / 60 / 60 * props.projectRate;
     
+
+    let ProjectRate = props.projectRate;
+    // let secounds = count;
+    // let minutes = count / 60;
+
+    let hoursFormat =  count / 60 / 60 % 1 ? 0 : count / 60 / 60 ;
+
+    // 180
+    let minutes =  count / 60 % 60 ? 'true' : 'false' ;
+    // let secounds =  count / 60 / 60 % 1 ? 0 : count / 60 / 60 ;
+
+    console.log(minutes);
 
     return ( 
       // <div className="view-project">
       <div className="view-project">
         
         <div className={props.switchMode ? "line-control line-control-constricted" : "line-control" }>
-        <div className="title-fix">{props.index}</div>
-            <div className="title-fix">{props.id}</div>
-            <div className="title-project"><div className="text"><span className="project-name"><AiOutlineFundProjectionScreen/></span> { props.projectName }</div></div>
-            <div className="title-fix"><div className="text"><span className="project-time"></span>₪{props.projectRate}</div></div>
-            <div className="title-fix"><div className="text"><span className="project-time"><AiOutlineClockCircle/></span>{count}</div></div>
-            <div className="title-fix"><div className="text"><span className="project-time"></span>₪{price.toFixed(2)}</div></div>
-            <div className="title-fix"><button onClick={this.startCount} className="td-button btn btn-success btn-sm"><span className="start-time"><BsPlay/></span></button></div>
-            <div className="title-fix"><button className="td-button btn btn-secondary btn-sm"><span className="stop-time"><BsPauseFill/></span></button></div>
-            <div className="title-fix"><button className="td-button btn btn-warning btn-sm"><span className="payment"><BiCoin/></span></button></div>
-            <div className="title-fix"><button  className="td-button btn btn-danger btn-sm"><span className="remove-project"><RiDeleteBin6Line/></span></button></div>
-            <div className="title-fix"><span onClick={this.dropDown} className={dropDown ? 'drop-down drop-down-on' : 'drop-down'}><RiArrowDropDownLine/></span></div>
+        <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }>{props.index}</div>
+            <div className={props.switchMode ? "title-project title-project-constricted" : "title-project" }><div className="text"><span className="project-name"><AiOutlineFundProjectionScreen/></span> { props.projectName }</div></div>
+            <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><div className="text"><span className="project-time"></span>₪{props.projectRate}</div></div>
+            <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><div className="text"><span className="project-time"><AiOutlineClockCircle/></span>{count}</div></div>
+            <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><div className="text"><span className="project-time"></span>₪{props.projectRate.toFixed(2)}</div></div>
+            <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><button onClick={this.startCount} className="td-button btn btn-outline-success btn-sm"><span className="start-time"><BsPlay/></span></button></div>
+            <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><button className="td-button btn btn-outline-secondary btn-sm"><span className="stop-time"><BsPauseFill/></span></button></div>
+            <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><button className="td-button btn btn-outline-warning btn-sm"><span className="payment"><BiCoin/></span></button></div>
+            <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><button  className="td-button btn btn-outline-danger btn-sm"><span className="remove-project"><RiDeleteBin6Line/></span></button></div>
+            <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><span onClick={this.dropDown} className={dropDown ? 'drop-down drop-down-on' : 'drop-down'}><RiArrowDropDownLine/></span></div>
         </div>
         <div className={dropDown ? "line-info line-info-on" : "line-info"}>
             <div className="general-info"></div>

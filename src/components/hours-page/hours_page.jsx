@@ -31,13 +31,13 @@ class HoursPage extends Component {
         {
             id: '235-985',
             projectName: 'בניית אתר תדמית',
-            projectTime: 3600,
+            projectTime: 7200,
             projectRate: 250
         },
         {
             id:'659-897',
             projectName: 'CRM SYSTEM',
-            projectTime: 3600,
+            projectTime: 10800,
             projectRate: 100
         },
         {
@@ -45,11 +45,36 @@ class HoursPage extends Component {
             projectName: 'Facebook SYSTEM',
             projectTime: 3600,
             projectRate: 750
-        }                          
+        },  
+        {
+            id: '235-985',
+            projectName: 'Finance System',
+            projectTime: 7200,
+            projectRate: 250
+        },
+        {
+            id:'659-897',
+            projectName: 'Portal Users',
+            projectTime: 1565,
+            projectRate: 280
+        },
+        {
+            id: '598-201',
+            projectName: 'Google SYSTEM',
+            projectTime: 1285,
+            projectRate: 360
+        },  
     ]
+
+
 
     render() { 
         // console.log(this.state.switchMode);
+        const projectRateAverange;
+        const toatlWorkTime;
+        const totalNumProjects;
+        const totalMoneyCash;
+        
 
         return ( 
             <div className="hours-page">
@@ -66,7 +91,6 @@ class HoursPage extends Component {
                 <div className="box">
                     <div className="view-project title-box">
                         <div className="title-fix">#</div>
-                        <div className="title-fix">מזהה</div>
                         <div className="title-project">פרוייקט</div>
                         <div className="title-fix" >תעריף</div>
                         <div className="title-fix" >זמן</div>
@@ -91,13 +115,27 @@ class HoursPage extends Component {
                         /> )
                     }
                 </div>
+                <div className="box">
                 <div className="line-bottom">
+                <div className="total-data">
+                        <div className="title-fix"></div>
+                        <div className="title-project">סך פרוייקטים: <p>{35}</p></div>
+                        <div className="title-fix" >תעריף ממוצע: <p>{195}</p></div>
+                        <div className="title-fix" >סך שעות: <p>{195}</p></div>
+                        <div className="title-fix" >סך לגביה: <p>{195}</p></div>
+                        <div className="title-fix" ></div>
+                        <div className="title-fix" ></div>
+                        <div className="title-fix" ></div>
+                        <div className="title-fix" ></div>
+                        <div className="title-fix" ></div>
+                     </div>
                     <div className="dense-padding">
                         <i>צופף שורות</i>
                         <span onClick={ this.switchBtnMode }><Switches/></span>
                         
                         
                     </div>
+                </div>
                 </div>
             </div>
          );
