@@ -21,8 +21,9 @@ class AddProject extends Component {
       <div className="add-row">
           <div className="add-project-name">
             
-            <button className="btn btn-success" onClick={this.createNewProject}>צור פרוייקט חדש <span><MdCreateNewFolder/></span></button>
+            <button className="btn btn-primary" onClick={this.createNewProject}>צור פרוייקט חדש <span><MdCreateNewFolder/></span></button>
             <div className={newProjectMode ? "inputs inputs-on" : "inputs"}>
+              <form action="">
                <div className="project-info">
                  <p className="display-4">פרטי הפרוייקט</p>
                     <div className="project-general">
@@ -42,6 +43,10 @@ class AddProject extends Component {
                         <input  className="form-control" type="text"  placeholder="כתובת מייל"/>
                     </div>
                </div>
+               <div className="submit">
+                 <button className="btn btn-success btn-sm" type="submit">צור פרוייקט</button>
+               </div>
+               </form>
             </div>
               
               

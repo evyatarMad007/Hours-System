@@ -58,13 +58,24 @@
                         font-size: 14px;
                      }
                 }
+                
+            }
+            .submit {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                padding: 10px 0;
+                button {
+                    width: 100px;
+                    margin: 0;
+                }
             }
 
             
             
         }
         .inputs-on {
-            height: 250px;
+            height: 290px;
             opacity: 1;
         }
         
