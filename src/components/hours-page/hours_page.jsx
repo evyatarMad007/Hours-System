@@ -32,48 +32,45 @@ class HoursPage extends Component {
             id: '235-985',
             projectName: 'בניית אתר תדמית',
             projectTime: 7200,
-            projectRate: 250
+            projectRate: 250,
+            consumerFirstName: 'משה',
+            consumerLastName: 'כהן',
+            consumerAdress: 'נתניה',
+            consumerPhoneNumber: '050-89753065',
+            consumerEmail: 'moshe@gmail.com'
         },
         {
             id:'659-897',
             projectName: 'CRM SYSTEM',
             projectTime: 10800,
-            projectRate: 100
+            projectRate: 100,
+            consumerFirstName: 'יוסי',
+            consumerLastName: 'לוי',
+            consumerAdress: 'רחובות',
+            consumerPhoneNumber: '054-5903742',
+            consumerEmail: 'yossi@gmail.com'
         },
         {
             id: '598-201',
             projectName: 'Facebook SYSTEM',
             projectTime: 3600,
-            projectRate: 750
-        },  
-        {
-            id: '235-985',
-            projectName: 'Finance System',
-            projectTime: 7200,
-            projectRate: 250
-        },
-        {
-            id:'659-897',
-            projectName: 'Portal Users',
-            projectTime: 1565,
-            projectRate: 280
-        },
-        {
-            id: '598-201',
-            projectName: 'Google SYSTEM',
-            projectTime: 1285,
-            projectRate: 360
-        },  
+            projectRate: 750,
+            consumerFirstName: 'נורית',
+            consumerLastName: 'אברהם',
+            consumerAdress: 'באר שבע',
+            consumerPhoneNumber: '052-8003985',
+            consumerEmail: 'nurit@gmail.com'
+        },   
     ]
 
 
 
     render() { 
         // console.log(this.state.switchMode);
-        const projectRateAverange;
-        const toatlWorkTime;
-        const totalNumProjects;
-        const totalMoneyCash;
+        // const projectRateAverage;
+        // const toatlWorkTime;
+        // const totalNumProjects;
+        // const totalMoneyCash;
         
 
         return ( 
@@ -112,6 +109,11 @@ class HoursPage extends Component {
                             projectTime={project.projectTime}
                             projectRate={project.projectRate}
                             switchMode={this.state.switchMode}
+                            consumerFirstName={project.consumerFirstName}
+                            consumerLastName={project.consumerLastName}
+                            consumerAdress={project.consumerAdress}
+                            consumerPhoneNumber={project.consumerPhoneNumber}
+                            consumerEmail={project.consumerEmail}
                         /> )
                     }
                 </div>

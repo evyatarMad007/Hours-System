@@ -13,7 +13,7 @@ class ViewProject extends Component {
     pauseBtn: false,
     paymentBtn: false,
     removeBtn: false,
-    dropDown: false,
+    dropDown: true,
 
    }
 
@@ -36,7 +36,7 @@ class ViewProject extends Component {
     
     const {props} = this;
     const {count, startBtn, pauseBtn, paymentBtn, removeBtn,dropDown} = this.state;
-    
+    console.log(props);
 
     let ProjectRate = props.projectRate;
     // let secounds = count;
@@ -48,7 +48,7 @@ class ViewProject extends Component {
     let minutes =  count / 60 % 60 ? 'true' : 'false' ;
     // let secounds =  count / 60 / 60 % 1 ? 0 : count / 60 / 60 ;
 
-    console.log(minutes);
+    // console.log(minutes);
 
     return ( 
       // <div className="view-project">
@@ -67,11 +67,18 @@ class ViewProject extends Component {
             <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><span onClick={this.dropDown} className={dropDown ? 'drop-down drop-down-on' : 'drop-down'}><RiArrowDropDownLine/></span></div>
         </div>
         <div className={dropDown ? "line-info line-info-on" : "line-info"}>
-            <div className="general-info"></div>
+            <div className="general-info">
+                <ul>
+                    <li><span>שם לקוח: </span>  {`${props.consumerFirstName} ${props.consumerLastName}`}</li>
+                    <li><span>כתובת: </span>  {props.consumerAdress}</li>
+                    <li><span>טלפון: </span>  {props.consumerPhoneNumber}</li>
+                    <li><span>מייל: </span>  {props.consumerEmail}</li>
+                </ul>
+            </div>
             <div className="history-info">
               <div className="title"><p className="display-5">הסטוריה</p></div>
               <div className="table">
-              <table className="table table-hover table-striped">
+              <table className="table-hover" >
                   <thead>
                       <tr id="tr-header">
                           <th scope="col">תאריך תשלום</th>
@@ -83,7 +90,7 @@ class ViewProject extends Component {
                       </tr>
                   </thead>
                   <tbody>
-                      <tr>
+                      <tr >
                           <td>25/05/2021</td>
                           <td>2569875</td>
                           <td>240:00</td>
