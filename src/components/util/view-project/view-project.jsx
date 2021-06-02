@@ -13,7 +13,7 @@ class ViewProject extends Component {
     pauseBtn: false,
     paymentBtn: false,
     removeBtn: false,
-    dropDown: true,
+    dropDown: false,
 
    }
 
@@ -36,7 +36,7 @@ class ViewProject extends Component {
     
     const {props} = this;
     const {count, startBtn, pauseBtn, paymentBtn, removeBtn,dropDown} = this.state;
-    console.log(props);
+    // console.log(props);
 
     let ProjectRate = props.projectRate;
     // let secounds = count;
@@ -56,6 +56,7 @@ class ViewProject extends Component {
         
         <div className={props.switchMode ? "line-control line-control-constricted" : "line-control" }>
         <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }>{props.index}</div>
+        <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }>{props.dateCreated}</div>
             <div className={props.switchMode ? "title-project title-project-constricted" : "title-project" }><div className="text"><span className="project-name"><AiOutlineFundProjectionScreen/></span> { props.projectName }</div></div>
             <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><div className="text"><span className="project-time"></span>₪{props.projectRate}</div></div>
             <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><div className="text"><span className="project-time"><AiOutlineClockCircle/></span>{count}</div></div>

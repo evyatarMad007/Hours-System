@@ -52,7 +52,7 @@
             .total-data {
                 border-top: 0.5px solid #000000;
                 // background-color: rgb(236, 236, 236);
-                margin: 5px 0;
+                // margin: 5px 0;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
@@ -70,13 +70,41 @@
                     align-items: center;
                     transition: all 0.2s;
                     font-size: 14px;
-                    margin-top: 10px;
                     font-weight: bold;
+                    position: relative;
+                    cursor: pointer;
                     // border: 0.5px solid black;
+                    // background-color: red;
                     
 
                     p {
+                        font-weight: bold;
+                        
+                    }
+                    .note-hover {
                         font-weight: normal;
+                        position: absolute;
+                        padding: 3px 7px;
+                        border-radius: 5px;
+                        color: rgb(255, 255, 255);
+                        opacity: 0;
+                        top: -10px;
+                        transition: all 0.25s;
+                        width: max-content;
+                        text-align: center;
+                        font-size: 13px;
+
+                        
+
+                    }
+                    &:hover {
+                        .note-hover {
+                            top: -29px;
+                            opacity: 1;
+                            
+                        
+                        }
+                        
                     }
 
                     

@@ -30,9 +30,10 @@ class HoursPage extends Component {
      data = [
         {
             id: '235-985',
+            dateCreated: '28.08.2020',
             projectName: 'בניית אתר תדמית',
             projectTime: 7200,
-            projectRate: 250,
+            projectRate: 100,
             consumerFirstName: 'משה',
             consumerLastName: 'כהן',
             consumerAdress: 'נתניה',
@@ -41,9 +42,10 @@ class HoursPage extends Component {
         },
         {
             id:'659-897',
+            dateCreated: '15.05.2021',
             projectName: 'CRM SYSTEM',
-            projectTime: 10800,
-            projectRate: 100,
+            projectTime: 3235,
+            projectRate: 750,
             consumerFirstName: 'יוסי',
             consumerLastName: 'לוי',
             consumerAdress: 'רחובות',
@@ -52,9 +54,10 @@ class HoursPage extends Component {
         },
         {
             id: '598-201',
+            dateCreated: '09.03.2021',
             projectName: 'Facebook SYSTEM',
             projectTime: 3600,
-            projectRate: 750,
+            projectRate: 100,
             consumerFirstName: 'נורית',
             consumerLastName: 'אברהם',
             consumerAdress: 'באר שבע',
@@ -63,16 +66,41 @@ class HoursPage extends Component {
         },   
     ]
 
+    // <div className="title-project"><p>{35}</p><p className="note-hover bg-secondary">סך פרוייקטים</p></div>
+    // <div className="title-fix" ><p>{195}</p> <p className="note-hover bg-secondary">תעריף ממוצע</p></div>
+    // <div className="title-fix" ><p>{195}</p> <p className="note-hover bg-secondary">סך שעות</p></div>
+    // <div className="title-fix" ><p>{195}</p> <p className="note-hover bg-secondary">סך לגביה</p></div>
+
+    getSchemaLine = () => {
+        const {data} = this;
+        const totalNumProjects = data.length;
+        let projectRateAverage = 0;
+        let totalMoneyCash = 0;
+        let toatlWorkTime = 0;
+        data.map( (project) => {
+            projectRateAverage += project.projectRate;
+            totalMoneyCash += project.projectTime / 60 / 60 * project.projectRate;
+            toatlWorkTime += project.projectTime;
+        } )
+        projectRateAverage = projectRateAverage / totalNumProjects;
+        projectRateAverage = projectRateAverage.toFixed()
+        toatlWorkTime = toatlWorkTime / 60 / 60;
+        toatlWorkTime = toatlWorkTime.toFixed(1);
+        totalMoneyCash = totalMoneyCash.toFixed(2)
+        return {
+            toatlWorkTime,
+            totalNumProjects ,
+            projectRateAverage,
+            totalMoneyCash
+        }
+    }
+    
+
 
 
     render() { 
-        // console.log(this.state.switchMode);
-        // const projectRateAverage;
-        // const toatlWorkTime;
-        // const totalNumProjects;
-        // const totalMoneyCash;
+        this.getSchemaLine();
         
-
         return ( 
             <div className="hours-page">
     
@@ -88,6 +116,7 @@ class HoursPage extends Component {
                 <div className="box">
                     <div className="view-project title-box">
                         <div className="title-fix">#</div>
+                        <div className="title-fix">תאריך יצירה</div>
                         <div className="title-project">פרוייקט</div>
                         <div className="title-fix" >תעריף</div>
                         <div className="title-fix" >זמן</div>
@@ -104,6 +133,7 @@ class HoursPage extends Component {
                     {
                         this.data.map( (project, index) => <ViewProject key={index+1}
                             index={index+1}
+                            dateCreated={project.dateCreated}
                             id={project.id}
                             projectName={project.projectName}
                             projectTime={project.projectTime}
@@ -121,10 +151,11 @@ class HoursPage extends Component {
                 <div className="line-bottom">
                 <div className="total-data">
                         <div className="title-fix"></div>
-                        <div className="title-project">סך פרוייקטים: <p>{35}</p></div>
-                        <div className="title-fix" >תעריף ממוצע: <p>{195}</p></div>
-                        <div className="title-fix" >סך שעות: <p>{195}</p></div>
-                        <div className="title-fix" >סך לגביה: <p>{195}</p></div>
+                        <div className="title-fix"></div>
+                        <div className="title-project"><p>{this.getSchemaLine().totalNumProjects}</p><p className="note-hover bg-primary">סך פרוייקטים</p></div>
+                        <div className="title-fix" ><p>{this.getSchemaLine().projectRateAverage} ₪</p> <p className="note-hover bg-primary">תעריף ממוצע</p></div>
+                        <div className="title-fix" ><p>{this.getSchemaLine().toatlWorkTime}</p> <p className="note-hover bg-primary">סך שעות</p></div>
+                        <div className="title-fix" ><p>{this.getSchemaLine().totalMoneyCash} ₪</p> <p className="note-hover bg-primary">סך לגביה</p></div>
                         <div className="title-fix" ></div>
                         <div className="title-fix" ></div>
                         <div className="title-fix" ></div>
