@@ -51,9 +51,7 @@ class ViewProject extends Component {
     // console.log(minutes);
 
     return ( 
-      // <div className="view-project">
       <div className="view-project">
-        
         <div className={props.switchMode ? "line-control line-control-constricted" : "line-control" }>
         <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }>{props.index}</div>
         <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }>{props.dateCreated}</div>
