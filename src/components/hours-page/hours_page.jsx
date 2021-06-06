@@ -44,7 +44,7 @@ class HoursPage extends Component {
             id:'659-897',
             dateCreated: '15.05.2021',
             projectName: 'CRM SYSTEM',
-            projectTime: 0,
+            projectTime: 360,
             projectRate: 750,
             consumerFirstName: 'יוסי',
             consumerLastName: 'לוי',
@@ -56,7 +56,7 @@ class HoursPage extends Component {
             id: '598-201',
             dateCreated: '09.03.2021',
             projectName: 'Facebook SYSTEM',
-            projectTime: 0,
+            projectTime: 3600,
             projectRate: 100,
             consumerFirstName: 'נורית',
             consumerLastName: 'אברהם',
@@ -121,8 +121,7 @@ class HoursPage extends Component {
                         <div className="title-fix" >תעריף</div>
                         <div className="title-fix" >שעות עבודה</div>
                         <div className="title-fix" >סה''כ</div>
-                        <div className="title-fix" >הפעלה</div>
-                        <div className="title-fix" >השהיה</div>
+                        <div className="title-fix" >הפעלה/השהיה</div>
                         <div className="title-fix" >לתשלום</div>
                         <div className="title-fix" >מחיקה</div>
                         <div className="title-fix" ></div>

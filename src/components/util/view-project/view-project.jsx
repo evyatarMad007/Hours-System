@@ -9,6 +9,7 @@ class ViewProject extends Component {
   
   state = { 
     count: this.props.projectTime,
+    startBtnActive: false,
     startBtn: false,
     pauseBtn: false,
     paymentBtn: false,
@@ -23,19 +24,27 @@ class ViewProject extends Component {
     this.setState({ dropDown })
   }
 
-  startCount = () => {
-    console.log(this.props.projectTime);
-    const interval = setInterval(() => {
-      let {count} = this.state;
-      count++
-      this.setState({ count })
-    }, 1000);
+  startBtnActiveFunc = () => {
+      let { startBtnActive } = this.state;
+      startBtnActive ? startBtnActive = false : startBtnActive = true;
+      this.setState({startBtnActive})
+
+      if(startBtnActive) {
+        console.log('Start Button Clicked');
+       
+      }
+      if(! startBtnActive) {
+        console.log('Pause Button Clicked');
+
+      }
   }
+
+
 
   render() {
     
     const {props} = this;
-    const {count, startBtn, pauseBtn, paymentBtn, removeBtn,dropDown} = this.state;
+    const {count, startBtn, pauseBtn, paymentBtn, removeBtn,dropDown,startBtnActive} = this.state;
     // console.log(props);
 
     let ProjectRate = props.projectRate;
@@ -58,9 +67,12 @@ class ViewProject extends Component {
             <div className={props.switchMode ? "title-project title-project-constricted" : "title-project" }><div className="text"><span className="project-name"><AiOutlineFundProjectionScreen/></span> { props.projectName }</div></div>
             <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><div className="text"><span className="project-time"></span>₪{props.projectRate}</div></div>
             <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><div className="text"><span className="project-time"><AiOutlineClockCircle/></span>{count}</div></div>
-            <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><div className="text"><span className="project-time"></span>₪{props.projectRate.toFixed(2)}</div></div>
-            <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><button onClick={this.startCount} className="td-button btn btn-outline-success btn-sm"><span className="start-time"><BsPlay/></span></button></div>
-            <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><button className="td-button btn btn-outline-secondary btn-sm"><span className="stop-time"><BsPauseFill/></span></button></div>
+            <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><div className="text"><span className="project-time"></span>₪{props.projectRate.toFixed(2) * count / 60 / 60}</div></div>
+            <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }>{
+                ! startBtnActive 
+                ? <button onClick={this.startBtnActiveFunc} className="td-button btn btn-outline-success btn-sm"><span className="start-time"><BsPlay/></span></button>
+                : <button onClick={this.startBtnActiveFunc} className="td-button btn btn-outline-secondary btn-sm"><span className="stop-time"><BsPauseFill/></span></button>
+            }</div>
             <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><button className="td-button btn btn-outline-warning btn-sm"><span className="payment"><BiCoin/></span></button></div>
             <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><button  className="td-button btn btn-outline-danger btn-sm"><span className="remove-project"><RiDeleteBin6Line/></span></button></div>
             <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><span onClick={this.dropDown} className={dropDown ? 'drop-down drop-down-on' : 'drop-down'}><RiArrowDropDownLine/></span></div>
