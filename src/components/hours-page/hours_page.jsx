@@ -105,7 +105,7 @@ class HoursPage extends Component {
     }
     getElementsConsumersList = () => {
         let {filterConsumerInput} = this.state;
-        filterConsumerInput ? filterConsumerInput = false : filterConsumerInput = true;
+        filterConsumerInput  = true;
         this.setState({ filterConsumerInput })
     }
     removeElementsList = () => {
