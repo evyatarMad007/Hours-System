@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import AddProject from '../util/add-project/add-project';
 import ViewProject from '../util/view-project/view-project';
 import Switches from '../tools/switch';
-
+import { AiOutlineFundProjectionScreen } from 'react-icons/ai';
+import { HiOutlineUserCircle } from 'react-icons/hi';
 
 
 class HoursPage extends Component {
@@ -110,6 +111,38 @@ class HoursPage extends Component {
                 
                 <div className="box">
                         <AddProject/>
+                </div>
+
+                <div className="box filter-box">
+                        {/* Filter Functions here! */}
+                        <div className="project-filter">
+                            <input name="inp-project-filter" id="inp-project-filter" className="form-control" type="text" placeholder="הקלד שם פרוייקט"/>
+                            <ul className="project">
+                                <li><i><AiOutlineFundProjectionScreen/></i> <span>בניית אתר תדמית</span></li>
+                                <li><i><AiOutlineFundProjectionScreen/></i> <span>CRM SYSTEM</span></li>
+                                <li><i><AiOutlineFundProjectionScreen/></i> <span>Facebook SYSTEM</span></li>
+                                <li><i><AiOutlineFundProjectionScreen/></i> <span>בניית אתר תדמית</span></li>
+                                <li><i><AiOutlineFundProjectionScreen/></i> <span>CRM SYSTEM</span></li>
+                                <li><i><AiOutlineFundProjectionScreen/></i> <span>Facebook SYSTEM</span></li>
+                                <li><i><AiOutlineFundProjectionScreen/></i> <span>בניית אתר תדמית</span></li>
+                                <li><i><AiOutlineFundProjectionScreen/></i> <span>CRM SYSTEM</span></li>
+                                <li><i><AiOutlineFundProjectionScreen/></i> <span>Facebook SYSTEM</span></li>
+                            </ul>
+                        </div>
+                        <div className="consumer-filter">
+                        <input name="inp-project-filter" id="inp-project-filter" className="form-control" type="text" placeholder="הקלד שם לקוח"/>
+                            <ul className="consumer">
+                                <li><i ><HiOutlineUserCircle/></i> <span>בניית אתר תדמית</span></li>
+                                <li><i ><HiOutlineUserCircle/></i> <span>CRM SYSTEM</span></li>
+                                <li><i ><HiOutlineUserCircle/></i> <span>Facebook SYSTEM</span></li>
+                                <li><i ><HiOutlineUserCircle/></i> <span>בניית אתר תדמית</span></li>
+                                <li><i ><HiOutlineUserCircle/></i> <span>CRM SYSTEM</span></li>
+                                <li><i ><HiOutlineUserCircle/></i> <span>Facebook SYSTEM</span></li>
+                                <li><i ><HiOutlineUserCircle/></i> <span>בניית אתר תדמית</span></li>
+                                <li><i ><HiOutlineUserCircle/></i> <span>CRM SYSTEM</span></li>
+                                <li><i ><HiOutlineUserCircle/></i> <span>Facebook SYSTEM</span></li>
+                            </ul>
+                        </div>
                 </div>
     
     

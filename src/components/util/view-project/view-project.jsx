@@ -4,7 +4,6 @@ import {  RiRestartLine,RiDeleteBin6Line ,RiArrowDropDownLine} from 'react-icons
 import {  BsPlay, BsPauseFill } from 'react-icons/bs';
 import {  BiCoin } from 'react-icons/bi';
 
-
 class ViewProject extends Component {
   
   state = { 
