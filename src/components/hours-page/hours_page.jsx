@@ -134,8 +134,8 @@ class HoursPage extends Component {
                 </div>
 
                 <div className="box filter-box">
-                        <div className="project-filter">
-                            <input onChange={this.getElementsProjectsList} onMouseLeave={this.removeElementsList} name="inp-project-filter" id="inp-project-filter" className="form-control" type="text" placeholder="חפש לפי פרוייקט"/>
+                        <div className="project-filter" onMouseLeave={this.removeElementsList}>
+                            <input onChange={this.getElementsProjectsList}  name="inp-project-filter" id="inp-project-filter" className="form-control" type="text" placeholder="חפש לפי פרוייקט"/>
                             <ul className={filterProjectInput ? 'project ul-on' : 'project' }>
                                 <li><i><AiOutlineFundProjectionScreen/></i> <span>בניית אתר תדמית</span></li>
                                 <li><i><AiOutlineFundProjectionScreen/></i> <span>CRM SYSTEM</span></li>
@@ -148,8 +148,8 @@ class HoursPage extends Component {
                                 <li><i><AiOutlineFundProjectionScreen/></i> <span>Facebook SYSTEM</span></li>
                             </ul>
                         </div>
-                        <div className="consumer-filter">
-                        <input onChange={this.getElementsConsumersList} onMouseLeave={this.removeElementsList} name="inp-project-filter" id="inp-project-filter" className="form-control" type="text" placeholder="חפש לפי לקוח"/>
+                        <div className="consumer-filter" onMouseLeave={this.removeElementsList}>
+                        <input onChange={this.getElementsConsumersList}  name="inp-project-filter" id="inp-project-filter" className="form-control" type="text" placeholder="חפש לפי לקוח"/>
                             <ul className={filterConsumerInput ? 'consumer ul-on' : 'consumer' }>
                                 <li><i ><HiOutlineUserCircle/></i> <span>בניית אתר תדמית</span></li>
                                 <li><i ><HiOutlineUserCircle/></i> <span>CRM SYSTEM</span></li>
