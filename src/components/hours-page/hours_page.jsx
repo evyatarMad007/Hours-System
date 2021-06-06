@@ -134,7 +134,7 @@ class HoursPage extends Component {
 
                 <div className="box filter-box">
                         <div className="project-filter" onMouseLeave={this.removeElementsList}>
-                            <input onMouseOver={this.getElementsProjectsList}  name="inp-project-filter" id="inp-project-filter" className="form-control" type="text" placeholder="חפש לפי פרוייקט"/>
+                            <input onClick={this.getElementsProjectsList}  name="inp-project-filter" id="inp-project-filter" className="form-control" type="text" placeholder="חפש לפי פרוייקט"/>
                             <ul className={filterProjectInput ? 'project ul-on' : 'project' }>
                                 <li><i><AiOutlineFundProjectionScreen/></i> <span>בניית אתר תדמית</span></li>
                                 <li><i><AiOutlineFundProjectionScreen/></i> <span>CRM SYSTEM</span></li>
@@ -148,7 +148,7 @@ class HoursPage extends Component {
                             </ul>
                         </div>
                         <div className="consumer-filter" onMouseLeave={this.removeElementsList}>
-                        <input onMouseOver={this.getElementsConsumersList}  name="inp-project-filter" id="inp-project-filter" className="form-control" type="text" placeholder="חפש לפי לקוח"/>
+                        <input onClick={this.getElementsConsumersList}  name="inp-project-filter" id="inp-project-filter" className="form-control" type="text" placeholder="חפש לפי לקוח"/>
                             <ul className={filterConsumerInput ? 'consumer ul-on' : 'consumer' }>
                                 <li><i ><HiOutlineUserCircle/></i> <span>בניית אתר תדמית</span></li>
                                 <li><i ><HiOutlineUserCircle/></i> <span>CRM SYSTEM</span></li>
