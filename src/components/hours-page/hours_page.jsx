@@ -9,7 +9,9 @@ import { HiOutlineUserCircle } from 'react-icons/hi';
 class HoursPage extends Component {
 
     state = { 
-        switchMode: false
+        switchMode: false,
+        filterProjectInput: false,
+        filterConsumerInput: false,
      }
 
     switchBtnMode = () => {
@@ -95,12 +97,30 @@ class HoursPage extends Component {
             totalMoneyCash
         }
     }
+
+    getElementsProjectsList = () => {
+        let {filterProjectInput} = this.state;
+        filterProjectInput  = true;
+        this.setState({ filterProjectInput })
+    }
+    getElementsConsumersList = () => {
+        let {filterConsumerInput} = this.state;
+        filterConsumerInput ? filterConsumerInput = false : filterConsumerInput = true;
+        this.setState({ filterConsumerInput })
+    }
+    removeElementsList = () => {
+        let {filterProjectInput,filterConsumerInput} = this.state;
+        filterProjectInput  = false;
+        filterConsumerInput  = false;
+        this.setState({ filterProjectInput,filterConsumerInput })
+    }
     
 
 
 
     render() { 
         this.getSchemaLine();
+        const {filterProjectInput, filterConsumerInput} = this.state;
         
         return ( 
             <div className="hours-page">
@@ -114,10 +134,9 @@ class HoursPage extends Component {
                 </div>
 
                 <div className="box filter-box">
-                        {/* Filter Functions here! */}
                         <div className="project-filter">
-                            <input name="inp-project-filter" id="inp-project-filter" className="form-control" type="text" placeholder="הקלד שם פרוייקט"/>
-                            <ul className="project">
+                            <input onChange={this.getElementsProjectsList} onMouseLeave={this.removeElementsList} name="inp-project-filter" id="inp-project-filter" className="form-control" type="text" placeholder="חפש לפי פרוייקט"/>
+                            <ul className={filterProjectInput ? 'project ul-on' : 'project' }>
                                 <li><i><AiOutlineFundProjectionScreen/></i> <span>בניית אתר תדמית</span></li>
                                 <li><i><AiOutlineFundProjectionScreen/></i> <span>CRM SYSTEM</span></li>
                                 <li><i><AiOutlineFundProjectionScreen/></i> <span>Facebook SYSTEM</span></li>
@@ -130,8 +149,8 @@ class HoursPage extends Component {
                             </ul>
                         </div>
                         <div className="consumer-filter">
-                        <input name="inp-project-filter" id="inp-project-filter" className="form-control" type="text" placeholder="הקלד שם לקוח"/>
-                            <ul className="consumer">
+                        <input onChange={this.getElementsConsumersList} onMouseLeave={this.removeElementsList} name="inp-project-filter" id="inp-project-filter" className="form-control" type="text" placeholder="חפש לפי לקוח"/>
+                            <ul className={filterConsumerInput ? 'consumer ul-on' : 'consumer' }>
                                 <li><i ><HiOutlineUserCircle/></i> <span>בניית אתר תדמית</span></li>
                                 <li><i ><HiOutlineUserCircle/></i> <span>CRM SYSTEM</span></li>
                                 <li><i ><HiOutlineUserCircle/></i> <span>Facebook SYSTEM</span></li>
