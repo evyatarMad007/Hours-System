@@ -5,7 +5,7 @@ import { MdCreateNewFolder } from 'react-icons/md';
 
 class AddProject extends Component {
   state = { 
-    newProjectMode: false
+    newProjectMode: true
   }
 
   createNewProject = () => {
@@ -55,15 +55,24 @@ class AddProject extends Component {
             <div className={newProjectMode ? "inputs inputs-on" : "inputs"}>
               <form action="">
                <div className="project-info">
-                 <p className="display-4">פרטי הפרוייקט</p>
+                 <p className="display-4">פרוייקט חדש</p>
                     <div className="project-general">
                         <input name="projectName" id="projectName"  className="form-control" type="text"  placeholder="שם הפרוייקט"/>
                         <input name="projectRate" id="projectRate"  className="form-control" type="text"  placeholder="תעריף שעתי"/>
+                        <select id="consumer-select" class="select" aria-label="Default select example">
+                            <option value="empty" selected>בחר לקוח קיים...</option>
+                            <option value="1">משה כהן</option>
+                            <option value="2">יוסי לוי</option>
+                            <option value="3">ורד ביטון</option>
+                            <option value="4">אביתר מדרי</option>
+                            <option value="5">אופק חגג</option>
+                        </select>
+                        
                     </div>
                </div>
                <div className="consumer-info">
                     <div className="consumer-general">
-                    <p className="display-4">פרטי הלקוח</p>
+                    <p className="display-4">לקוח חדש</p>
                         <input name="consumerFirstName" id="consumerFirstName"  className="form-control" type="text"  placeholder="שם פרטי"/>
                         <input name="consumerLastName" id="consumerLastName"  className="form-control" type="text"  placeholder="שם משפחה"/>
                         <input name="consumerAdress" id="consumerAdress"  className="form-control" type="text"  placeholder="כתובת מגורים"/>

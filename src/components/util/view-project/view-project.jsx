@@ -25,13 +25,17 @@ class ViewProject extends Component {
   }
 
   startBtnActiveFunc = () => {
-      let { startBtnActive } = this.state;
+      let { startBtnActive,count } = this.state;
       startBtnActive ? startBtnActive = false : startBtnActive = true;
       this.setState({startBtnActive})
 
       if(startBtnActive) {
         console.log('Start Button Clicked');
-       
+       setInterval(() => {
+        count++
+        this.setState({count})
+           console.log(count);
+       }, 0);
       }
       if(! startBtnActive) {
         console.log('Pause Button Clicked');
@@ -45,19 +49,6 @@ class ViewProject extends Component {
     
     const {props} = this;
     const {count, startBtn, pauseBtn, paymentBtn, removeBtn,dropDown,startBtnActive} = this.state;
-    // console.log(props);
-
-    let ProjectRate = props.projectRate;
-    // let secounds = count;
-    // let minutes = count / 60;
-
-    let hoursFormat =  count / 60 / 60 % 1 ? 0 : count / 60 / 60 ;
-
-    // 180
-    let minutes =  count / 60 % 60 ? 'true' : 'false' ;
-    // let secounds =  count / 60 / 60 % 1 ? 0 : count / 60 / 60 ;
-
-    // console.log(minutes);
 
     return ( 
       <div className="view-project">
@@ -66,8 +57,8 @@ class ViewProject extends Component {
         <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }>{props.dateCreated}</div>
             <div className={props.switchMode ? "title-project title-project-constricted" : "title-project" }><div className="text"><span className="project-name"><AiOutlineFundProjectionScreen/></span> { props.projectName }</div></div>
             <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><div className="text"><span className="project-time"></span>₪{props.projectRate}</div></div>
-            <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><div className="text"><span className="project-time"><AiOutlineClockCircle/></span>{count}</div></div>
-            <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><div className="text"><span className="project-time"></span>₪{props.projectRate.toFixed(2) * count / 60 / 60}</div></div>
+            <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><div className="text"><span className="project-time"><AiOutlineClockCircle/></span> {count} </div></div>
+            <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><div className="text"><span className="project-time"></span>₪{Math.round(props.projectRate.toFixed(2) * count / 60 / 60)}</div></div>
             <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }>{
                 ! startBtnActive 
                 ? <button onClick={this.startBtnActiveFunc} className="td-button btn btn-outline-success btn-sm"><span className="start-time"><BsPlay/></span></button>
