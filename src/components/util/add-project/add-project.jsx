@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { MdCreateNewFolder } from 'react-icons/md';
+import { HiOutlineUserCircle } from 'react-icons/hi';
 
 
 class AddProject extends Component {
