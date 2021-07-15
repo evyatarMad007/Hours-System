@@ -4,6 +4,9 @@ import ViewProject from '../util/view-project/view-project';
 import Switches from '../tools/switch';
 import { AiOutlineFundProjectionScreen } from 'react-icons/ai';
 import { HiOutlineUserCircle } from 'react-icons/hi';
+import axiosMethods from '../../service/http_service';
+
+console.log(axiosMethods);
 
 class HoursPage extends Component {
 
@@ -118,6 +121,7 @@ class HoursPage extends Component {
 
 
     render() { 
+        
         this.getSchemaLine();
         const {filterProjectInput, filterConsumerInput} = this.state;
         
