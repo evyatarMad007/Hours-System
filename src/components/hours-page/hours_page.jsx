@@ -4,9 +4,6 @@ import ViewProject from '../util/view-project/view-project';
 import Switches from '../tools/switch';
 import { AiOutlineFundProjectionScreen } from 'react-icons/ai';
 import { HiOutlineUserCircle } from 'react-icons/hi';
-import axiosMethods from '../../service/http_service';
-
-console.log(axiosMethods);
 
 class HoursPage extends Component {
 
@@ -121,7 +118,6 @@ class HoursPage extends Component {
 
 
     render() { 
-        
         this.getSchemaLine();
         const {filterProjectInput, filterConsumerInput} = this.state;
         
@@ -140,6 +136,7 @@ class HoursPage extends Component {
                         <div className="project-filter" onMouseLeave={this.removeElementsList}>
                             <input onClick={this.getElementsProjectsList}  name="inp-project-filter" id="inp-project-filter" className="form-control" type="text" placeholder="חפש לפי פרוייקט"/>
                             <ul className={filterProjectInput ? 'project ul-on' : 'project' }>
+                                {/* foreach will be here  */}
                                 <li><i><AiOutlineFundProjectionScreen/></i> <span>בניית אתר תדמית</span></li>
                                 <li><i><AiOutlineFundProjectionScreen/></i> <span>CRM SYSTEM</span></li>
                                 <li><i><AiOutlineFundProjectionScreen/></i> <span>Facebook SYSTEM</span></li>
@@ -154,6 +151,7 @@ class HoursPage extends Component {
                         <div className="consumer-filter" onMouseLeave={this.removeElementsList}>
                         <input onClick={this.getElementsConsumersList}  name="inp-project-filter" id="inp-project-filter" className="form-control" type="text" placeholder="חפש לפי לקוח"/>
                             <ul className={filterConsumerInput ? 'consumer ul-on' : 'consumer' }>
+                                {/* foreach will be here  */}
                                 <li><i ><HiOutlineUserCircle/></i> <span>בניית אתר תדמית</span></li>
                                 <li><i ><HiOutlineUserCircle/></i> <span>CRM SYSTEM</span></li>
                                 <li><i ><HiOutlineUserCircle/></i> <span>Facebook SYSTEM</span></li>
@@ -185,7 +183,8 @@ class HoursPage extends Component {
     
                 <div className="box">
                     {
-                        this.data.map( (project, index) => <ViewProject key={index+1}
+                        this.data.map( (project, index) => <ViewProject 
+                            key={index+1}
                             index={index+1}
                             dateCreated={project.dateCreated}
                             id={project.id}
@@ -201,6 +200,7 @@ class HoursPage extends Component {
                         /> )
                     }
                 </div>
+                
                 <div className="box">
                 <div className="line-bottom">
                 <div className="total-data">
@@ -210,7 +210,6 @@ class HoursPage extends Component {
                         <div className="title-fix" ><p>{this.getSchemaLine().projectRateAverage} ₪</p> <p className="note-hover bg-primary">תעריף ממוצע</p></div>
                         <div className="title-fix" ><p>{this.getSchemaLine().toatlWorkTime}</p> <p className="note-hover bg-primary">סך שעות</p></div>
                         <div className="title-fix" ><p>{this.getSchemaLine().totalMoneyCash} ₪</p> <p className="note-hover bg-primary">סך לגביה</p></div>
-                        <div className="title-fix" ></div>
                         <div className="title-fix" ></div>
                         <div className="title-fix" ></div>
                         <div className="title-fix" ></div>

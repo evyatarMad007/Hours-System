@@ -6,7 +6,7 @@ import { HiOutlineUserCircle } from 'react-icons/hi';
 
 class AddProject extends Component {
   state = { 
-    newProjectMode: true
+    newProjectMode: false
   }
 
   createNewProject = () => {
