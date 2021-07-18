@@ -1,21 +1,16 @@
 .view-project {
-    // margin: 5px 0;
     display: flex;
     flex-direction: column;
-    // align-items: center;
-    // justify-content: space-between;
-    // height: 55px;
-    // background-color: black;
     padding: 0 10px;
-    border-bottom: 0.5px solid #dfdfdf;
+    border-bottom: .5px dashed #cccbcb;
     
-
     .title-project,
     .title-fix {
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         transition: all 0.2s;
+        // background-color: rgb(57, 13, 177);
         
     }
     
@@ -28,16 +23,20 @@
         justify-content: space-between;
         height: 55px;
         transition: all 0.2s;
-        // background-color: lime;
+        background-color: lime;
+        font-size: 14px;
 
 
         .title-project {
             width: 30%;
-            // background-color: skyblue;
+            height: 100%;
+            background-color: skyblue;
         }
 
         .title-fix {
             width: 10%;
+            height: 100%;
+            background-color: #fff;
 
             button {
                 height: 35px;
@@ -47,6 +46,7 @@
                 justify-content: center;
                 align-items: center;
                 transition: all 0.2s;
+                border: none;
 
 
                 span {

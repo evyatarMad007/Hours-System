@@ -14,15 +14,23 @@
         // background-color: lime;
 
         button {
+            // background-color: #fff;
+            border-radius: 5px;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: .3rem 1.5rem;
             span {
                 display: inline-block;
-                transform: translateY(-1.9px) translateX(-3px);
+                transform: translateY(-3px) translateX(-6px);
+                font-size: 2.5rem;
             }
         }
 
         .inputs {
             margin-top: 10px;
-            width: 100%;
+            width: 80%;
             display: flex;
             flex-direction: column;
             padding: 15px 55px;
@@ -37,16 +45,17 @@
                 // background-color: rgb(228, 28, 28);
                 display: flex;
                 flex-direction: column;
-                margin: 10px 0;
                 position: relative;
-                padding-top: 13px;
+                margin: 20px 0 45px 0;
+                
                 p {
                     position: absolute;
-                    top: 0;
-                    right: 0;
-                    font-size: 20px;
+                    top: -1.5rem;
+                    right: .6rem;
+                    font-size: 2.2rem;
                     font-weight: bold;
                     font-family: calibri;
+                    // background-color: red;
                 }
                 .project-general,.consumer-general,.consumer-contact {
                     // border: 1px solid black;
@@ -55,18 +64,21 @@
                     input {
                         margin: 15px 0 0 15px;
                         width: max-content;
-                        font-size: 14px;
+                        font-size: 17px;
+                        border: none;
+                        background-color: rgba(255, 0, 0, 0);
+                        border-bottom: 0.5px solid silver;
                      }
                      #consumer-select {
                         //  background-color: red;
-                         border-radius: 5px;
                          margin: 15px 0 0 15px;
-                         font-size: 14px;
+                         font-size: 18px;
                          padding: 0 10px;
                         width: 200px;
                         outline: none;
-                        border: 0.5px solid #dadada;
-                        background-color: #fff;
+                        border: none;
+                        border-bottom: 0.5px solid silver;
+                        background-color: rgba(255, 255, 255, 0);
                         color: #7d7f81;
 
                         option {
@@ -81,10 +93,12 @@
                 display: flex;
                 align-items: center;
                 justify-content: flex-start;
-                padding: 10px 0;
+                padding: 0px 0;
+                
+                // background-color: red;
                 button {
-                    width: 100px;
                     margin: 0;
+                    font-size: 1.7rem ;
                 }
             }
 
@@ -92,7 +106,7 @@
             
         }
         .inputs-on {
-            height: 290px;
+            height: 32rem;
             opacity: 1;
         }
         

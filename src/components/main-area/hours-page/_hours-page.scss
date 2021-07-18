@@ -1,30 +1,31 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    direction: rtl;
-}
 
 .hours-page {
     padding: 0;
     margin: 0;
+    direction: rtl;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     min-height: 800px;
     margin-bottom: 300px;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+
 
     h1 {
         text-align: center;
-        font-size: 45px;
+        font-size: 5rem;
     }
 
     .box {
         // background-color: rgb(66, 150, 71);
-        width: 90%;
-        max-width: 1200px;
+        width: 95%;
+        max-width: 1500px;
+        margin-top: 2rem;
     }
+
     .add-project {
         margin: 10px 0;
     }
@@ -42,12 +43,13 @@
             position: relative;
             input {
                 height: 35px;
-                border-radius: 5px;
+                // border-radius: 5px;
                 outline: none;
-                border: 0.5px solid rgb(206, 206, 206);
+                border: none;
+                border-bottom: 0.5px solid rgb(206, 206, 206);
                 background-color: #fff;
-                font-size: 14px;
-                width: 250px;
+                font-size: 16.5px;
+                width: 220px;
             }
             ul {
                 list-style-type: none;
@@ -57,8 +59,7 @@
                 border-bottom-left-radius: 5px;
                 border-bottom-right-radius: 5px;
                 background-color: rgb(255, 255, 255);
-                font-size: 14px;
-                width: 250px;
+                width: 220px;
                 flex-direction: column;
                 position: absolute;
                 max-height: 200px;
@@ -107,7 +108,7 @@
                     
                     width: 100%;
                     padding: 8px 15px;
-                    font-size: 13px;
+                    font-size: 14px;
                     cursor: pointer;
                     // background-color: rgb(190, 26, 26);
                     // text-align: center;
@@ -118,9 +119,9 @@
                         background-color: rgb(187, 187, 187);
                     }
 
-                    span {
-                        // background-color: lime;
-                    }
+                    // span {
+                    //     // background-color: lime;
+                    // }
                     
                 }
             }
@@ -158,10 +159,11 @@
                 align-items: center;
                 justify-content: center;
                 align-self: flex-end;
+                font-size: 1.5rem;
             
                 i {
                     // background-color: rgb(167, 167, 216);
-                    margin-bottom: 3px;
+                    margin-bottom: 0;
                     list-style-type: none;
                 }
             }
@@ -185,7 +187,7 @@
                     flex-direction: column;
                     align-items: center;
                     transition: all 0.2s;
-                    font-size: 14px;
+                    font-size: 15px;
                     font-weight: bold;
                     position: relative;
                     cursor: pointer;
@@ -249,17 +251,15 @@
     transition: all 0.2s;
     
     
-    
     .title-fix-constricted , .title-project-constricted {
         // background-color: red;
-        transform: scale(0.9);
+        transform: scale(.9);
         transition: all 0.2s;
         button {
-            transform: scale(0.85);
+            transform: scale(.85);
             border-radius: 20%;
 
             transition: all 0.2s;
         }
     }
-
 }

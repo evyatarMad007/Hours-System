@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import AddProject from '../util/add-project/add-project';
-import ViewProject from '../util/view-project/view-project';
-import Switches from '../tools/switch';
+import AddProject from './add-project/add-project';
+import ViewProject from './view-project/view-project';
+import Switches from '../../tools/switch';
 import { AiOutlineFundProjectionScreen } from 'react-icons/ai';
 import { HiOutlineUserCircle } from 'react-icons/hi';
+// import axios from 'axios';
 
 class HoursPage extends Component {
 
@@ -68,11 +69,6 @@ class HoursPage extends Component {
         },   
     ]
 
-    // <div className="title-project"><p>{35}</p><p className="note-hover bg-secondary">סך פרוייקטים</p></div>
-    // <div className="title-fix" ><p>{195}</p> <p className="note-hover bg-secondary">תעריף ממוצע</p></div>
-    // <div className="title-fix" ><p>{195}</p> <p className="note-hover bg-secondary">סך שעות</p></div>
-    // <div className="title-fix" ><p>{195}</p> <p className="note-hover bg-secondary">סך לגביה</p></div>
-
     getSchemaLine = () => {
         const {data} = this;
         const totalNumProjects = data.length;
@@ -83,6 +79,7 @@ class HoursPage extends Component {
             projectRateAverage += project.projectRate;
             totalMoneyCash += project.projectTime / 60 / 60 * project.projectRate;
             toatlWorkTime += project.projectTime;
+            return '';
         } )
         projectRateAverage = projectRateAverage / totalNumProjects;
         projectRateAverage = projectRateAverage.toFixed()
@@ -114,15 +111,16 @@ class HoursPage extends Component {
         this.setState({ filterProjectInput,filterConsumerInput })
     }
     
-
-
+    doRequest = () => {
+        // axios.get('http://localhost:3900/api/users/full-user-info').then( res => console.log(res.data));
+    } 
 
     render() { 
         this.getSchemaLine();
         const {filterProjectInput, filterConsumerInput} = this.state;
-        
+
         return ( 
-            <div className="hours-page">
+            <div className="hours-page" onClick={this.doRequest}>
     
                 <div className="box">
                     <h1 className="display-4 mt-3">מערכת ספירת שעות</h1>
@@ -134,7 +132,7 @@ class HoursPage extends Component {
 
                 <div className="box filter-box">
                         <div className="project-filter" onMouseLeave={this.removeElementsList}>
-                            <input onClick={this.getElementsProjectsList}  name="inp-project-filter" id="inp-project-filter" className="form-control" type="text" placeholder="חפש לפי פרוייקט"/>
+                            <input onClick={this.getElementsProjectsList}  name="inp-project-filter" className="form-control" type="text" placeholder="חפש לפי פרוייקט"/>
                             <ul className={filterProjectInput ? 'project ul-on' : 'project' }>
                                 {/* foreach will be here  */}
                                 <li><i><AiOutlineFundProjectionScreen/></i> <span>בניית אתר תדמית</span></li>
@@ -149,7 +147,7 @@ class HoursPage extends Component {
                             </ul>
                         </div>
                         <div className="consumer-filter" onMouseLeave={this.removeElementsList}>
-                        <input onClick={this.getElementsConsumersList}  name="inp-project-filter" id="inp-project-filter" className="form-control" type="text" placeholder="חפש לפי לקוח"/>
+                        <input onClick={this.getElementsConsumersList}  name="inp-project-filter" className="form-control" type="text" placeholder="חפש לפי לקוח"/>
                             <ul className={filterConsumerInput ? 'consumer ul-on' : 'consumer' }>
                                 {/* foreach will be here  */}
                                 <li><i ><HiOutlineUserCircle/></i> <span>בניית אתר תדמית</span></li>

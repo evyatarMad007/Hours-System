@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { MdCreateNewFolder } from 'react-icons/md';
-import { HiOutlineUserCircle } from 'react-icons/hi';
+// import { HiOutlineUserCircle } from 'react-icons/hi';
 
 
 class AddProject extends Component {
@@ -52,7 +52,7 @@ class AddProject extends Component {
       <div className="add-row">
           <div className="add-project-name">
             
-            <button className="btn btn-primary" onClick={this.createNewProject}>צור פרוייקט חדש <span><MdCreateNewFolder/></span></button>
+            <button className="btn btn-primary" onClick={this.createNewProject}>פרוייקט חדש <span><MdCreateNewFolder/></span></button>
             <div className={newProjectMode ? "inputs inputs-on" : "inputs"}>
               <form action="">
                <div className="project-info">
@@ -60,8 +60,8 @@ class AddProject extends Component {
                     <div className="project-general">
                         <input name="projectName" id="projectName"  className="form-control" type="text"  placeholder="שם הפרוייקט"/>
                         <input name="projectRate" id="projectRate"  className="form-control" type="text"  placeholder="תעריף שעתי"/>
-                        <select id="consumer-select" class="select" aria-label="Default select example">
-                            <option value="empty" selected>בחר לקוח קיים...</option>
+                        <select  id="consumer-select" className="select">
+                            <option value="empty">בחר לקוח קיים...</option>
                             <option value="1">משה כהן</option>
                             <option value="2">יוסי לוי</option>
                             <option value="3">ורד ביטון</option>
