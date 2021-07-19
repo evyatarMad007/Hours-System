@@ -1118,7 +1118,7 @@ html {
       -ms-flex-direction: column;
           flex-direction: column;
   padding: 0 10px;
-  border-bottom: .5px dashed #cccbcb;
+  border-bottom: .5px dashed #cccbcb9c;
 }
 
 .view-project .title-project,
@@ -1154,14 +1154,12 @@ html {
   height: 55px;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
-  background-color: lime;
-  font-size: 14px;
+  font-size: 1.5rem;
 }
 
 .view-project .line-control .title-project {
   width: 30%;
   height: 100%;
-  background-color: skyblue;
 }
 
 .view-project .line-control .title-fix {
@@ -1327,7 +1325,6 @@ html {
 }
 
 .title-box {
-  border-bottom: 0.5px solid #272727;
   margin: 5px 0;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1343,6 +1340,7 @@ html {
       -ms-flex-pack: justify;
           justify-content: space-between;
   height: 55px;
+  font-size: 1.5rem;
 }
 
 .title-box .title-project {
@@ -1354,7 +1352,6 @@ html {
 }
 
 .title-box:hover {
-  border-bottom: 0.5px solid #272727;
   background-color: rgba(255, 255, 255, 0);
 }
 /*# sourceMappingURL=main.css.map */

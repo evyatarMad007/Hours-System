@@ -2,9 +2,25 @@ import React, { Component } from 'react';
 import { RiLockPasswordLine } from "react-icons/ri";
 import { GoMail } from "react-icons/go";
 import { AiOutlinePhone,AiOutlineUser } from "react-icons/ai";
-class Signup extends Component {
-    state = {  }
+import { apiUrl } from '../../../config/config.json';
+import http from '../../../service/httpService';
 
+class Signup extends Component {
+    state = { 
+        data: { 
+            first_name: '',
+            last_name: '',
+            password: '',
+            phone_number: '',
+            email: '',
+        },
+        erorrs: {}
+     }
+
+     doSubmit = async () => {
+         const data = {...this.state.data};
+         await http.post(`${apiUrl}/users/signup`, data); 
+     }
 
 
     render() { 
@@ -45,7 +61,7 @@ class Signup extends Component {
                                 
                             </div>
                             <div className="submit-box">
-                                <button type="submit">Sign Up</button>
+                                <button type="submit"  onSubmit={this.doSubmit}>Sign Up</button>
                             </div>
                         </form>
                     </div>
