@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Home from './home-page/home-page';
+import Home from './home-page';
 import HoursPage from './hours-page/hours_page';
-import Signin from './signin-page/signin-page';
-import Signup from './signup-page/signup-page';
+import Signin from './signin-page';
+import Signup from './signup-page';
 
 // react-router-dom -> in this component
 import { BrowserRouter,Switch,Route,Link } from "react-router-dom";

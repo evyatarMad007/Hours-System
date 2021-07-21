@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import AddProject from './add-project/add-project';
-import ViewProject from './view-project/view-project';
+import AddProject from './add-project';
+import ViewProject from './view-project';
 import Switches from '../../tools/switch';
 import { AiOutlineFundProjectionScreen } from 'react-icons/ai';
 import { HiOutlineUserCircle } from 'react-icons/hi';

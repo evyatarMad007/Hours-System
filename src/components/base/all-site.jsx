@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Header from '../header/header';
-import Navbar from '../navbar/nav-bar';
+import Header from './header';
+import Navbar from './nav-bar';
 import MainArea from '../main-area/main-area';
 import { BrowserRouter } from "react-router-dom";
 class AllSite extends Component {

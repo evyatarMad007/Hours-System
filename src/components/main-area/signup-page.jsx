@@ -1,21 +1,35 @@
-import React, { Component } from 'react';
+import React, { Component }from 'react';
 import { RiLockPasswordLine } from "react-icons/ri";
 import { GoMail } from "react-icons/go";
 import { AiOutlinePhone,AiOutlineUser } from "react-icons/ai";
-import { apiUrl } from '../../../config/config.json';
-import http from '../../../service/httpService';
+import { apiUrl } from '../../config/config.json';
+import http from '../../service/httpService';
+import { Redirect } from "react-router-dom";
+import { toast } from 'react-toastify';
+import Joi from "joi-browser";
+// import userService from "../services/userService";
+
 
 class Signup extends Component {
     state = { 
         data: { 
-            first_name: '',
-            last_name: '',
-            password: '',
-            phone_number: '',
-            email: '',
+            first_name: "",
+            last_name: "",
+            password: "",
+            phone_number: "",
+            email: "",
         },
-        erorrs: {}
-     }
+        errors: {}
+    }
+
+     schema = {
+        first_name: Joi.string().required().email().label("first_name"),
+        last_name: Joi.string().required().email().label("last_name"),
+        phone_number: Joi.string().required().email().label("phone_number"),
+        password: Joi.string().required().min(6).label("Password"),
+        email: Joi.string().required().email().label("Email"),
+      };
+
 
      doSubmit = async () => {
          const data = {...this.state.data};
@@ -24,6 +38,10 @@ class Signup extends Component {
 
 
     render() { 
+
+        // if( userService.getCurrentUser() ) return <Redirect to="/"/>  // if user token easist go to home page <--
+
+
         return ( 
             <div className="signup">
                 
@@ -61,7 +79,7 @@ class Signup extends Component {
                                 
                             </div>
                             <div className="submit-box">
-                                <button type="submit"  onSubmit={this.doSubmit}>Sign Up</button>
+                                <button type="submit">Sign Up</button>
                             </div>
                         </form>
                     </div>

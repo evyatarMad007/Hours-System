@@ -1,0 +1,22 @@
+// config by base web 
+@import './variables';
+@import './base/all-site';
+
+// main elements 
+@import './base/header';
+@import './base/nav-bar';
+@import './main-area/main-area';
+
+// home page 
+@import './main-area/home';
+
+// signin page 
+@import './main-area/signin';
+
+// signup page 
+@import './main-area/signup';
+
+// hours-page
+@import './main-area/hours-page/hours-page';
+@import './main-area/hours-page/add-project';
+@import './main-area/hours-page/view-project';
