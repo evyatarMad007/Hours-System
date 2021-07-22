@@ -12,7 +12,7 @@ import Joi from "joi-browser";
 
 class Signup extends Component {
     state = { 
-        data: { 
+        user: { 
             first_name: "",
             last_name: "",
             password: "",
@@ -20,21 +20,28 @@ class Signup extends Component {
             email: "",
         },
         errors: {}
+    } 
+
+    handlerChangeUser = (property, value) => {
+        let user = this.state.user;
+        user[property] = value;
+        this.setState({ user })
     }
 
-     schema = {
-        first_name: Joi.string().required().email().label("first_name"),
-        last_name: Joi.string().required().email().label("last_name"),
-        phone_number: Joi.string().required().email().label("phone_number"),
-        password: Joi.string().required().min(6).label("Password"),
-        email: Joi.string().required().email().label("Email"),
-      };
+
+    //  schema = {
+    //     first_name: Joi.string().required().email().label("first_name"),
+    //     last_name: Joi.string().required().email().label("last_name"),
+    //     phone_number: Joi.string().required().email().label("phone_number"),
+    //     password: Joi.string().required().min(6).label("Password"),
+    //     email: Joi.string().required().email().label("Email"),
+    //   };
 
 
-     doSubmit = async () => {
-         const data = {...this.state.data};
-         await http.post(`${apiUrl}/users/signup`, data); 
-     }
+    //  doSubmit = async () => {
+    //      const data = {...this.state.data};
+    //      await http.post(`${apiUrl}/users/signup`, data); 
+    //  }
 
 
     render() { 
@@ -50,31 +57,31 @@ class Signup extends Component {
                         <div className="title-register">
                             <p>Sign Up</p>
                         </div>
-                        <form id="signup-form" action="" method="POST" novalidate="novalidate">
+                        <form id="signup-form" action="" method="POST" noValidate="noValidate">
                             <div className="inputs-area">
                                 <div className="username-box">
-                                <div className="l-name">
-                                        <input type="text" name="l_name" placeholder="Last Name"/>
+                                    <div className="l-name">
+                                        <input type="text" name="l_name" value={this.state.user.last_name} onChange={ e => this.handlerChangeUser('last_name', e.target.value)} placeholder="Last Name"/>
                                     </div>
                                     <div className="f-name">
                                         <label htmlFor=""><AiOutlineUser/></label>
-                                        <input type="text" name="f_name" placeholder="First Name"/>
+                                        <input type="text" name="f_name" value={this.state.user.first_name} onChange={ e => this.handlerChangeUser('first_name', e.target.value)} placeholder="First Name"/>
                                     </div>
                                 </div>
 
                                 <div className="phone-box">
                                     <label htmlFor=""><AiOutlinePhone/></label>
-                                    <input type="tel" name="Phone" placeholder="Phone Number"/>
+                                    <input type="tel" name="Phone" value={this.state.user.phone_number} onChange={ e => this.handlerChangeUser('phone_number', e.target.value)} placeholder="Phone Number"/>
                                 </div>
 
                                 <div className="email-box">
                                     <label htmlFor=""><GoMail/></label>
-                                    <input type="email" name="email" placeholder="Email Adress"/>
+                                    <input type="email" name="email" value={this.state.user.email} onChange={ e => this.handlerChangeUser('email', e.target.value)} placeholder="Email Adress"/>
                                 </div>
 
                                 <div className="password-box">
                                     <label htmlFor=""><RiLockPasswordLine/></label>
-                                    <input type="password" name="password" placeholder="Password"/>
+                                    <input type="password" name="password" value={this.state.user.password} onChange={ e => this.handlerChangeUser('password', e.target.value)} placeholder="Password"/>
                                 </div>
                                 
                             </div>
