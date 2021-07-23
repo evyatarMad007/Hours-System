@@ -1,10 +1,32 @@
 import React, { Component } from 'react';
 import { RiLockPasswordLine } from "react-icons/ri";
 import { GoMail } from "react-icons/go";
+import { apiUrl } from '../../config/config.json';
+const axios = require('axios');
+
 class Signin extends Component {
-    state = {  }
+    state = { 
+        user: { 
+            password: "123456",
+            email: "evyatar@gmail.com",
+        },
+        errors: {}
+    } 
 
+    // componentDidMount() {
+    //     const userData =  this.state.user;
+    //     const options = {
+    //         method: 'POST',
+    //         headers: {"Content-Type": "application/json"},
+    //         body: JSON.stringify(userData)
+    //     }
+    //     fetch(`${apiUrl}/users/signup`, options)
+    //     .then( res  => res)
+    //     .then( data => console.log(data));
 
+        
+
+    // }
 
     render() { 
         return ( 

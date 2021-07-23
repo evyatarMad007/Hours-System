@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { AiOutlineClockCircle,AiOutlineFundProjectionScreen } from 'react-icons/ai';
-import {  RiDeleteBin6Line ,RiArrowDropDownLine} from 'react-icons/ri';
-import {  BsPlay, BsPauseFill } from 'react-icons/bs';
-import {  BiCoin } from 'react-icons/bi';
-// import '../../../service/userService';
+import { AiOutlineClockCircle } from 'react-icons/ai';
+import {   RiArrowDropDownLine, RiMoneyDollarCircleFill} from 'react-icons/ri';
+import {  BsPauseFill } from 'react-icons/bs';
+import {  MdDeleteForever } from 'react-icons/md';
+import {  BsPlayFill } from 'react-icons/bs';
 
 
 class ViewProject extends Component {
@@ -54,20 +54,20 @@ class ViewProject extends Component {
     return ( 
       <div className="view-project">
         <div className={props.switchMode ? "line-control line-control-constricted" : "line-control" }>
-        <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }>{props.index}</div>
-        <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }>{props.dateCreated}</div>
-            <div className={props.switchMode ? "title-project title-project-constricted" : "title-project" }><div className="text"><span className="project-name"><AiOutlineFundProjectionScreen/></span> { props.projectName }</div></div>
+        <div className={props.switchMode ? "title-fix checkbox title-fix-constricted" : "title-fix checkbox" }> <input type="checkbox" name={props.index} id={props.index} /> </div>
+        {/* <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }>{props.dateCreated}</div> */}
+            <div className={props.switchMode ? "title-project title-project-constricted" : "title-project" }><div className="text"><span className="project-name"></span> { props.projectName } <br/> <span className="date-created" style={{ color: '#909090', fontSize:'12px', backgroundColor: '#E9E9E9', padding: '0.2px 0 0.2px 8px', display: 'block', transform: 'translateY(-1px)', borderRadius: '6px', width: 'max-content' }}>{props.dateCreated}</span></div></div>
             <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><div className="text"><span className="project-time"></span>₪ {props.projectRate}</div></div>
             <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><div className="text"><span className="project-time"><AiOutlineClockCircle/></span> {count} </div></div>
             <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><div className="text"><span className="project-time"></span>₪ {Math.round(props.projectRate.toFixed(2) * count / 60 / 60)}</div></div>
-            <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }>{
+            <div className={props.switchMode ? "title-fix actions title-fix-constricted" : "title-fix actions" }>{
                 ! startBtnActive 
-                ? <button onClick={this.startBtnActiveFunc} className="td-button"><span className="start-time"><BsPlay/></span></button>
+                ? <button onClick={this.startBtnActiveFunc} className="td-button"><span className="start-time"><BsPlayFill/></span></button>
                 : <button onClick={this.startBtnActiveFunc} className="td-button"><span className="stop-time"><BsPauseFill/></span></button>
             }</div>
-            <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><button className="td-button"><span className="payment"><BiCoin/></span></button></div>
-            <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><button  className="td-button"><span className="remove-project"><RiDeleteBin6Line/></span></button></div>
-            <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><span onClick={this.dropDown} className={dropDown ? 'drop-down drop-down-on' : 'drop-down'}><RiArrowDropDownLine/></span></div>
+            <div className={props.switchMode ? "title-fix actions title-fix-constricted" : "title-fix actions" }><button className="td-button"><span className="payment"><RiMoneyDollarCircleFill/></span></button></div>
+            <div className={props.switchMode ? "title-fix actions title-fix-constricted" : "title-fix actions" }><button  className="td-button"><span className="remove-project"><MdDeleteForever/></span></button></div>
+            <div className={props.switchMode ? "title-fix drop-down title-fix-constricted" : "title-fix drop-down" }><span onClick={this.dropDown} className={dropDown ? 'drop-down drop-down-on' : 'drop-down'}><RiArrowDropDownLine/></span></div>
         </div>
         
         

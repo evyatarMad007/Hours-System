@@ -166,16 +166,16 @@ class HoursPage extends Component {
     
                 <div className="box">
                     <div className="view-project title-box">
-                        <div className="title-fix">#</div>
-                        <div className="title-fix">תאריך יצירה</div>
+                        <div className="title-fix checkbox"><input type="checkbox" name="select-all" id="select-all"/></div>
+                        {/* <div className="title-fix">תאריך יצירה</div> */}
                         <div className="title-project">פרוייקט</div>
                         <div className="title-fix" >תעריף</div>
                         <div className="title-fix" >שעות עבודה</div>
                         <div className="title-fix" >סה''כ</div>
-                        <div className="title-fix" >הפעלה/השהיה</div>
-                        <div className="title-fix" >לתשלום</div>
-                        <div className="title-fix" >מחיקה</div>
-                        <div className="title-fix" ></div>
+                        <div className="title-fix actions" ></div>
+                        <div className="title-fix actions" >פעולות</div>
+                        <div className="title-fix actions" ></div>
+                        <div className="title-fix drop-down" ></div>
                      </div> 
                 </div>
     
@@ -202,16 +202,16 @@ class HoursPage extends Component {
                 <div className="box">
                 <div className="line-bottom">
                 <div className="total-data">
-                        <div className="title-fix"></div>
-                        <div className="title-fix"></div>
+                        <div className="title-fix checkbox"></div>
+                        {/* <div className="title-fix"></div> */}
                         <div className="title-project"><p>{this.getSchemaLine().totalNumProjects}</p><p className="note-hover bg-primary">סך פרוייקטים</p></div>
                         <div className="title-fix" ><p>{this.getSchemaLine().projectRateAverage} ₪</p> <p className="note-hover bg-primary">תעריף ממוצע</p></div>
                         <div className="title-fix" ><p>{this.getSchemaLine().toatlWorkTime}</p> <p className="note-hover bg-primary">סך שעות</p></div>
                         <div className="title-fix" ><p>{this.getSchemaLine().totalMoneyCash} ₪</p> <p className="note-hover bg-primary">סך לגביה</p></div>
-                        <div className="title-fix" ></div>
-                        <div className="title-fix" ></div>
-                        <div className="title-fix" ></div>
-                        <div className="title-fix" ></div>
+                        <div className="title-fix actions"></div>
+                        <div className="title-fix actions"></div>
+                        <div className="title-fix actions"></div>
+                        <div className="title-fix drop-down"></div>
                      </div>
                     <div className="dense-padding">
                         <i>צופף שורות</i>

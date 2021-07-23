@@ -5,7 +5,7 @@ import Signin from './signin-page';
 import Signup from './signup-page';
 
 // react-router-dom -> in this component
-import { BrowserRouter,Switch,Route,Link } from "react-router-dom";
+import { Switch,Route } from "react-router-dom";
 
 class MainArea extends Component {
     state = {  }

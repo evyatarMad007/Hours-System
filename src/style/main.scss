@@ -1,6 +1,12 @@
 // config by base web 
-@import './variables';
 @import './base/all-site';
+
+// abstruct folder 
+@import './abstract/variables';
+
+// function folder 
+@import './functions/mixin';
+
 
 // main elements 
 @import './base/header';

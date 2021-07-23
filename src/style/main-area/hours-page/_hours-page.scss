@@ -8,10 +8,12 @@
     align-items: center;
     flex-direction: column;
     min-height: 800px;
-    margin-bottom: 300px;
+    margin-bottom: 3000px;
+    padding-bottom: 20rem;
     position: fixed;
     width: 100%;
     height: 100%;
+    overflow: scroll;
 
 
     h1 {
@@ -168,15 +170,18 @@
                 }
             }
             .total-data {
-                border-top: 0.5px solid #000000;
-                // background-color: rgb(236, 236, 236);
+                // border-top: 0.5px solid #000000;
                 // margin: 5px 0;
                 display: flex;
                 flex-direction: row;
                 align-items: center;
-                justify-content: space-between;
+                justify-content: $viewTable_title-box_parent_container__justify-content;
                 height: 55px;
                 padding: 0 10px;
+
+                & > :nth-child(n) {
+                    margin: $viewTable__all-children-margin;
+                }
                 
                 
 
@@ -229,18 +234,26 @@
                 }
                 
                 .title-project {
-                    width: 30%;
+                    width: $viewTable-title-project__width;
                     // background-color: rgb(119, 9, 146);
                 }
                 .title-fix {
-                    width: 10%;
+                    width: $viewTable-title-fix__width;
                     // background-color: rgb(207, 160, 58);
+                }
+                .actions {
+                    width:$viewTable-actions__width;
+                    margin: $viewTable__actions-margin;
+                }
+                .checkbox {
+                    width: $viewTable-checkbox__width;
                 }
 
             }
 
         
     }
+
 
 
 }
@@ -262,4 +275,12 @@
             transition: all 0.2s;
         }
     }
+}
+
+input[type=checkbox] {
+    transform: scale(1);
+    border-radius: 50%;
+    background-color: red;
+    background: lime;
+
 }

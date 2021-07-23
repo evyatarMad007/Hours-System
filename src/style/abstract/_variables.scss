@@ -16,9 +16,15 @@ $background-site_color: #424242;
 $background-site_shadow_effect: inset 0 0 10px 3px rgb(76, 68, 68);
 
 
-// view table 
 $viewTable_font_size: 1.5rem;
-$viewTable-title-project__width: 30%;
-$viewTable-title-fix__width: 10%;
+// view table 
+$viewTable_title-box_parent_container__justify-content: flex-start;
+$viewTable-title-project__width: 15rem;
+$viewTable-title-fix__width: 8rem;
+$viewTable-actions__width: 4rem;
+$viewTable-checkbox__width: max-content;
+
+$viewTable__actions-margin: 0 0.2em;
+$viewTable__all-children-margin: 0 1.5em;
 
 
