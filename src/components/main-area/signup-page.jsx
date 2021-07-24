@@ -3,11 +3,12 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import { GoMail } from "react-icons/go";
 import { AiOutlinePhone,AiOutlineUser } from "react-icons/ai";
 import { apiUrl } from '../../config/config.json';
-const axios = require('axios');
+import axios from 'axios';
+import Joi  from 'joi';
 // import http from '../../service/httpService';
 // import { Redirect } from "react-router-dom";
-// import { toast } from 'react-toastify';
-// import Joi from "joi-browser";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import userService from "../services/userService";
 
 class Signup extends Component {
@@ -21,6 +22,13 @@ class Signup extends Component {
         },
         errors: {}
     } 
+     schema = {
+        first_name: Joi.string().required(),
+        last_name: Joi.string().required(),
+        phone_number: Joi.string().required(),
+        password: Joi.string().required().min(6),
+        email: Joi.string().required(),
+      };
 
     handlerChangeUser = (property, value) => {
         let user = this.state.user;
@@ -28,42 +36,26 @@ class Signup extends Component {
         this.setState({ user })
     }
 
-
-    //  schema = {
-    //     first_name: Joi.string().required().email().label("first_name"),
-    //     last_name: Joi.string().required().email().label("last_name"),
-    //     phone_number: Joi.string().required().email().label("phone_number"),
-    //     password: Joi.string().required().min(6).label("Password"),
-    //     email: Joi.string().required().email().label("Email"),
-    //   };
+    doSubmit = async () => {
+        const userData =  {...this.state.user}; // deep copy
 
 
-    //  doSubmit = async () => {
-    //      const data = {...this.state.data};
-    //      await http.post(`${apiUrl}/users/signup`, data); 
-    //  }
-    componentDidMount() {
-        const userData =  this.state.user;
-
-        axios.post(`${apiUrl}/users/signup`, userData )
-          .then(function (response) {
-            console.log(response);
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-
-        
+        await axios.post(`${apiUrl}/users/signup`, userData )
+          .then( res => console.log(res.data,'res'))
+          .catch( err => console.log(err,'err'))
+        this.setState({user: {first_name: "",last_name: "",password: "",phone_number: "",email: "",}})
+        toast("Wow so easy!");
 
     }
+    
 
     render() { 
-
+        
         // if( userService.getCurrentUser() ) return <Redirect to="/"/>  // if user token easist go to home page <--
-
+       
 
         return ( 
-            <div className="signup">
+            <div className="signup" onClick={this.doSubmit}>
                 
                 <div className="signup__content">
                     <div className="signup__content__form-box">

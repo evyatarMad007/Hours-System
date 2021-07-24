@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { RiLockPasswordLine } from "react-icons/ri";
 import { GoMail } from "react-icons/go";
-import { apiUrl } from '../../config/config.json';
-const axios = require('axios');
+// import { apiUrl } from '../../config/config.json';
+// const axios = require('axios');
 
 class Signin extends Component {
     state = { 
@@ -37,7 +37,7 @@ class Signin extends Component {
                         <div className="title-login">
                             <p>Sign In</p>
                         </div>
-                        <form id="signin-form" action="" method="POST" novalidate="novalidate">
+                        <form id="signin-form" action="" method="POST" noValidate="noValidate">
                             <div className="inputs-area">
                             <div className="email-box">
                                 <label htmlFor=""><GoMail/></label>

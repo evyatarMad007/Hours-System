@@ -3,6 +3,8 @@ import Header from './header';
 import Navbar from './nav-bar';
 import MainArea from '../main-area/main-area';
 import { BrowserRouter } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 class AllSite extends Component {
     
     state = {  }
@@ -14,7 +16,7 @@ class AllSite extends Component {
                     <Header/> 
                     <Navbar/> 
                     <MainArea/> 
-                </BrowserRouter>
+                </BrowserRouter> 
             </div>
          );
     }
