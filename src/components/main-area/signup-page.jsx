@@ -44,7 +44,7 @@ class Signup extends Component {
           .then( res => console.log(res.data,'res'))
           .catch( err => console.log(err,'err'))
         this.setState({user: {first_name: "",last_name: "",password: "",phone_number: "",email: "",}})
-        toast("Wow so easy!");
+        toast("here we need tow rite the message");
 
     }
     
