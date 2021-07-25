@@ -14,32 +14,38 @@ import 'react-toastify/dist/ReactToastify.css';
 class Signup extends Component {
     state = { 
         user: { 
-            first_name: "Evyatar",
-            last_name: "Madari",
-            password: "123456",
-            phone_number: "0504777882",
-            email: "evyatar@gmail.com",
+            first_name: "",
+            last_name: "",
+            password: "",
+            phone_number: "",
+            email: "",
         },
         errors: {}
-    } 
+    }
+
      schema = {
         first_name: Joi.string().required(),
         last_name: Joi.string().required(),
         phone_number: Joi.string().required(),
-        password: Joi.string().required().min(6),
+        password: Joi.string().min(6).max(255).required(),
         email: Joi.string().required(),
-      };
+    };
 
     handlerChangeUser = (property, value) => {
         let user = this.state.user;
         user[property] = value;
         this.setState({ user })
+        console.log('handlerChangeUser work');
     }
 
+    formValidate = e => {
+        console.log('form validate work!');
+    }
     doSubmit = async () => {
         const userData =  {...this.state.user}; // deep copy
 
-
+        // validate 
+        console.log(userData);
         await axios.post(`${apiUrl}/users/signup`, userData )
           .then( res => console.log(res.data,'res'))
           .catch( err => console.log(err,'err'))
@@ -66,7 +72,7 @@ class Signup extends Component {
                             <div className="inputs-area">
                                 <div className="username-box">
                                     <div className="l-name">
-                                        <input autoComplete="true" type="text" name="l_name" value={this.state.user.last_name} onChange={ e => this.handlerChangeUser('last_name', e.target.value)} placeholder="Last Name"/>
+                                        <input autoComplete="true" type="text" name="l_name" value={this.state.user.last_name} onChange={ e => this.handlerChangeUser('last_name', e.target.value) this.formValidate} placeholder="Last Name"/>
                                     </div>
                                     <div className="f-name">
                                         <label htmlFor=""><AiOutlineUser/></label>
