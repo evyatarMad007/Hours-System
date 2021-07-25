@@ -1,6 +1,8 @@
 import React, { Component }from 'react';
 import { RiLockPasswordLine } from "react-icons/ri";
 import { GoMail } from "react-icons/go";
+import { BiCheckCircle } from "react-icons/bi";
+import { VscError } from "react-icons/vsc";
 import { AiOutlinePhone,AiOutlineUser } from "react-icons/ai";
 import { apiUrl } from '../../config/config.json';
 import axios from 'axios';
@@ -44,7 +46,7 @@ class Signup extends Component {
         // validate 
         if( user.first_name ) {
             if( user.first_name.length < 2 ) {
-                errors.err_first_name = 'שם פרטי חייב להכיל לפחות 2 תווים';
+                errors.err_first_name = 'First name must be at least 2 characters long';
                 isValid.first_name = false;
             } 
             if( user.first_name.length >= 2 ) {
@@ -54,7 +56,7 @@ class Signup extends Component {
         }
         if( user.last_name ) {
             if( user.last_name.length < 2 ) {
-                errors.err_last_name = 'שם משפחה חייב להכיל לפחות 2 תווים';
+                errors.err_last_name = 'Last name must be at least 2 characters long';
                 isValid.last_name = false;
             } 
             if( user.last_name.length >= 2 ) {
@@ -65,7 +67,7 @@ class Signup extends Component {
         if( user.email ) {
             const regEmail = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             if( ! regEmail.test(user.email) ) {
-                errors.err_email = "דוא''ל לא ולידי";
+                errors.err_email = "Invalid email";
                 isValid.email = false;
             } 
             if( regEmail.test(user.email) ) {
@@ -76,7 +78,7 @@ class Signup extends Component {
         if( user.phone_number ) {
             const regIsraeliPhone = /^0(5[^7]|[2-4]|[8-9]|7[0-9])[0-9]{7}$/;
             if( ! regIsraeliPhone.test(user.phone_number) ) {
-                errors.err_phone_number = 'מספר טלפון לא חוקי';
+                errors.err_phone_number = 'Invalid phone number';
                 isValid.phone_number = false;
             } 
             if( regIsraeliPhone.test(user.phone_number) ) {
@@ -88,13 +90,13 @@ class Signup extends Component {
             const regPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
             if( ! regPassword.test(user.password) ) {
                 if( user.password.length > 20 ) {
-                    errors.err_password = 'הסיסמה חייבת להכיל תו, מספר, אות גדולה, אות קטנה, ובאורך של 8 תווים עד 20 תווים';
+                    errors.err_password = 'Password must contain: character, number, uppercase letter, lowercase letter, 8 to 20 characters long';
                     isValid.password = false;
                 }
-                errors.err_password = 'הסיסמא חייבת להכיל תו, מספר, אות גדולה, אות קטנה, ובאורך של 8 תווים עד 20 תווים';
+                errors.err_password = 'Password must contain: character, number, uppercase letter, lowercase letter, 8 to 20 characters long';
                 isValid.password = false;
             } 
-            if( regPassword.test(user.password) || user.password >= 8 && user.password < 20) {
+            if( regPassword.test(user.password) && user.password.length >= 8 && user.password.length < 20) {
                 errors.err_password = null;
                 isValid.password = true;
             }
@@ -116,15 +118,17 @@ class Signup extends Component {
         const userData =  {...this.state.user}; // deep copy
         await axios.post(`${apiUrl}/users/signup`, userData )
           .then( res => console.log(res.data,'res'))
-          .catch( err => console.log(err,'err'))
-        this.setState({user: {first_name: "",last_name: "",password: "",phone_number: "",email: "",}})
-        toast("here we need tow rite the message");
+        // this.setState({user: {first_name: "",last_name: "",password: "",phone_number: "",email: "",}})
+        // toast("here we need tow rite the message");
+        // this.props.history.replace('/');
+        // return;
     }
     
 
     render() { 
         const { errors } = this.state;
-        console.log(errors);
+        const { user } = this.state;
+
         // if( userService.getCurrentUser() ) return <Redirect to="/"/>  // if user token easist go to home page <--
        
 
@@ -136,35 +140,36 @@ class Signup extends Component {
                         <div className="title-register">
                             <p>Sign Up</p>
                         </div>
-                        <form id="signup-form" action="" onSubmit={this.doSubmit} method="POST" autoComplete="off" noValidate>
+                        <form id="signup-form"  onSubmit={this.doSubmit} method="POST" autoComplete="off" noValidate>
                             <div className="inputs-area">
                                 <div className="username-box">
                                     <div className="l-name">
-                                        <label htmlFor=""></label>
+                                        <label htmlFor="">{ user.last_name ? errors.err_last_name ? <div className="error-icon"><VscError/></div> : <div className="success-icon"><BiCheckCircle/></div> : ''}</label>
                                         <input autoComplete="true" type="text" name="l_name" value={this.state.user.last_name} onChange={ e => this.handlerChangeUser('last_name', e.target.value)} placeholder="Last Name"/>
                                         <span className={ errors.err_last_name ? 'err err-on': 'err'}>{errors.err_last_name}</span>
                                     </div>
                                     <div className="f-name">
-                                        <label htmlFor=""><AiOutlineUser/></label>
+                                        <label htmlFor=""><AiOutlineUser/>{ user.first_name ? errors.err_first_name ? <div className="error-icon"><VscError/></div> : <div className="success-icon"><BiCheckCircle/></div> : ''}</label>
                                         <input autoComplete="true" type="text" name="f_name" value={this.state.user.first_name} onChange={ e => this.handlerChangeUser('first_name', e.target.value)} placeholder="First Name"/>
                                         <span className={ errors.err_first_name ? 'err err-on': 'err'}>{errors.err_first_name}</span>
                                     </div>
                                 </div>
+ 
 
                                 <div className="phone-box">
-                                    <label htmlFor=""><AiOutlinePhone/></label>
+                                    <label htmlFor=""><AiOutlinePhone/>{ user.phone_number ? errors.err_phone_number ? <div className="error-icon"><VscError/></div> : <div className="success-icon"><BiCheckCircle/></div> : ''}</label>
                                     <input autoComplete="true" type="tel" name="Phone" value={this.state.user.phone_number} onChange={ e => this.handlerChangeUser('phone_number', e.target.value)} placeholder="Phone Number"/>
                                     <span className={ errors.err_phone_number ? 'err err-on': 'err'}>{errors.err_phone_number}</span>
                                 </div>
 
                                 <div className="email-box">
-                                    <label htmlFor=""><GoMail/></label>
+                                    <label htmlFor=""><GoMail/>{ user.email ? errors.err_email ? <div className="error-icon"><VscError/></div> : <div className="success-icon"><BiCheckCircle/></div> : ''}</label>
                                     <input autoComplete="true" type="email" name="email" value={this.state.user.email} onChange={ e => this.handlerChangeUser('email', e.target.value)} placeholder="Email Adress"/>
                                     <span className={ errors.err_email ? 'err err-on': 'err'}>{errors.err_email}</span>
                                 </div>
 
                                 <div className="password-box">
-                                    <label htmlFor=""><RiLockPasswordLine/></label>
+                                    <label htmlFor=""><RiLockPasswordLine/>{ user.password ? errors.err_password ? <div className="error-icon"><VscError/></div> : <div className="success-icon"><BiCheckCircle/></div> : ''}</label>
                                     <input autoComplete="true" type="password" name="password" value={this.state.user.password} onChange={ e => this.handlerChangeUser('password', e.target.value)} placeholder="Password"/>
                                     <span className={ errors.err_password ? 'err err-on': 'err'}>{errors.err_password}</span>
                                 </div>

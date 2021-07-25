@@ -20,7 +20,7 @@
         justify-content: center;
         &__form-box {
             background-color: rgb(255, 255, 255);
-            width: 60rem;
+            width: 70rem;
             height: 50rem;
             margin-top: 10rem;
             box-shadow: .5rem 1rem 2rem rgba(0, 0, 0, 0.137),
@@ -59,15 +59,38 @@
                         .err {
                             // background-color: red;
                             position: absolute;
-                            bottom: 0;
+                            bottom: .5rem;
                             left: 2rem;
-                            font-size: 1.3rem;
+                            font-size: 1.2rem;
                             color: red;
                             display: none;
+                            line-height: 1rem;
+                            // background-color: blue;
                         }
                         .err-on {
                             display: inline;
                         }
+                        .success-icon,.error-icon {
+                            position: absolute;
+                            top: 0;
+                            bottom: 0;
+                            right: 2rem;
+                            margin: auto;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            height: 100%;
+                            transform: scale(0.8);
+                        }
+                        .success-icon {
+                                color: green;
+                                display: none;
+                        }
+                        .error-icon {
+                            color: red;
+                            display: none;
+                        }
+
                         input {
                             // background-color: red;
                             outline: none;
