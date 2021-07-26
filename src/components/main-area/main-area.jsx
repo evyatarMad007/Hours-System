@@ -18,12 +18,12 @@ class MainArea extends Component {
                     
                     <Switch>
                         <Route path="/" exact component={Home}/>
-                        <Route path="/signin" exact component={Signin}/>
-                        <Route path="/signup" exact component={Signup}/>
-                        <Route path="/hours-page" exact component={HoursPage}/>
+                        <Route path="/signin"  component={Signin}/>
+                        <Route path="/signup"  component={Signup}/>
+                        <Route path="/hours-page"  component={HoursPage}/>
                     </Switch>
+                    
                     </div>
-                 
                 </div>
                 
             </main>

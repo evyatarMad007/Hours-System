@@ -87,7 +87,7 @@ class Signup extends Component {
             }
         }
         if( user.password ) {
-            const regPassword = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
+            const regPassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
             if( ! regPassword.test(user.password) ) {
                 if( user.password.length > 20 ) {
                     errors.err_password = 'Password must contain: character, number, uppercase letter, lowercase letter, 8 to 20 characters long';
@@ -116,24 +116,21 @@ class Signup extends Component {
 
     doSubmit = async () => {
         const userData =  {...this.state.user}; // deep copy
-        await axios.post(`${apiUrl}/users/signup`, userData )
-          .then( res => console.log(res.data,'res'))
-        // this.setState({user: {first_name: "",last_name: "",password: "",phone_number: "",email: "",}})
-        // toast("here we need tow rite the message");
-        // this.props.history.replace('/');
-        // return;
-        shlomi code
+        // shlomi code.
         try {
-            await http.post(`${apiUrl}/users`, data); //  אם אין שגיאה (מהשרת) צור משתמש חדש
-            toast("המשתמש נוצר בהצלחה")
-            this.props.history.replace('/singin')
-        } catch (ex) {
+            await axios.post(`${apiUrl}/users/signup`, userData )
+            this.setState({user: {first_name: "",last_name: "",password: "",phone_number: "",email: "",}})
+            toast("User created successfully.");
+            this.props.history.replace('/signin');
+
+        } 
+        catch (err) {
             // אם ישנה שגיאה תריץ את הסקופ הבא (400 שגיאה שבחרנו להוציא )
-            if( ex.response && ex.response.status === 400 ){ 
+            if( err.response && err.response.status === 400 ){ 
                 this.setState({ errors: {email: "Email is taken"}})
             }
+        }
     }
-    
 
     render() { 
         const { errors } = this.state;
@@ -150,7 +147,7 @@ class Signup extends Component {
                         <div className="title-register">
                             <p>Sign Up</p>
                         </div>
-                        <form id="signup-form"  onSubmit={this.doSubmit} method="POST" autoComplete="off" noValidate>
+                        <form id="signup-form"  method="POST" autoComplete="off" noValidate>
                             <div className="inputs-area">
                                 <div className="username-box">
                                     <div className="l-name">
@@ -186,7 +183,7 @@ class Signup extends Component {
                                 
                             </div>
                             <div className="submit-box">
-                                <button type="submit" disabled={ this.state.toSubmitMode ? false : true }>Sign Up</button>
+                                <button type="button" onClick={this.doSubmit} disabled={ this.state.toSubmitMode ? false : true }>Sign Up</button>
                             </div>
                         </form>
                     </div>

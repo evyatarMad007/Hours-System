@@ -13,6 +13,7 @@ class AllSite extends Component {
         return ( 
             <div className="all-site">
                 <BrowserRouter>
+                <ToastContainer/>
                     <Header/> 
                     <Navbar/> 
                     <MainArea/> 
