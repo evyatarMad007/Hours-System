@@ -6,7 +6,6 @@ import { VscError } from "react-icons/vsc";
 import { AiOutlinePhone,AiOutlineUser } from "react-icons/ai";
 import { apiUrl } from '../../config/config.json';
 import axios from 'axios';
-// import http from '../../service/httpService';
 // import { Redirect } from "react-router-dom";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -116,7 +115,7 @@ class Signup extends Component {
 
     doSubmit = async () => {
         const userData =  {...this.state.user}; // deep copy
-        // shlomi code.
+
         try {
             await axios.post(`${apiUrl}/users/signup`, userData )
             this.setState({user: {first_name: "",last_name: "",password: "",phone_number: "",email: "",}})
@@ -142,7 +141,6 @@ class Signup extends Component {
 
         return ( 
             <div className="signup">
-                
                 <div className="signup__content">
                     <div className="signup__content__form-box">
                         <div className="title-register">
