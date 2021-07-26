@@ -90,10 +90,10 @@ class Signup extends Component {
             const regPassword = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
             if( ! regPassword.test(user.password) ) {
                 if( user.password.length > 20 ) {
-                    errors.err_password = 'Password must contain: character, number, uppercase letter, lowercase letter, 8 to 20 characters long';
+                    errors.err_password = 'Password Minimum eight characters, at least one letter and one numbeThe password must contain a minimum of 8 characters, letters and numbers';
                     isValid.password = false;
                 }
-                errors.err_password = 'Password must contain: character, number, uppercase letter, lowercase letter, 8 to 20 characters long';
+                errors.err_password = 'The password must contain a minimum of 8 characters, letters and numbers';
                 isValid.password = false;
             } 
             if( regPassword.test(user.password) && user.password.length >= 8 && user.password.length < 20) {
@@ -125,9 +125,10 @@ class Signup extends Component {
 
         } 
         catch (err) {
-            // אם ישנה שגיאה תריץ את הסקופ הבא (400 שגיאה שבחרנו להוציא )
-            if( err.response && err.response.status === 400 ){ 
-                this.setState({ errors: {email: "Email is taken"}})
+            if( err.response && err.response.status === 409 ){
+                let { errors } = this.state;
+                errors.err_email = "Email is taken"
+                this.setState({ errors })
             }
         }
     }
