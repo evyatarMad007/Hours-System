@@ -122,6 +122,16 @@ class Signup extends Component {
         // toast("here we need tow rite the message");
         // this.props.history.replace('/');
         // return;
+        shlomi code
+        try {
+            await http.post(`${apiUrl}/users`, data); //  אם אין שגיאה (מהשרת) צור משתמש חדש
+            toast("המשתמש נוצר בהצלחה")
+            this.props.history.replace('/singin')
+        } catch (ex) {
+            // אם ישנה שגיאה תריץ את הסקופ הבא (400 שגיאה שבחרנו להוציא )
+            if( ex.response && ex.response.status === 400 ){ 
+                this.setState({ errors: {email: "Email is taken"}})
+            }
     }
     
 
