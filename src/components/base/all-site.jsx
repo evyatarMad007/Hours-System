@@ -5,6 +5,7 @@ import MainArea from '../main-area/main-area';
 import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import userService from "../../utils/jwtUser";
 class AllSite extends Component {
     
     state = {  }
@@ -15,7 +16,10 @@ class AllSite extends Component {
                 <BrowserRouter>
                 <ToastContainer/>
                     <Header/> 
-                    <Navbar/> 
+                    { userService.getCurrentUser() 
+                        ? <Navbar/> 
+                        : ''
+                    }
                     <MainArea/> 
                 </BrowserRouter> 
             </div>

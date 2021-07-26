@@ -5,7 +5,6 @@ import { BiCheckCircle } from "react-icons/bi";
 import { VscError } from "react-icons/vsc";
 import { apiUrl } from '../../config/config.json';
 import axios from 'axios';
-import { toast } from 'react-toastify';
 import userService from "../../utils/jwtUser";
 import { Redirect } from "react-router-dom";
 
@@ -78,13 +77,9 @@ class Signin extends Component {
             await axios.post(`${apiUrl}/users/signin`, userData )
             .then( res => {
                 localStorage.setItem('token', res.data.token);
-            })
-            .then( res => {
-                this.setState({user: {password: "",email: ""}})
-                toast("Welcome");
                 window.location = '/';
             })
-            
+   
 
         } 
         catch (err) {
