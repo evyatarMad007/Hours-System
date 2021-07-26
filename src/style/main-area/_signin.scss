@@ -21,7 +21,7 @@
         justify-content: center;
         &__form-box {
             background-color: rgb(255, 255, 255);
-            width: 40rem;
+            width: 55rem;
             height: 50rem;
             margin-top: 10rem;
             box-shadow: .5rem 1rem 2rem rgba(0, 0, 0, 0.137),
@@ -50,13 +50,47 @@
                 height: 100%;
 
                 .inputs-area {
-                    background-color: rgb(0, 255, 234);
+                    // background-color: rgb(200, 255, 0);
                     width: 100%;
                     & > :nth-child(n) {
                         position: relative;
                         width: 100%;
                         display: flex;
                         justify-content: center;
+                        .err {
+                            position: absolute;
+                            bottom: .5rem;
+                            left: 2rem;
+                            font-size: 1.2rem;
+                            color: red;
+                            display: none;
+                            line-height: 1rem;
+                            // background-color: blue;
+                        }
+                        .err-on {
+                            display: inline;
+                        }
+                        .success-icon,.error-icon {
+                            position: absolute;
+                            top: 0;
+                            bottom: 0;
+                            right: 2rem;
+                            margin: auto;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            height: 100%;
+                            transform: scale(0.8);
+                            // background-color: red;
+                        }
+                        .success-icon {
+                                color: green;
+                                display: none;
+                        }
+                        .error-icon {
+                            color: red;
+                            display: none;
+                        }
                         input {
                             // background-color: red;
                             outline: none;

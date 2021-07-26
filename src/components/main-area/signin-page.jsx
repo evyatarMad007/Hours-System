@@ -6,6 +6,8 @@ import { VscError } from "react-icons/vsc";
 import { apiUrl } from '../../config/config.json';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import userService from "../../utils/jwtUser";
+import { Redirect } from "react-router-dom";
 
 class Signin extends Component {
     state = { 
@@ -71,16 +73,28 @@ class Signin extends Component {
 
     doSubmit = async () => {
         const userData =  {...this.state.user}; // deep copy
- 
+        
         try {
-            await axios.post(`${apiUrl}/users/signup`, userData )
-            this.setState({user: {password: "",email: ""}})
-            toast("Welcome");
-            this.props.history.replace('/hours-page');
+            await axios.post(`${apiUrl}/users/signin`, userData )
+            .then( res => {
+                localStorage.setItem('token', res.data.token);
+            })
+            .then( res => {
+                this.setState({user: {password: "",email: ""}})
+                toast("Welcome");
+                window.location = '/';
+            })
+            
 
         } 
         catch (err) {
-            if( err.response && err.response.status === 409 ){
+            if( err.response && err.response.status === 400 ){
+                let { errors } = this.state;
+                errors.err_email = "Incorrect email and password"
+                errors.err_password = "Incorrect email and password"
+                this.setState({ errors })
+            }
+            if( err.response && err.response.status === 401 ){
                 let { errors } = this.state;
                 errors.err_email = "Incorrect email and password"
                 errors.err_password = "Incorrect email and password"
@@ -92,8 +106,8 @@ class Signin extends Component {
     render() { 
         const { errors } = this.state;
         const { user } = this.state;
-        
-    // if( userService.getCurrentUser() ) return <Redirect to="/"/>  // if user token easist go to home page <--
+
+    if( userService.getCurrentUser() ) return <Redirect to="/"/> 
 
         return ( 
             <div className="signin">

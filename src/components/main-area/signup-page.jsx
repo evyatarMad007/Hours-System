@@ -6,10 +6,10 @@ import { VscError } from "react-icons/vsc";
 import { AiOutlinePhone,AiOutlineUser } from "react-icons/ai";
 import { apiUrl } from '../../config/config.json';
 import axios from 'axios';
-// import { Redirect } from "react-router-dom";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import userService from "../services/userService";
+import userService from "../../utils/jwtUser";
+import { Redirect } from "react-router-dom";
 
 class Signup extends Component {
     state = { 
@@ -136,8 +136,7 @@ class Signup extends Component {
         const { errors } = this.state;
         const { user } = this.state;
 
-        // if( userService.getCurrentUser() ) return <Redirect to="/"/>  // if user token easist go to home page <--
-       
+        if( userService.getCurrentUser() ) return <Redirect to="/"/>        
 
         return ( 
             <div className="signup">
