@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { RiKeyFill } from 'react-icons/ri';
 import { FaWpforms } from 'react-icons/fa';
 import userService from "../../utils/jwtUser";
@@ -7,13 +7,17 @@ import userService from "../../utils/jwtUser";
 
 
 class Header extends Component {
-    state = {  }
+    state = { 
+     
+    }
 
     logout = () => {
         userService.logout();
         window.location = '/singin'
     }
     render() { 
+
+    // console.log(this.props.userData);
 
         return ( 
             <header className="header">
@@ -26,8 +30,13 @@ class Header extends Component {
 
 
                     <div className="header__content__center"></div>
-
+ 
                     <div className="header__content__right-side">
+                    { userService.getCurrentUser() 
+                    ? <NavLink className="navLink profile-navLink" to="/profile">
+                    <span className="username">{! this.props.userData ? '' : this.props.userData.firstName}</span>
+                    </NavLink>
+                    : ''} 
                         <div className="profile-img">
                             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnS1o3mO3S_Nkfw1WAGaRJ6KaOGgODpfoOsA&usqp=CAU" alt="" />
                         </div>

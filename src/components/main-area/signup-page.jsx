@@ -147,9 +147,9 @@ class Signup extends Component {
                         </div>
                         <form id="signup-form"  method="POST" autoComplete="off" noValidate>
                             <div className="inputs-area">
-                                <div className="username-box">
+
                                     <div className="l-name">
-                                        <label htmlFor="">{ user.last_name ? errors.err_last_name ? <div className="error-icon"><VscError/></div> : <div className="success-icon"><BiCheckCircle/></div> : ''}</label>
+                                        <label htmlFor=""><AiOutlineUser/>{ user.last_name ? errors.err_last_name ? <div className="error-icon"><VscError/></div> : <div className="success-icon"><BiCheckCircle/></div> : ''}</label>
                                         <input autoComplete="true" type="text" name="l_name" value={this.state.user.last_name} onChange={ e => this.handlerChangeUser('last_name', e.target.value)} placeholder="Last Name"/>
                                         <span className={ errors.err_last_name ? 'err err-on': 'err'}>{errors.err_last_name}</span>
                                     </div>
@@ -158,7 +158,7 @@ class Signup extends Component {
                                         <input autoComplete="true" type="text" name="f_name" value={this.state.user.first_name} onChange={ e => this.handlerChangeUser('first_name', e.target.value)} placeholder="First Name"/>
                                         <span className={ errors.err_first_name ? 'err err-on': 'err'}>{errors.err_first_name}</span>
                                     </div>
-                                </div>
+                               
  
 
                                 <div className="phone-box">
