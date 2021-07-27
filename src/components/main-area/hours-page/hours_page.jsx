@@ -4,6 +4,7 @@ import ViewProject from './view-project';
 import Switches from '../../tools/switch';
 import { AiOutlineFundProjectionScreen } from 'react-icons/ai';
 import { HiOutlineUserCircle } from 'react-icons/hi';
+import pageHeader from '../../common/page-header';
 // import { apiUrl } from '../../../config/config.json';
 // import axios from 'axios';
 class HoursPage extends Component {
@@ -118,19 +119,6 @@ class HoursPage extends Component {
         // axios.get('http://localhost:3900/api/users/full-user-info').then( res => console.log(res.data));
     } 
 
-    // componentDidMount() {
-    //     const user =  {...this.state}; 
-    //     const headersAuth = {headers: {'Authorization': `token ${localStorage.getItem('token')}`}}
-    //     try {
-    //         axios.get(`${apiUrl}/users/full-user-info`, headersAuth)
-    //         .then( res => this.setState({user: res.data }) )
-    //     }
-    //     catch (err) {
-    //         // write the code when u get some error status 
-    //         // if( err.response && err.response.status === 400 ){
-    //         // }
-    //     }
-    // }
 
     render() { 
 
@@ -143,7 +131,7 @@ class HoursPage extends Component {
             <div className="hours-page" onClick={this.doRequest}>
     
                 <div className="box">
-                    <h1 className="display-4 mt-3">מערכת ספירת שעות</h1>
+                    <pageHeader>Hours System</pageHeader>
                 </div>
                 
                 <div className="box">

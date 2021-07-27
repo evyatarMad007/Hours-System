@@ -3,7 +3,7 @@ import userService from "../../utils/jwtUser";
 import { apiUrl } from '../../config/config.json';
 import axios from 'axios';
 import { Redirect } from "react-router-dom";
-
+import pageHeader from '../common/page-header';
 
 class Profile extends Component {
     state = { 
@@ -48,7 +48,7 @@ class Profile extends Component {
                 <div className="profile">
 
                     <div className="profile__title">
-                        <h1>Profile Page</h1>
+                        <pageHeader>Profile Page</pageHeader>
                     </div>
                     <div className="profile__content">
                         {

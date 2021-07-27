@@ -13,14 +13,11 @@
 @import './base/nav-bar';
 @import './main-area/main-area';
 
-// home page 
+
 @import './main-area/home';
-
-// signin page 
 @import './main-area/signin';
-
-// signup page 
 @import './main-area/signup';
+@import './main-area/profile';
 
 // hours-page
 @import './main-area/hours-page/hours-page';
