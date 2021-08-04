@@ -4,18 +4,16 @@ import ViewProject from './view-project';
 import Switches from '../../tools/switch';
 import { AiOutlineFundProjectionScreen } from 'react-icons/ai';
 import { HiOutlineUserCircle } from 'react-icons/hi';
-import pageHeader from '../../common/page-header';
-// import { apiUrl } from '../../../config/config.json';
-// import axios from 'axios';
+import PageHeader from '../../common/page-header';
+import { apiUrl } from '../../../config/config.json';
+import axios from 'axios';
 class HoursPage extends Component {
 
     state = { 
         switchMode: false,
         filterProjectInput: false,
         filterConsumerInput: false,
-        user: {
-
-        }
+        projectsList: []
      }
 
     switchBtnMode = () => {
@@ -115,14 +113,21 @@ class HoursPage extends Component {
         this.setState({ filterProjectInput,filterConsumerInput })
     }
     
-    doRequest = () => {
-        // axios.get('http://localhost:3900/api/users/full-user-info').then( res => console.log(res.data));
-    } 
+    componentDidMount() {
+        const headersAuth = {headers: {'Authorization': `token ${localStorage.getItem('token')}`}}
+       axios.get(`${apiUrl}/users/all-projects`, headersAuth)
+       .then( res => {
+        let { projectsList } = this.state;
+        projectsList = res.data;
+        this.setState({ projectsList });
+       })
+       .catch( err => console.log(err) )
+    }
 
 
     render() { 
 
- 
+        console.log(this.state.projectsList);
 
         this.getSchemaLine();
         const {filterProjectInput, filterConsumerInput} = this.state;
@@ -131,7 +136,7 @@ class HoursPage extends Component {
             <div className="hours-page" onClick={this.doRequest}>
     
                 <div className="box">
-                    <pageHeader>Hours System</pageHeader>
+                    <PageHeader>Hours System</PageHeader>
                 </div>
                 
                 <div className="box">
@@ -189,21 +194,17 @@ class HoursPage extends Component {
     
                 <div className="box">
                     {
-                        this.data.map( (project, index) => <ViewProject 
-                            key={index+1}
-                            index={index+1}
-                            dateCreated={project.dateCreated}
-                            id={project.id}
-                            projectName={project.projectName}
-                            projectTime={project.projectTime}
-                            projectRate={project.projectRate}
-                            switchMode={this.state.switchMode}
-                            consumerFirstName={project.consumerFirstName}
-                            consumerLastName={project.consumerLastName}
-                            consumerAdress={project.consumerAdress}
-                            consumerPhoneNumber={project.consumerPhoneNumber}
-                            consumerEmail={project.consumerEmail}
-                        /> )
+                        this.state.projectsList && 
+                        this.state.projectsList.map( (project, index) => <ViewProject 
+                        key={index+1}
+                        index={index+1}
+                        dateCreated={project.project_created_at}
+                        id={project.project_id}
+                        projectName={project.project_name}
+                        projectTime={project.project_time}
+                        projectRate={project.project_rate}
+                        switchMode={this.state.switchMode}
+                    /> )
                     }
                 </div>
                 

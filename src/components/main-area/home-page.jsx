@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import pageHeader from '../common/page-header';
+import PageHeader from '../common/page-header';
 
 
 class Home extends Component {
@@ -9,7 +9,7 @@ class Home extends Component {
     render() { 
         return ( 
             <div className="home">
-                <pageHeader>Home Page</pageHeader>
+                <PageHeader>Home Page</PageHeader>
                 <h2 className="home__page-subtitle">home page h2</h2>
                 <p className="home__page-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam quidem libero ab laboriosam harum illo.</p>
             </div>

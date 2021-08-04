@@ -2,7 +2,7 @@ import React from 'react';
 
 
 
-const Pageheader = ({children}) => {
+const PageHeader = ({children}) => {
     return ( 
         <div className="row">
         <div className="col-12 mt-4">
@@ -12,4 +12,4 @@ const Pageheader = ({children}) => {
      );
 }
  
-export default Pageheader;
+export default PageHeader;

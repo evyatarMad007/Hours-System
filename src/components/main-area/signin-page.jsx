@@ -7,7 +7,7 @@ import { apiUrl } from '../../config/config.json';
 import axios from 'axios';
 import userService from "../../utils/jwtUser";
 import { Redirect } from "react-router-dom";
-import pageHeader from '../common/page-header';
+import PageHeader from '../common/page-header';
 
 class Signin extends Component {
     state = { 
@@ -111,7 +111,7 @@ class Signin extends Component {
                 <div className="signin__content">
                     <div className="signin__content__form-box">
                         <div className="title-login">
-                            <pageHeader>Sign In</pageHeader>
+                            <PageHeader>Sign In</PageHeader>
                         </div>
                         <form id="signin-form"  method="POST" autoComplete="off" noValidate>
                             <div className="inputs-area">

@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import userService from "../../utils/jwtUser";
 import { Redirect } from "react-router-dom";
-import pageHeader from '../common/page-header';
+import PageHeader from '../common/page-header';
 
 class Signup extends Component {
     state = { 
@@ -144,7 +144,7 @@ class Signup extends Component {
                 <div className="signup__content">
                     <div className="signup__content__form-box">
                         <div className="title-register">
-                            <pageHeader>Sign Up</pageHeader>
+                            <PageHeader>Sign Up</PageHeader>
                             
                         </div>
                         <form id="signup-form"  method="POST" autoComplete="off" noValidate>
