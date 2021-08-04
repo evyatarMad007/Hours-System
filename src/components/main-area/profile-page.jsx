@@ -4,6 +4,7 @@ import { apiUrl } from '../../config/config.json';
 import axios from 'axios';
 import { Redirect } from "react-router-dom";
 import PageHeader from '../common/page-header';
+import {headersAuth} from '../../utils/constData';
 
 class Profile extends Component {
     state = { 
@@ -13,7 +14,6 @@ class Profile extends Component {
      }
      
     componentDidMount() {
-        const headersAuth = {headers: {'Authorization': `token ${localStorage.getItem('token')}`}}
         try {
             axios.get(`${apiUrl}/users/full-user-info`, headersAuth)
             .then( res => res)

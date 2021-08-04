@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import userService from "../../utils/jwtUser";
 import { apiUrl } from '../../config/config.json';
 import axios from 'axios';
-
+import {headersAuth} from '../../../utils/constData';
 class AllSite extends Component {
     
     state = { 
@@ -16,7 +16,6 @@ class AllSite extends Component {
      }
     
     componentDidMount() {
-        const headersAuth = {headers: {'Authorization': `token ${localStorage.getItem('token')}`}}
         try {
             axios.get(`${apiUrl}/users/full-user-info`, headersAuth)
             .then( res => {

@@ -1,0 +1,24 @@
+    // getSchemaLine = () => {
+    //     const {data} = this;
+    //     const totalNumProjects = data.length;
+    //     let projectRateAverage = 0;
+    //     let totalMoneyCash = 0;
+    //     let toatlWorkTime = 0;
+    //     data.map( (project) => {
+    //         projectRateAverage += project.projectRate;
+    //         totalMoneyCash += project.projectTime / 60 / 60 * project.projectRate;
+    //         toatlWorkTime += project.projectTime;
+    //         return '';
+    //     } )
+    //     projectRateAverage = projectRateAverage / totalNumProjects;
+    //     projectRateAverage = projectRateAverage.toFixed()
+    //     toatlWorkTime = toatlWorkTime / 60 / 60;
+    //     toatlWorkTime = toatlWorkTime.toFixed(1);
+    //     totalMoneyCash = totalMoneyCash.toFixed(2)
+    //     return {
+    //         toatlWorkTime,
+    //         totalNumProjects ,
+    //         projectRateAverage,
+    //         totalMoneyCash
+    //     }
+    // }

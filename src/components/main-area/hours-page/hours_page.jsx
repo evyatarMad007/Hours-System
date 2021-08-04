@@ -7,14 +7,39 @@ import { HiOutlineUserCircle } from 'react-icons/hi';
 import PageHeader from '../../common/page-header';
 import { apiUrl } from '../../../config/config.json';
 import axios from 'axios';
+import {headersAuth} from '../../../utils/constData';
+
 class HoursPage extends Component {
 
     state = { 
         switchMode: false,
         filterProjectInput: false,
         filterConsumerInput: false,
-        projectsList: []
-     }
+        getProjectsList: [],
+        project: { 
+            project_name: "",
+            last_name: "",
+            password: "",
+            phone_number: "",
+            email: "",
+        },
+        errors: {
+            err_first_name: "",
+            err_last_name: "",
+            err_password: "",
+            err_phone_number: "",
+            err_email: "",
+        },
+        isValid: {
+            first_name: false,
+            last_name: false,
+            password: false,
+            phone_number: false,
+            email: false,
+        },
+        toSubmitMode: false
+    }
+
 
     switchBtnMode = () => {
         let { switchMode } = this.state;
@@ -31,71 +56,8 @@ class HoursPage extends Component {
             }
         })
     }
-
-     data = [
-        {
-            id: '235-985',
-            dateCreated: '28.08.2020',
-            projectName: 'בניית אתר תדמית',
-            projectTime: 0,
-            projectRate: 100,
-            consumerFirstName: 'משה',
-            consumerLastName: 'כהן',
-            consumerAdress: 'נתניה',
-            consumerPhoneNumber: '050-89753065',
-            consumerEmail: 'moshe@gmail.com'
-        },
-        {
-            id:'659-897',
-            dateCreated: '15.05.2021',
-            projectName: 'CRM SYSTEM',
-            projectTime: 360,
-            projectRate: 750,
-            consumerFirstName: 'יוסי',
-            consumerLastName: 'לוי',
-            consumerAdress: 'רחובות',
-            consumerPhoneNumber: '054-5903742',
-            consumerEmail: 'yossi@gmail.com'
-        },
-        {
-            id: '598-201',
-            dateCreated: '09.03.2021',
-            projectName: 'Facebook SYSTEM',
-            projectTime: 3600,
-            projectRate: 100,
-            consumerFirstName: 'נורית',
-            consumerLastName: 'אברהם',
-            consumerAdress: 'באר שבע',
-            consumerPhoneNumber: '052-8003985',
-            consumerEmail: 'nurit@gmail.com'
-        },   
-    ]
-
-    getSchemaLine = () => {
-        const {data} = this;
-        const totalNumProjects = data.length;
-        let projectRateAverage = 0;
-        let totalMoneyCash = 0;
-        let toatlWorkTime = 0;
-        data.map( (project) => {
-            projectRateAverage += project.projectRate;
-            totalMoneyCash += project.projectTime / 60 / 60 * project.projectRate;
-            toatlWorkTime += project.projectTime;
-            return '';
-        } )
-        projectRateAverage = projectRateAverage / totalNumProjects;
-        projectRateAverage = projectRateAverage.toFixed()
-        toatlWorkTime = toatlWorkTime / 60 / 60;
-        toatlWorkTime = toatlWorkTime.toFixed(1);
-        totalMoneyCash = totalMoneyCash.toFixed(2)
-        return {
-            toatlWorkTime,
-            totalNumProjects ,
-            projectRateAverage,
-            totalMoneyCash
-        }
-    }
-
+    
+    // filter window - projects & consumers
     getElementsProjectsList = () => {
         let {filterProjectInput} = this.state;
         filterProjectInput  = true;
@@ -112,24 +74,39 @@ class HoursPage extends Component {
         filterConsumerInput  = false;
         this.setState({ filterProjectInput,filterConsumerInput })
     }
-    
+
+    // get the project from DB 
     componentDidMount() {
-        const headersAuth = {headers: {'Authorization': `token ${localStorage.getItem('token')}`}}
        axios.get(`${apiUrl}/users/all-projects`, headersAuth)
        .then( res => {
-        let { projectsList } = this.state;
-        projectsList = res.data;
-        this.setState({ projectsList });
+        let { getProjectsList } = this.state;
+        getProjectsList = res.data;
+        this.setState({ getProjectsList });
        })
-       .catch( err => console.log(err) )
     }
 
+    // createProject = async () => {
+    //     const createProjectData =  {...this.state}; // deep copy
+
+    //     try {
+    //         await axios.post(`${apiUrl}/users/signup`, createProjectData )
+    //         this.setState({user: {first_name: "",last_name: "",password: "",phone_number: "",email: "",}})
+    //         toast("User created successfully.");
+    //         this.props.history.replace('/signin');
+
+    //     } 
+    //     catch (err) {
+    //         if( err.response && err.response.status === 409 ){
+    //             let { errors } = this.state;
+    //             errors.err_email = "Email is taken"
+    //             this.setState({ errors })
+    //         }
+    //     }
+    // }
 
     render() { 
 
-        console.log(this.state.projectsList);
-
-        this.getSchemaLine();
+        // this.getSchemaLine();
         const {filterProjectInput, filterConsumerInput} = this.state;
 
         return ( 
@@ -144,6 +121,7 @@ class HoursPage extends Component {
                 </div>
 
                 <div className="box filter-box">
+
                         <div className="project-filter" onMouseLeave={this.removeElementsList}>
                             <input onClick={this.getElementsProjectsList}  name="inp-project-filter" className="form-control" type="text" placeholder="חפש לפי פרוייקט"/>
                             <ul className={filterProjectInput ? 'project ul-on' : 'project' }>
@@ -159,8 +137,9 @@ class HoursPage extends Component {
                                 <li><i><AiOutlineFundProjectionScreen/></i> <span>Facebook SYSTEM</span></li>
                             </ul>
                         </div>
+
                         <div className="consumer-filter" onMouseLeave={this.removeElementsList}>
-                        <input onClick={this.getElementsConsumersList}  name="inp-project-filter" className="form-control" type="text" placeholder="חפש לפי לקוח"/>
+                        <input onClick={this.getElementsConsumersList}  name="inp-consumer-filter" className="form-control" type="text" placeholder="חפש לפי לקוח"/>
                             <ul className={filterConsumerInput ? 'consumer ul-on' : 'consumer' }>
                                 {/* foreach will be here  */}
                                 <li><i ><HiOutlineUserCircle/></i> <span>בניית אתר תדמית</span></li>
@@ -194,8 +173,8 @@ class HoursPage extends Component {
     
                 <div className="box">
                     {
-                        this.state.projectsList && 
-                        this.state.projectsList.map( (project, index) => <ViewProject 
+                        this.state.getProjectsList && 
+                        this.state.getProjectsList.map( (project, index) => <ViewProject 
                         key={index+1}
                         index={index+1}
                         dateCreated={project.project_created_at}
@@ -213,10 +192,10 @@ class HoursPage extends Component {
                 <div className="total-data">
                         <div className="title-fix checkbox"></div>
                         {/* <div className="title-fix"></div> */}
-                        <div className="title-project"><p>{this.getSchemaLine().totalNumProjects}</p><p className="note-hover bg-primary">סך פרוייקטים</p></div>
-                        <div className="title-fix" ><p>{this.getSchemaLine().projectRateAverage} ₪</p> <p className="note-hover bg-primary">תעריף ממוצע</p></div>
-                        <div className="title-fix" ><p>{this.getSchemaLine().toatlWorkTime}</p> <p className="note-hover bg-primary">סך שעות</p></div>
-                        <div className="title-fix" ><p>{this.getSchemaLine().totalMoneyCash} ₪</p> <p className="note-hover bg-primary">סך לגביה</p></div>
+                        {/* <div className="title-project"><p>{this.getSchemaLine().totalNumProjects}</p><p className="note-hover bg-primary">סך פרוייקטים</p></div> */}
+                        {/* <div className="title-fix" ><p>{this.getSchemaLine().projectRateAverage} ₪</p> <p className="note-hover bg-primary">תעריף ממוצע</p></div> */}
+                        {/* <div className="title-fix" ><p>{this.getSchemaLine().toatlWorkTime}</p> <p className="note-hover bg-primary">סך שעות</p></div> */}
+                        {/* <div className="title-fix" ><p>{this.getSchemaLine().totalMoneyCash} ₪</p> <p className="note-hover bg-primary">סך לגביה</p></div> */}
                         <div className="title-fix actions"></div>
                         <div className="title-fix actions"></div>
                         <div className="title-fix actions"></div>
