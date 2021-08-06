@@ -8,7 +8,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import userService from "../../utils/jwtUser";
 import { apiUrl } from '../../config/config.json';
 import axios from 'axios';
-import {headersAuth} from '../../../utils/constData';
+import {headersAuth} from '../../utils/constData';
+
 class AllSite extends Component {
     
     state = { 

@@ -40,7 +40,7 @@ class HoursPage extends Component {
         toSubmitMode: false
     }
 
-
+    // padding lines  
     switchBtnMode = () => {
         let { switchMode } = this.state;
         let switchElement = document.querySelector('.MuiSwitch-root');
@@ -56,7 +56,7 @@ class HoursPage extends Component {
             }
         })
     }
-    
+
     // filter window - projects & consumers
     getElementsProjectsList = () => {
         let {filterProjectInput} = this.state;
@@ -75,7 +75,7 @@ class HoursPage extends Component {
         this.setState({ filterProjectInput,filterConsumerInput })
     }
 
-    // get the project from DB 
+    // Get Req - all Projects
     componentDidMount() {
        axios.get(`${apiUrl}/users/all-projects`, headersAuth)
        .then( res => {
@@ -83,6 +83,35 @@ class HoursPage extends Component {
         getProjectsList = res.data;
         this.setState({ getProjectsList });
        })
+    }
+ 
+    getSchemaLine = () => {
+        const {getProjectsList} = this.state;
+        const totalNumProjects = getProjectsList.length;
+
+        let projectRateAverage = 0; // minimize
+        let totalMoneyCash = 0; // minimize
+        let toatlWorkTime = 0; // minimize
+        if( getProjectsList.length > 0 ) {
+            getProjectsList.map( (project) => {
+                projectRateAverage += project.project_rate;
+                totalMoneyCash += project.project_time / 60 / 60 * project.project_rate;
+                toatlWorkTime += project.project_time;
+                return '';
+            } )
+
+            projectRateAverage = projectRateAverage / totalNumProjects;
+            projectRateAverage = projectRateAverage.toFixed() // minimize
+            toatlWorkTime = toatlWorkTime / 60 / 60;
+            toatlWorkTime = toatlWorkTime.toFixed(1); // minimize
+            totalMoneyCash = totalMoneyCash.toFixed(2) 
+            return {
+                toatlWorkTime,
+                projectRateAverage,
+                totalMoneyCash,
+                totalNumProjects,
+            }
+        }
     }
 
     // createProject = async () => {
@@ -106,11 +135,10 @@ class HoursPage extends Component {
 
     render() { 
 
-        // this.getSchemaLine();
         const {filterProjectInput, filterConsumerInput} = this.state;
 
         return ( 
-            <div className="hours-page" onClick={this.doRequest}>
+            <div className="hours-page">
     
                 <div className="box">
                     <PageHeader>Hours System</PageHeader>
@@ -159,7 +187,6 @@ class HoursPage extends Component {
                 <div className="box">
                     <div className="view-project title-box">
                         <div className="title-fix checkbox"><input type="checkbox" name="select-all" id="select-all"/></div>
-                        {/* <div className="title-fix">תאריך יצירה</div> */}
                         <div className="title-project">פרוייקט</div>
                         <div className="title-fix" >תעריף</div>
                         <div className="title-fix" >שעות עבודה</div>
@@ -192,10 +219,10 @@ class HoursPage extends Component {
                 <div className="total-data">
                         <div className="title-fix checkbox"></div>
                         {/* <div className="title-fix"></div> */}
-                        {/* <div className="title-project"><p>{this.getSchemaLine().totalNumProjects}</p><p className="note-hover bg-primary">סך פרוייקטים</p></div> */}
-                        {/* <div className="title-fix" ><p>{this.getSchemaLine().projectRateAverage} ₪</p> <p className="note-hover bg-primary">תעריף ממוצע</p></div> */}
-                        {/* <div className="title-fix" ><p>{this.getSchemaLine().toatlWorkTime}</p> <p className="note-hover bg-primary">סך שעות</p></div> */}
-                        {/* <div className="title-fix" ><p>{this.getSchemaLine().totalMoneyCash} ₪</p> <p className="note-hover bg-primary">סך לגביה</p></div> */}
+                        <div className="title-project"><p>{this.getSchemaLine() && this.getSchemaLine().totalNumProjects}</p><p className="note-hover bg-primary">סך פרוייקטים</p></div>
+                        <div className="title-fix" ><p>{this.getSchemaLine() && this.getSchemaLine().projectRateAverage} ₪</p> <p className="note-hover bg-primary">תעריף ממוצע</p></div>
+                        <div className="title-fix" ><p>{this.getSchemaLine() && this.getSchemaLine().toatlWorkTime}</p> <p className="note-hover bg-primary">סך שעות</p></div>
+                        <div className="title-fix" ><p>{this.getSchemaLine() && this.getSchemaLine().totalMoneyCash} ₪</p> <p className="note-hover bg-primary">סך לגביה</p></div>
                         <div className="title-fix actions"></div>
                         <div className="title-fix actions"></div>
                         <div className="title-fix actions"></div>
