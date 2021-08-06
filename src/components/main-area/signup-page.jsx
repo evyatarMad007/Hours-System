@@ -38,6 +38,7 @@ class Signup extends Component {
         toSubmitMode: false
     }
 
+    // validate function 
     handlerChangeUser = (inpName, inpValue) => {
         let user = this.state.user;
         let {errors, isValid} = this.state;
@@ -114,6 +115,7 @@ class Signup extends Component {
 
     }
 
+    // create new user
     doSubmit = async () => {
         const userData =  {...this.state.user}; // deep copy
 

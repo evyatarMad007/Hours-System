@@ -34,7 +34,7 @@
 
         .inputs {
             margin-top: 10px;
-            width: 80%;
+            width: max-content;
             display: flex;
             flex-direction: column;
             padding: 15px 55px;
@@ -44,6 +44,8 @@
             height: 0px;
             opacity: 0;
             transition: all 0.5s;
+            border: 0.5px solid rgba(192, 192, 192, 0.452);
+            box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.157);
             
             .project-info, .consumer-info {
                 // background-color: rgb(228, 28, 28);
@@ -104,6 +106,10 @@
                     margin: 0;
                     font-size: 1.7rem ;
                     @include btn-base-design(#009c08, #ffffff);
+                }
+                .submit-btn:disabled {
+                    background-color: silver;
+                    transform: translate(0);
                 }
             }
 

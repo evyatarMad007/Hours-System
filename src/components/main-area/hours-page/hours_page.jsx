@@ -114,25 +114,6 @@ class HoursPage extends Component {
         }
     }
 
-    // createProject = async () => {
-    //     const createProjectData =  {...this.state}; // deep copy
-
-    //     try {
-    //         await axios.post(`${apiUrl}/users/signup`, createProjectData )
-    //         this.setState({user: {first_name: "",last_name: "",password: "",phone_number: "",email: "",}})
-    //         toast("User created successfully.");
-    //         this.props.history.replace('/signin');
-
-    //     } 
-    //     catch (err) {
-    //         if( err.response && err.response.status === 409 ){
-    //             let { errors } = this.state;
-    //             errors.err_email = "Email is taken"
-    //             this.setState({ errors })
-    //         }
-    //     }
-    // }
-
     render() { 
 
         const {filterProjectInput, filterConsumerInput} = this.state;
