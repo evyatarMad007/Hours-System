@@ -4,8 +4,8 @@ import { MdCreateNewFolder } from 'react-icons/md';
 import { apiUrl } from '../../../config/config.json';
 import axios from 'axios';
 import {headersAuth} from '../../../utils/constData';
-// import { HiOutlineUserCircle } from 'react-icons/hi';
-
+import { toast } from 'react-toastify';
+import { Redirect } from "react-router-dom";
 
 class AddProject extends Component {
   state = { 
@@ -139,35 +139,44 @@ class AddProject extends Component {
        this.setState({ toSubmitMode })
     }
   }
-
   // create new Project
   doSubmit = async () => {
       const createProjectData =  {...this.state.project}; 
-
+      
       try {
-          await axios.post(`${apiUrl}/users/create-project`, headersAuth, createProjectData )
+          await axios.post(`${apiUrl}/users/create-project`, createProjectData, headersAuth)
+          .then( res  => {
+            if( res.data.message === "OK" ) toast('project has been created');
+          })
           this.setState({project: {
-          project_name: "",
-          project_rate: "",
-          consumer_first_name: "",
-          consumer_last_name: "",
-          consumer_city_adress: "",
-          consumer_phone_number: "",
-          consumer_email: ""}})
+            project_name: "",
+            project_rate: "",
+            consumer_first_name: "",
+            consumer_last_name: "",
+            consumer_city_adress: "",
+            consumer_phone_number: "",
+            consumer_email: ""
+          }})
+          const project_name = document.querySelector('#projectName').value = '';
+          const project_rate = document.querySelector('#projectRate').value = '';
+          const consumer_first_name = document.querySelector('#consumerFirstName').value = '';
+          const consumer_last_name = document.querySelector('#consumerLastName').value = '';
+          const consumer_city_adress = document.querySelector('#consumerAdress').value = '';
+          const consumer_phone_number = document.querySelector('#consumerPhoneNumber').value = '';
+          const consumer_email = document.querySelector('#consumerEmail').value = '';
+          
       } 
+      
       catch (err) {
           if( err.response && err.response.status === 409 ){
-              let { errors } = this.state;
-              errors.err_email = "Email is taken"
-              this.setState({ errors })
+            // ... 
           }
       }
-
   }
 
   render() { 
     const { addProjectWindow } = this.state;
-
+    
     return (
       <div className="add-row">
           <div className="add-project-name">
