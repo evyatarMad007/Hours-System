@@ -46,35 +46,7 @@ class AddProject extends Component {
     addProjectWindow ? addProjectWindow = false : addProjectWindow = true;
     this.setState({ addProjectWindow });
   }
-  // get the data from inputs 
-  getDataCollection = () => {
-    let projectName = document.querySelector('#projectName');
-    let projectRate = document.querySelector('#projectRate');
-    let consumerFirstName = document.querySelector('#consumerFirstName');
-    let consumerLastName = document.querySelector('#consumerLastName');
-    let consumerAdress = document.querySelector('#consumerAdress');
-    let consumerPhoneNumber = document.querySelector('#consumerPhoneNumber');
-    let consumerEmail = document.querySelector('#consumerEmail');
-
-    const newProjectData = {
-      projectName: projectName.value.trim(),
-      projectRate: projectRate.value.trim(),
-      consumerFirstName: consumerFirstName.value.trim(),
-      consumerLastName: consumerLastName.value.trim(),
-      consumerAdress: consumerAdress.value.trim(),
-      consumerPhoneNumber: consumerPhoneNumber.value.trim(),
-      consumerEmail: consumerEmail.value.trim()
-    }
-
-      projectName.value = '';
-      projectRate.value = '';
-      consumerFirstName.value = '';
-      consumerLastName.value = '';
-      consumerAdress.value = '';
-      consumerPhoneNumber.value = '';
-      consumerEmail.value = '';
-  }
-
+  // validate function
   handlerChangeProject = (inpName, inpValue) => {
     let project = this.state.project;
     let {errors, isValid} = this.state;
@@ -170,13 +142,18 @@ class AddProject extends Component {
 
   // create new Project
   doSubmit = async () => {
-      const createProjectData =  {...this.state}; // deep copy
+      const createProjectData =  {...this.state.project}; 
 
       try {
-          await axios.post(`${apiUrl}/.......`, headersAuth, createProjectData )
-          this.setState({project: {first_name: "",last_name: "",password: "",phone_number: "",email: "",}})
-          this.props.history.replace('/signin');
-
+          await axios.post(`${apiUrl}/users/create-project`, headersAuth, createProjectData )
+          this.setState({project: {
+          project_name: "",
+          project_rate: "",
+          consumer_first_name: "",
+          consumer_last_name: "",
+          consumer_city_adress: "",
+          consumer_phone_number: "",
+          consumer_email: ""}})
       } 
       catch (err) {
           if( err.response && err.response.status === 409 ){
@@ -185,8 +162,8 @@ class AddProject extends Component {
               this.setState({ errors })
           }
       }
-  }
 
+  }
 
   render() { 
     const { addProjectWindow } = this.state;
