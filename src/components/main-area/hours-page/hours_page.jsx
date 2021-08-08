@@ -82,7 +82,6 @@ class HoursPage extends Component {
         let { getProjectsList } = this.state;
         getProjectsList = res.data;
         this.setState({ getProjectsList });
-        console.log(res);
        })
     }
  

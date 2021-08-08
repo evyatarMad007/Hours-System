@@ -75,7 +75,7 @@
             
             button {
                 border-radius: 9px;
-                overflow: hidden;
+                // overflow: hidden;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -87,7 +87,19 @@
                 width: 35px;
                 height: 33px;
                 font-size: 2.3rem;
-
+                & > :nth-child(n) {
+                    border-radius: 9px;
+                }
+                .stop-time {
+                    color: #0D6EFD;
+                    box-shadow: inset 0 0 20rem 20rem #67c2ff41;
+                    animation: on-running-timer 2s infinite;
+                    @keyframes on-running-timer {
+                        0% { box-shadow: inset  0 0 1rem 0.5rem #8dacc5; transform: scale(1); }
+                        50% { box-shadow: inset  0 0 0.5rem 0.3rem #e9e9e9; transform: scale(1.1);  }
+                        100% { box-shadow: inset  0 0 1rem 0.5rem #8dacc5; transform: scale(1); }
+                    }
+                }
                 &:hover {
                     box-shadow: inset 0 0 4px 1px rgba(0, 0, 0, 0.322);
                     transform: translateY(-.8px);

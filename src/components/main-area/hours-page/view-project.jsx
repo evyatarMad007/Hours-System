@@ -18,7 +18,7 @@ class ViewProject extends Component {
     dropDown: false,
     interval: null 
 
-   }
+  }
 
   dropDown = () => {
     let { dropDown } = this.state;
@@ -35,7 +35,7 @@ class ViewProject extends Component {
         const interval = setInterval(() => {
         count++
         this.setState({count})
-       }, 0);
+       }, 1000);
        this.setState({interval}) 
       
     }
@@ -45,11 +45,14 @@ class ViewProject extends Component {
       }
   }
 
+  
+  
 
   render() {
     const {props} = this;
     const {count,dropDown,startBtnActive} = this.state;
     // startBtn, pauseBtn, paymentBtn, removeBtn,
+    console.log(count);
 
     return ( 
       <div className="view-project">
