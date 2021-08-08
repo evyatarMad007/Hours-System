@@ -93,13 +93,15 @@
                     
                 }
                 .signup-btn {
-                    background-color: rgb(67, 83, 255);
+                    background-color: #0073ea;
                     color: white;
                     border-radius: 50px;
                     padding: .45rem 1.6rem;
+                    border: 0.5px solid rgb(190, 190, 190);
+                    box-shadow: 0 0 4px 0.5px #0050a53d;
                     
                     &:hover {
-                        background-color: rgb(55, 69, 223);
+                        background-color: #0068d8;
                     }
                     svg {
                         font-size: 1.5rem;

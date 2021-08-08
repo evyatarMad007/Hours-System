@@ -111,7 +111,7 @@ class Signin extends Component {
                 <div className="signin__content">
                     <div className="signin__content__form-box">
                         <div className="title-login">
-                            <PageHeader>Sign In</PageHeader>
+                            <PageHeader>Sign in</PageHeader>
                         </div>
                         <form id="signin-form"  method="POST" autoComplete="off" noValidate>
                             <div className="inputs-area">

@@ -146,7 +146,7 @@ class Signup extends Component {
                 <div className="signup__content">
                     <div className="signup__content__form-box">
                         <div className="title-register">
-                            <PageHeader>Sign Up</PageHeader>
+                            <PageHeader>Sign up</PageHeader>
                             
                         </div>
                         <form id="signup-form"  method="POST" autoComplete="off" noValidate>
