@@ -10,6 +10,11 @@ z-index: 150;
 display: flex;
 justify-content: center;
 align-items: flex-start;
+animation: navBar-fade-in 2s;
+// @keyframes identifier {
+    
+// }
+
 
 &__mode-btn {
     // background-color: rgb(180, 180, 180);

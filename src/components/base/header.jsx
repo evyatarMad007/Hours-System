@@ -44,7 +44,7 @@ class Header extends Component {
                         ? <button className="logout" onClick={this.logout}>Logout </button> 
                         : <React.Fragment>
                             <NavLink className="navLink signin-navLink" to="/signin"><div className="signin-btn">Sign in <RiKeyFill/></div></NavLink>
-                            <NavLink className="navLink signup-navLink" to="/signup"><div className="signup-btn">Sign up <FaWpforms/></div></NavLink>
+                            <NavLink className="navLink signup-navLink" to="/signup"><div className="signup-btn">Sign up</div></NavLink>
                         </React.Fragment>
                         }
                         

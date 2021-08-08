@@ -82,13 +82,25 @@
             }
             .navLink {
                 .signin-btn {
+                    &:hover {
+                        color: rgb(55, 69, 223);
+                    }
                     svg {
                         font-size: 2rem;
+                        margin-left: -1px;
+                        transition: all 0.2s;
                     }
                     
                 }
                 .signup-btn {
+                    background-color: rgb(67, 83, 255);
+                    color: white;
+                    border-radius: 50px;
+                    padding: .45rem 1.6rem;
                     
+                    &:hover {
+                        background-color: rgb(55, 69, 223);
+                    }
                     svg {
                         font-size: 1.5rem;
                     }
