@@ -5,7 +5,6 @@ import { apiUrl } from '../../../config/config.json';
 import axios from 'axios';
 import {headersAuth} from '../../../utils/constData';
 import { toast } from 'react-toastify';
-import { Redirect } from "react-router-dom";
 
 class AddProject extends Component {
   state = { 
@@ -157,13 +156,13 @@ class AddProject extends Component {
             consumer_phone_number: "",
             consumer_email: ""
           }})
-          const project_name = document.querySelector('#projectName').value = '';
-          const project_rate = document.querySelector('#projectRate').value = '';
-          const consumer_first_name = document.querySelector('#consumerFirstName').value = '';
-          const consumer_last_name = document.querySelector('#consumerLastName').value = '';
-          const consumer_city_adress = document.querySelector('#consumerAdress').value = '';
-          const consumer_phone_number = document.querySelector('#consumerPhoneNumber').value = '';
-          const consumer_email = document.querySelector('#consumerEmail').value = '';
+          document.querySelector('#projectName').value = '';
+          document.querySelector('#projectRate').value = '';
+          document.querySelector('#consumerFirstName').value = '';
+          document.querySelector('#consumerLastName').value = '';
+          document.querySelector('#consumerAdress').value = '';
+          document.querySelector('#consumerPhoneNumber').value = '';
+          document.querySelector('#consumerEmail').value = '';
           
       } 
       

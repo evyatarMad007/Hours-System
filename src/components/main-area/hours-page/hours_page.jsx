@@ -82,6 +82,7 @@ class HoursPage extends Component {
         let { getProjectsList } = this.state;
         getProjectsList = res.data;
         this.setState({ getProjectsList });
+        console.log(res);
        })
     }
  
@@ -129,94 +130,97 @@ class HoursPage extends Component {
                         <AddProject/>
                 </div>
 
-                <div className="box filter-box">
+                { 
+                    this.state.getProjectsList.length > 0 
+                    ? 
+                    <React.Fragment>
+                        <div className="box filter-box">
+                            <div className="project-filter" onMouseLeave={this.removeElementsList}>
+                                <input onClick={this.getElementsProjectsList}  name="inp-project-filter" className="form-control" type="text" placeholder="חפש לפי פרוייקט"/>
+                                <ul className={filterProjectInput ? 'project ul-on' : 'project' }>
+                                    {/* foreach will be here  */}
+                                    <li><i><AiOutlineFundProjectionScreen/></i> <span>בניית אתר תדמית</span></li>
+                                    <li><i><AiOutlineFundProjectionScreen/></i> <span>CRM SYSTEM</span></li>
+                                    <li><i><AiOutlineFundProjectionScreen/></i> <span>Facebook SYSTEM</span></li>
+                                    <li><i><AiOutlineFundProjectionScreen/></i> <span>בניית אתר תדמית</span></li>
+                                    <li><i><AiOutlineFundProjectionScreen/></i> <span>CRM SYSTEM</span></li>
+                                    <li><i><AiOutlineFundProjectionScreen/></i> <span>Facebook SYSTEM</span></li>
+                                    <li><i><AiOutlineFundProjectionScreen/></i> <span>בניית אתר תדמית</span></li>
+                                    <li><i><AiOutlineFundProjectionScreen/></i> <span>CRM SYSTEM</span></li>
+                                    <li><i><AiOutlineFundProjectionScreen/></i> <span>Facebook SYSTEM</span></li>
+                                </ul>
+                            </div>
 
-                        <div className="project-filter" onMouseLeave={this.removeElementsList}>
-                            <input onClick={this.getElementsProjectsList}  name="inp-project-filter" className="form-control" type="text" placeholder="חפש לפי פרוייקט"/>
-                            <ul className={filterProjectInput ? 'project ul-on' : 'project' }>
-                                {/* foreach will be here  */}
-                                <li><i><AiOutlineFundProjectionScreen/></i> <span>בניית אתר תדמית</span></li>
-                                <li><i><AiOutlineFundProjectionScreen/></i> <span>CRM SYSTEM</span></li>
-                                <li><i><AiOutlineFundProjectionScreen/></i> <span>Facebook SYSTEM</span></li>
-                                <li><i><AiOutlineFundProjectionScreen/></i> <span>בניית אתר תדמית</span></li>
-                                <li><i><AiOutlineFundProjectionScreen/></i> <span>CRM SYSTEM</span></li>
-                                <li><i><AiOutlineFundProjectionScreen/></i> <span>Facebook SYSTEM</span></li>
-                                <li><i><AiOutlineFundProjectionScreen/></i> <span>בניית אתר תדמית</span></li>
-                                <li><i><AiOutlineFundProjectionScreen/></i> <span>CRM SYSTEM</span></li>
-                                <li><i><AiOutlineFundProjectionScreen/></i> <span>Facebook SYSTEM</span></li>
-                            </ul>
-                        </div>
-
-                        <div className="consumer-filter" onMouseLeave={this.removeElementsList}>
-                        <input onClick={this.getElementsConsumersList}  name="inp-consumer-filter" className="form-control" type="text" placeholder="חפש לפי לקוח"/>
-                            <ul className={filterConsumerInput ? 'consumer ul-on' : 'consumer' }>
-                                {/* foreach will be here  */}
-                                <li><i ><HiOutlineUserCircle/></i> <span>בניית אתר תדמית</span></li>
-                                <li><i ><HiOutlineUserCircle/></i> <span>CRM SYSTEM</span></li>
-                                <li><i ><HiOutlineUserCircle/></i> <span>Facebook SYSTEM</span></li>
-                                <li><i ><HiOutlineUserCircle/></i> <span>בניית אתר תדמית</span></li>
-                                <li><i ><HiOutlineUserCircle/></i> <span>CRM SYSTEM</span></li>
-                                <li><i ><HiOutlineUserCircle/></i> <span>Facebook SYSTEM</span></li>
-                                <li><i ><HiOutlineUserCircle/></i> <span>בניית אתר תדמית</span></li>
-                                <li><i ><HiOutlineUserCircle/></i> <span>CRM SYSTEM</span></li>
-                                <li><i ><HiOutlineUserCircle/></i> <span>Facebook SYSTEM</span></li>
-                            </ul>
-                        </div>
-                </div>
-    
-    
-                <div className="box">
-                    <div className="view-project title-box">
-                        <div className="title-fix checkbox"><input type="checkbox" name="select-all" id="select-all"/></div>
-                        <div className="title-project">פרוייקט</div>
-                        <div className="title-fix" >תעריף</div>
-                        <div className="title-fix" >שעות עבודה</div>
-                        <div className="title-fix" >סה''כ</div>
-                        <div className="title-fix actions" ></div>
-                        <div className="title-fix actions" >פעולות</div>
-                        <div className="title-fix actions" ></div>
-                        <div className="title-fix drop-down" ></div>
-                     </div> 
-                </div>
-    
-                <div className="box">
-                    {
-                        this.state.getProjectsList && 
-                        this.state.getProjectsList.map( (project, index) => <ViewProject 
-                        key={index+1}
-                        index={index+1}
-                        dateCreated={project.project_created_at}
-                        id={project.project_id}
-                        projectName={project.project_name}
-                        projectTime={project.project_time}
-                        projectRate={project.project_rate}
-                        switchMode={this.state.switchMode}
-                    /> )
-                    }
-                </div>
-                
-                <div className="box">
-                <div className="line-bottom">
-                <div className="total-data">
-                        <div className="title-fix checkbox"></div>
-                        {/* <div className="title-fix"></div> */}
-                        <div className="title-project"><p>{this.getSchemaLine() && this.getSchemaLine().totalNumProjects}</p><p className="note-hover bg-primary">סך פרוייקטים</p></div>
-                        <div className="title-fix" ><p>{this.getSchemaLine() && this.getSchemaLine().projectRateAverage} ₪</p> <p className="note-hover bg-primary">תעריף ממוצע</p></div>
-                        <div className="title-fix" ><p>{this.getSchemaLine() && this.getSchemaLine().toatlWorkTime}</p> <p className="note-hover bg-primary">סך שעות</p></div>
-                        <div className="title-fix" ><p>{this.getSchemaLine() && this.getSchemaLine().totalMoneyCash} ₪</p> <p className="note-hover bg-primary">סך לגביה</p></div>
-                        <div className="title-fix actions"></div>
-                        <div className="title-fix actions"></div>
-                        <div className="title-fix actions"></div>
-                        <div className="title-fix drop-down"></div>
-                     </div>
-                    <div className="dense-padding">
-                        <i>צופף שורות</i>
-                        <span onClick={ this.switchBtnMode }><Switches/></span>
-                        
-                        
+                            <div className="consumer-filter" onMouseLeave={this.removeElementsList}>
+                            <input onClick={this.getElementsConsumersList}  name="inp-consumer-filter" className="form-control" type="text" placeholder="חפש לפי לקוח"/>
+                                <ul className={filterConsumerInput ? 'consumer ul-on' : 'consumer' }>
+                                    {/* foreach will be here  */}
+                                    <li><i ><HiOutlineUserCircle/></i> <span>בניית אתר תדמית</span></li>
+                                    <li><i ><HiOutlineUserCircle/></i> <span>CRM SYSTEM</span></li>
+                                    <li><i ><HiOutlineUserCircle/></i> <span>Facebook SYSTEM</span></li>
+                                    <li><i ><HiOutlineUserCircle/></i> <span>בניית אתר תדמית</span></li>
+                                    <li><i ><HiOutlineUserCircle/></i> <span>CRM SYSTEM</span></li>
+                                    <li><i ><HiOutlineUserCircle/></i> <span>Facebook SYSTEM</span></li>
+                                    <li><i ><HiOutlineUserCircle/></i> <span>בניית אתר תדמית</span></li>
+                                    <li><i ><HiOutlineUserCircle/></i> <span>CRM SYSTEM</span></li>
+                                    <li><i ><HiOutlineUserCircle/></i> <span>Facebook SYSTEM</span></li>
+                                </ul>
+                            </div>
                     </div>
-                </div>
-                </div>
+                        <div className="box">
+                        <div className="view-project title-box">
+                            <div className="title-fix checkbox"><input type="checkbox" name="select-all" id="select-all"/></div>
+                            <div className="title-project">פרוייקט</div>
+                            <div className="title-fix" >תעריף</div>
+                            <div className="title-fix" >שעות עבודה</div>
+                            <div className="title-fix" >סה''כ</div>
+                            <div className="title-fix actions" ></div>
+                            <div className="title-fix actions" >פעולות</div>
+                            <div className="title-fix actions" ></div>
+                            <div className="title-fix drop-down" ></div>
+                        </div> 
+                        </div> <div className="box">
+                        {
+                            this.state.getProjectsList && 
+                            this.state.getProjectsList.map( (project, index) => <ViewProject 
+                            key={index+1}
+                            index={index+1}
+                            dateCreated={project.project_created_at}
+                            id={project.project_id}
+                            projectName={project.project_name}
+                            projectTime={project.project_time}
+                            projectRate={project.project_rate}
+                            switchMode={this.state.switchMode}
+                        /> )
+                        }
+                    </div>
+                        <div className="box">
+                    <div className="line-bottom">
+                    <div className="total-data">
+                            <div className="title-fix checkbox"></div>
+                            {/* <div className="title-fix"></div> */}
+                            <div className="title-project"><p>{this.getSchemaLine() && this.getSchemaLine().totalNumProjects}</p><p className="note-hover bg-primary">סך פרוייקטים</p></div>
+                            <div className="title-fix" ><p>{this.getSchemaLine() && this.getSchemaLine().projectRateAverage} ₪</p> <p className="note-hover bg-primary">תעריף ממוצע</p></div>
+                            <div className="title-fix" ><p>{this.getSchemaLine() && this.getSchemaLine().toatlWorkTime}</p> <p className="note-hover bg-primary">סך שעות</p></div>
+                            <div className="title-fix" ><p>{this.getSchemaLine() && this.getSchemaLine().totalMoneyCash} ₪</p> <p className="note-hover bg-primary">סך לגביה</p></div>
+                            <div className="title-fix actions"></div>
+                            <div className="title-fix actions"></div>
+                            <div className="title-fix actions"></div>
+                            <div className="title-fix drop-down"></div>
+                        </div>
+                        <div className="dense-padding">
+                            <i>צופף שורות</i>
+                            <span onClick={ this.switchBtnMode }><Switches/></span>
+                            
+                            
+                        </div>
+                    </div>
+                    </div>
+                        </React.Fragment>
+                : <p className="no-project-yet">You have not yet created any projects</p>
+                }
+                
+
             </div>
          );
     }
