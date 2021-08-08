@@ -3,6 +3,9 @@
 $website_width_size__width: 94vw;
 $website_width_size__max-width: 175rem;
 
+// website colors 
+$text_color_basic: rgb(114, 114, 114);
+$text_color_light: rgb(170, 170, 170);
 
 // header 
 $header_height: 5rem;
@@ -12,8 +15,9 @@ $background:  radial-gradient(circle, #ffffff, #ffffff, #ffffff, #ffffff, #fffff
 
 
 // navbar & mainarea
-$background-site_color: #0747A6;
-$background-site_shadow_effect: inset 0 0 10px 3px #00000000;
+$background-site_color: #292F4C;
+$navbarWidth_when-open: 20rem;
+// $background-site_shadow_effect: inset 0 0 10px 3px #00000000;
 // $background-site_shadow_effect: inset 0 0 10px 3px rgb(76, 68, 68);
 
 
@@ -27,5 +31,7 @@ $viewTable-checkbox__width: max-content;
 
 $viewTable__actions-margin: 0 0.2em;
 $viewTable__all-children-margin: 0 1.5em;
+
+
 
 

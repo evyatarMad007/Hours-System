@@ -22,7 +22,7 @@ html {
     grid-template-columns: auto 1fr;
     grid-template-rows: 1fr 1fr;
     grid-template-areas: 
-    "headerX headerX"
+    "navbarX headerX"
     "navbarX mainareaX";
     overflow: hidden;
     // background-color: $background-site_color;

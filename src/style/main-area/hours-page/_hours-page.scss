@@ -291,8 +291,8 @@ input[type=checkbox] {
 }
 
 .no-project-yet {
-    color: rgb(117, 117, 117);
+    color: $text_color_light;
     font-style: italic;
-    font-size: 2rem;
+    font-size: 1.7rem;
     margin-top: 5rem;
 }
