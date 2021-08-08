@@ -15,6 +15,8 @@
         max-width: $website_width_size__max-width;
         height: 100%;
         display: flex;
+        justify-self: self-end;
+        flex-grow: 2;
         justify-content: space-between;
         flex-direction: row-reverse;
         align-items: flex-end;
@@ -111,20 +113,21 @@
         
 
             .profile-img { 
+                // background-color: red;
                 padding: 0;
                 height: 5rem;
                 width: 5rem;
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                display: none;
+                // display: none;
                 img {
                     // display: none;
                     object-fit: cover;
-                    width: 100%;
-                    height: 100%;
+                    width: 75%;
+                    height: 75%;
                     border-radius: 50%;
-                    border: .1rem solid rgb(219, 219, 219);
+                    border: .1rem solid rgba(95, 95, 95, 0.342);
                     box-shadow: 0 0 .1rem .1rem rgba(149, 149, 150, 0.342);
                 }
              }

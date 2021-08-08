@@ -34,12 +34,12 @@ class Header extends Component {
                     <div className="header__content__right-side">
                     { userService.getCurrentUser() 
                     ? <NavLink className="navLink profile-navLink" to="/profile">
+                    <div className="profile-img">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnS1o3mO3S_Nkfw1WAGaRJ6KaOGgODpfoOsA&usqp=CAU" alt="" />
+                    </div>
                     <span className="username">{! this.props.userData ? '' : `${this.props.userData.firstName}  ${this.props.userData.lastName}`}</span>
                     </NavLink>
                     : ''} 
-                        <div className="profile-img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnS1o3mO3S_Nkfw1WAGaRJ6KaOGgODpfoOsA&usqp=CAU" alt="" />
-                        </div>
                         { userService.getCurrentUser() 
                         ? <button className="logout" onClick={this.logout}>Logout </button> 
                         : <React.Fragment>
