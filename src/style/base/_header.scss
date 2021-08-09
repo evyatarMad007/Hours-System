@@ -4,10 +4,17 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    // background-color: $background-site_color;
-    // box-shadow: $background-site_shadow_effect;
     color: rgb(255, 255, 255);
 
+    animation: header-fade-in 0.3s;
+    @keyframes header-fade-in {
+        0% {
+            transform: translateY(-100px);  
+        }
+        100% {
+            transform: translateY(0);
+        }
+    }
 
     &__content {
         // background-color: silver;

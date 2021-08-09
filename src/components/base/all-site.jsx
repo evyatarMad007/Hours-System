@@ -17,17 +17,23 @@ class AllSite extends Component {
      }
     
     componentDidMount() {
-        try {
-            axios.get(`${apiUrl}/users/full-user-info`, headersAuth)
-            .then( res => {
-                let { user } = this.state;
-                user = res.data
-                this.setState({ user })
-            })
-        }
-        catch (err) {
-            // write the code when u get some error status 
-            // if( err.response && err.response.status === 400 ){}
+        if( userService.getCurrentUser() ){
+            try {
+                axios.get(`${apiUrl}/users/full-user-info`, headersAuth)
+                .then( res => {
+                    let { user } = this.state;
+                    user = res.data
+                    this.setState({ user })
+                })
+                .catch( err => {
+                    if( err ){
+                        userService.logout();
+                    }
+                }) 
+            } catch (err) {
+                // write the code when u get some error status 
+                // if( err.response && err.response.status === 400 ){}
+            }
         }
     }
 
