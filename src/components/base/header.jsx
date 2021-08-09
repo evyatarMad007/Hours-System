@@ -17,7 +17,9 @@ class Header extends Component {
     }
     render() { 
 
-    // console.log(this.props.userData);
+        let fn = this.props.userData.firstName && this.props.userData.firstName.split('')[0];
+        let ln = this.props.userData.lastName && this.props.userData.lastName.split('')[0];
+        
 
         return ( 
             <header className="header">
@@ -35,7 +37,13 @@ class Header extends Component {
                     { userService.getCurrentUser() 
                     ? <NavLink className="navLink profile-navLink" to="/profile">
                     <div className="profile-img">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnS1o3mO3S_Nkfw1WAGaRJ6KaOGgODpfoOsA&usqp=CAU" alt="" />
+                        <div className="img">
+                            {
+                                this.props.userData.imgProfile 
+                                ?  <img src={this.props.userData.imgProfile} alt="" /> 
+                                : <span className="img-text">{fn + ln}</span>
+                            }
+                        </div>
                     </div>
                     <span className="username">{! this.props.userData ? '' : `${this.props.userData.firstName}  ${this.props.userData.lastName}`}</span>
                     </NavLink>

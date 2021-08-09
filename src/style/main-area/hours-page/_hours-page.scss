@@ -16,6 +16,10 @@
     overflow: scroll;
     // background-color: red;
 
+    &::-webkit-scrollbar {
+        width: 0;
+    }
+
    & > :nth-child(n){
     //    background-color: blue;
    }
