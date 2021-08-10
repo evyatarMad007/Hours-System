@@ -45,7 +45,8 @@
                 }
                .submit-box {
                    width: 100%;
-                   @include submit-button(#3BC294, #29ac80);
+                //    @include submit-button(#3BC294, #29ac80);
+                   @include submit-button(#037F4C, #068359);
                }
             }
         }
