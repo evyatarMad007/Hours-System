@@ -32,6 +32,7 @@ class Header extends Component {
                             <span>BizApp</span>
                             <div className="one"></div>
                             <div className="two"></div>
+                            <div className="three"></div>
                             </div></NavLink>
                     </div>
 
