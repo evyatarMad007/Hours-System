@@ -1,5 +1,5 @@
 .home {
-
+    @include page-appearance;
     // background-color: rgba(245, 69, 69, 0.993);
     position: fixed;
     width: 100%;
