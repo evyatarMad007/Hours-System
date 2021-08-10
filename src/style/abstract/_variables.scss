@@ -21,16 +21,22 @@ $navbarWidth_when-open: 20rem;
 // $background-site_shadow_effect: inset 0 0 10px 3px rgb(76, 68, 68);
 
 
-$viewTable_font_size: 1.5rem;
+$viewTable_font_size: 13px;
 // view table 
 $viewTable_title-box_parent_container__justify-content: center;
 $viewTable-title-project__width: 15rem;
 $viewTable-title-fix__width: 8rem;
 $viewTable-actions__width: 4rem;
 $viewTable-checkbox__width: max-content;
-
+$viewTable--bgc-color: #f6f6f6;
 $viewTable__actions-margin: 0 0.2em;
 $viewTable__all-children-margin: 0 1.5em;
+
+$viewTable_border-bottom: 0.5px solid #dfdfdf;
+
+// view table check box group 1 
+$viewTable__gruop-1-color-there: #579BFC;
+$viewTable__gruop-2-color-there: #FF158A;
 
 
 

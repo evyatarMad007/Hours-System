@@ -2,12 +2,8 @@
     display: flex;
     flex-direction: column;
     // justify-content: center;
-    padding: 0 10px;
-    border-bottom: .5px dashed #cccbcb9c;
     width: max-content;
-    // &:first-child {
-        // background-color: blue;
-    // }
+
 
     .title-project,
     .title-fix {
@@ -21,23 +17,33 @@
     
 
     .line-control {
-        margin: 10px 0;
+        // margin: 10px 0;
         display: flex;
         flex-direction: row;
         align-items: center;
         justify-content: $viewTable_title-box_parent_container__justify-content;
-        height: 55px;
+        height: 38px;
         transition: all 0.2s;
         font-size: $viewTable_font_size;
+        border-bottom: $viewTable_border-bottom;
+        background-color: $viewTable--bgc-color;
+        margin-top: 1.5px;
+
+        &:hover {
+            background-color: #E6E9EF;
+        }
+        & * {
+            background-color: rgba(255, 255, 255, 0) !important;
+        }
 
         & > :nth-child(n) {
             margin: $viewTable__all-children-margin;
         }
 
+
         .title-project {
             width: $viewTable-title-project__width;
             height: 100%;
-            
             // background-color: skyblue;
         }
 
@@ -145,7 +151,7 @@
     .line-info {
         overflow: hidden;
         height: 0px;
-        // background-color: red;
+        background-color: $viewTable--bgc-color;
         transition: all 0.2s;
         padding: 0 4%;
 
