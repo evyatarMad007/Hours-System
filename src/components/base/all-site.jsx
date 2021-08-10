@@ -15,7 +15,6 @@ class AllSite extends Component {
     state = { 
         user: false
      }
-    
     componentDidMount() {
         if( userService.getCurrentUser() ){
             try {
@@ -38,8 +37,11 @@ class AllSite extends Component {
     }
 
 
+
     render() { 
 
+        console.log(this.state);
+        
         return ( 
             <div className="all-site">
                 <BrowserRouter>

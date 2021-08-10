@@ -36,10 +36,61 @@
 
         
         &__left-side {
+            // background-color: lime;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 8%;
             .logo-box {
                 font-size: 1.7rem;
-                padding: .5rem 2rem;
-                color: white;
+                padding: 0 2.5rem;
+                position: relative;
+                top: 0;
+                
+
+                .one {
+                    position: absolute;
+                    width: 90%;
+                    height: 3rem;
+                    border-radius: 15px 5px 20px 5px;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    margin: auto;
+                    z-index: 1;
+                    background-color: #0084ff;
+                    // display: none;
+                }
+                .two {
+                    position: absolute;
+                    width: 90%;
+                    height: 3rem;
+                    border-radius: 5px 20px 5px 15px;
+                    top: 0;
+                    bottom: 0;
+                    left: 35px;
+                    margin: auto;
+                    z-index: 1;
+                    background-color: #00D647;
+                    // display: none;
+                }
+                span {
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    right: 0;
+                    left: 0;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 22;
+                    font-weight: bold;
+                    width: max-content;
+                    padding: 0 1rem;
+                    border-radius: 150px;
+                    color: white;
+                    text-shadow: 0.5px 0.5px 0.5px black;
+                }
             }
         }
 
