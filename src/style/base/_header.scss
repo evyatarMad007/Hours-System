@@ -5,16 +5,7 @@
     align-items: center;
     width: 100%;
     color: rgb(255, 255, 255);
-
-    animation: header-fade-in 0.8s;
-    @keyframes header-fade-in {
-        0% {
-            transform: translateY(-100px);  
-        }
-        100% {
-            transform: translateY(0);
-        }
-    }
+    @include header-appearance;
 
     &__content {
         // background-color: silver;

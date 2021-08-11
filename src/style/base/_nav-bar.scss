@@ -10,15 +10,7 @@ z-index: 150;
 display: flex;
 justify-content: center;
 align-items: flex-start;
-animation: navbar-fade-in 0.8s;
-@keyframes navbar-fade-in {
-    0% {
-        transform: translateX(-100px);  
-    }
-    100% {
-        transform: translateX(0);
-    }
-}
+@include navbar-appearance;
 
 &__mode-btn {
     background-color: rgb(255, 255, 255);
