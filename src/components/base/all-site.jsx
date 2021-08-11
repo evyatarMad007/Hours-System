@@ -13,8 +13,10 @@ import {headersAuth} from '../../utils/constData';
 class AllSite extends Component {
     
     state = { 
-        user: false
+        user: false,
+        logout: localStorage.getItem('isloged')
      }
+
     componentDidMount() {
         if( userService.getCurrentUser() ){
             try {
@@ -36,12 +38,18 @@ class AllSite extends Component {
         }
     }
 
-
+    // test = () => {
+    //     if( ! this.state.user && userService.getCurrentUser() && this.state.logout === true ) {
+    //             userService.logout();
+    //             localStorage.setItem('isloged', false)
+    //             window.location = '/signin';
+    //     }
+    // }
 
     render() { 
+        // if( ! this.state.user )  this.test()
+        console.log(this.state.user[1]);
 
-        console.log(this.state);
-        
         return ( 
             <div className="all-site">
                 <BrowserRouter>
@@ -56,6 +64,7 @@ class AllSite extends Component {
             </div>
          );
     }
+    
 }
  
 export default AllSite;

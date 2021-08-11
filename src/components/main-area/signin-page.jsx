@@ -78,6 +78,7 @@ class Signin extends Component {
             await axios.post(`${apiUrl}/users/signin`, userData )
             .then( res => {
                 localStorage.setItem('token', res.data.token);
+                localStorage.setItem('isloged', true)
                 window.location = '/';
             })
    
