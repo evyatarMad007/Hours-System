@@ -1,5 +1,6 @@
 
 .hours-page {
+    @include page-appearance;
     padding: 0;
     margin: 0;
     direction: rtl;

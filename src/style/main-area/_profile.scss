@@ -1,5 +1,6 @@
 .profile {
-    background-color: red;
+    @include page-appearance;
+    // background-color: red;
     width: 95%;
 
     
