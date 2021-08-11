@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from "react-router-dom";
 import { RiKeyFill } from 'react-icons/ri';
-import { FaWpforms } from 'react-icons/fa';
+// import { FaWpforms } from 'react-icons/fa';
 import userService from "../../utils/jwtUser";
 
 
@@ -47,7 +47,7 @@ class Header extends Component {
                             {
                                 this.props.userData.imgProfile 
                                 ?  <img src={this.props.userData.imgProfile} alt="" /> 
-                                : <span className="img-text">{fn + ln}</span>
+                                : <span className="img-text">{fn}{ln}</span>
                             }
                         </div>
                     </div>
