@@ -59,7 +59,7 @@ class ViewProject extends Component {
         <div className={props.switchMode ? "line-control line-control-constricted" : "line-control" }>
         <div className={props.switchMode ? "title-fix checkbox title-fix-constricted" : "title-fix checkbox" }> <input type="checkbox" name={props.index} id={props.index} /> </div>
         {/* <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }>{props.dateCreated}</div> */}
-            <div className={props.switchMode ? "title-project title-project-constricted" : "title-project" }><div className="text"><span className="project-name"></span> { props.projectName } <br/> <span className="date-created" style={{ color: '#909090', fontSize:'12px', backgroundColor: '#E9E9E9', padding: '0.2px 0 0.2px 8px', display: 'block', transform: 'translateY(-1px)', borderRadius: '6px', width: 'max-content' }}>{props.dateCreated}</span></div></div>
+            <div className={props.switchMode ? "title-project title-project-constricted" : "title-project" }><div className="text"><span className="project-name"></span> { props.projectName }</div></div>
             <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><div className="text"><span className="project-time"></span>₪ {props.projectRate}</div></div>
             <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><div className="text"><span className="project-time"><AiOutlineClockCircle/></span> {count} </div></div>
             <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><div className="text"><span className="project-time"></span>₪ {Math.round(props.projectRate.toFixed(2) * count / 60 / 60)}</div></div>
