@@ -81,9 +81,11 @@
             align-items: center;
             justify-content: center;
             
+            
             button {
                 border-radius: 50%;
                 // overflow: hidden;
+                
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -94,23 +96,24 @@
                 color: #797979cc;
                 width: 30px;
                 height: 30px;
-                font-size: 2rem;
+                font-size: 2.4rem;
                 & > :nth-child(n) {
                     border-radius: 50%;
                 }
                 .stop-time {
                     @include stop-btn;
                 }
+                
                 &:hover {
                     box-shadow: inset 0 0 4px 1px rgba(0, 0, 0, 0.322);
-                    transform: translateY(-.8px);
+                    // transform: translateY(-.8px);
 
                     .start-time {
                         color: #198754;
                         box-shadow: inset 0 0 20rem 20rem #34ffa028;
                     }
                     .stop-time {
-                        color: #0d89fd;
+                        color: #d8d8d8;
                         box-shadow: inset 0 0 20rem 20rem #67c2ff41;
                     }
                     .payment {
