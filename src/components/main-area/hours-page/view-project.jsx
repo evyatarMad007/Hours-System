@@ -52,17 +52,30 @@ class ViewProject extends Component {
 
     const { startBtnActive, count }  = this.state;
 
+    // If the startBtnActive is true,
+    // The count is in the middle of a process,
+    // so do not start the algorithm
+    // and return 
     if( startBtnActive ) return;
 
 
+    // get the current time, project_id 
     let projectId;
     let currentTime = count;
     project.nativeEvent.path.forEach( element  => {
       if( element.className === 'view-project' ) projectId = element.id;
     })
 
+    // If the count is complete,
+    // you will start the save algorithm --->
     if( ! startBtnActive ){
       console.log(projectId, currentTime, startBtnActive);
+
+      localStorage.setItem(`projectID${projectId}`, projectId)
+      if( localStorage.getItem((`projectID${projectId}`)) ) {
+        localStorage.removeItem(`projectID${projectId}`)
+        localStorage.setItem(`projectID${projectId}`, projectId)
+      }
     };
           
   }
