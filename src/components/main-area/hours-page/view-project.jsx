@@ -16,8 +16,7 @@ class ViewProject extends Component {
     paymentBtn: false,
     removeBtn: false,
     dropDown: false,
-    interval: null 
-
+    interval: null,
   }
 
   dropDown = () => {
@@ -26,24 +25,49 @@ class ViewProject extends Component {
     this.setState({ dropDown })
   }
 
-  startBtnActiveFunc = () => {
+  startBtnActiveFunc = async (event)  => {
+
       let { startBtnActive,count } = this.state;
       startBtnActive ? startBtnActive = false : startBtnActive = true;
-      this.setState({startBtnActive})
+      await this.setState({startBtnActive})
 
+
+      // call to sendAjaxProjectTime function 
+      this.sendAjaxProjectTime(event);
+
+      // setting the counter (project time )
       if(startBtnActive) {
         const interval = setInterval(() => {
         count++
         this.setState({count})
        }, 1000);
        this.setState({interval}) 
-      
-    }
+      }
       if(! startBtnActive) {
         clearInterval(this.state.interval); 
-
       }
   }
+
+  sendAjaxProjectTime = async (project) => {
+
+    const { startBtnActive, count }  = this.state;
+
+    if( startBtnActive ) return;
+
+
+    let projectId;
+    let currentTime = count;
+    project.nativeEvent.path.forEach( element  => {
+      if( element.className === 'view-project' ) projectId = element.id;
+    })
+
+    if( ! startBtnActive ){
+      console.log(projectId, currentTime, startBtnActive);
+    };
+          
+  }
+
+  
 
   
   
@@ -52,16 +76,16 @@ class ViewProject extends Component {
     const {props} = this;
     const {count,dropDown,startBtnActive} = this.state;
     // startBtn, pauseBtn, paymentBtn, removeBtn,
-    console.log(count);
+
 
     return ( 
-      <div className="view-project">
+      <div className="view-project" id={ props.id }>
         <div className={props.switchMode ? "line-control line-control-constricted" : "line-control" }>
         <div className={props.switchMode ? "title-fix checkbox title-fix-constricted" : "title-fix checkbox" }> <input type="checkbox" name={props.index} id={props.index} /> </div>
         {/* <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }>{props.dateCreated}</div> */}
-            <div className={props.switchMode ? "title-project title-project-constricted" : "title-project" }><div className="text"><span className="project-name"></span> { props.projectName }</div></div>
+            <div className={props.switchMode ? "title-project title-project-constricted" : "title-project" }><div className="text"><span className="project-name"></span>{ props.projectName }</div></div>
             <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><div className="text"><span className="project-time"></span>₪ {props.projectRate}</div></div>
-            <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><div className="text"><span className="project-time"><AiOutlineClockCircle/></span> {count} </div></div>
+            <div className={props.switchMode ? "title-fix time-element title-fix-constricted" : "title-fix time-element" }><div className="text"><span className="project-time"><AiOutlineClockCircle/></span> {count} </div></div>
             <div className={props.switchMode ? "title-fix title-fix-constricted" : "title-fix" }><div className="text"><span className="project-time"></span>₪ {Math.round(props.projectRate.toFixed(2) * count / 60 / 60)}</div></div>
             <div className={props.switchMode ? "title-fix actions title-fix-constricted" : "title-fix actions" }>{
                 ! startBtnActive 
