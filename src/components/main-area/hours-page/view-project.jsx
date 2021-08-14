@@ -48,7 +48,7 @@ class ViewProject extends Component {
       }
   }
 
-  sendAjaxProjectTime = async (project) => {
+  sendProjectTime = async (project) => {
 
     const { startBtnActive, count }  = this.state;
 
