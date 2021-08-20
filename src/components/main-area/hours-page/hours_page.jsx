@@ -58,17 +58,17 @@ class HoursPage extends Component {
     }
 
     // filter window - projects & consumers
-    getElementsProjectsList = () => {
+    getProjectsBoxFilter = () => {
         let {filterProjectInput} = this.state;
         filterProjectInput  = true;
         this.setState({ filterProjectInput })
     }
-    getElementsConsumersList = () => {
+    getConsumersBoxFilter = () => {
         let {filterConsumerInput} = this.state;
         filterConsumerInput  = true;
         this.setState({ filterConsumerInput })
     }
-    removeElementsList = () => {
+    removeBoxFilter = () => {
         let {filterProjectInput,filterConsumerInput} = this.state;
         filterProjectInput  = false;
         filterConsumerInput  = false;
@@ -134,8 +134,8 @@ class HoursPage extends Component {
                     ? 
                     <React.Fragment>
                         <div className="box filter-box">
-                            <div className="project-filter" onMouseLeave={this.removeElementsList}>
-                                <input onClick={this.getElementsProjectsList}  name="inp-project-filter" className="form-control" type="text" placeholder="חפש לפי פרוייקט"/>
+                            <div className="project-filter" onMouseLeave={this.removeBoxFilter}>
+                                <input onClick={this.getProjectsBoxFilter}  name="inp-project-filter" className="form-control" type="text" placeholder="חפש לפי פרוייקט"/>
                                 <ul className={filterProjectInput ? 'project ul-on' : 'project' }>
                                     {/* foreach will be here  */}
                                     <li><i><AiOutlineFundProjectionScreen/></i> <span>בניית אתר תדמית</span></li>
@@ -150,8 +150,8 @@ class HoursPage extends Component {
                                 </ul>
                             </div>
 
-                            <div className="consumer-filter" onMouseLeave={this.removeElementsList}>
-                            <input onClick={this.getElementsConsumersList}  name="inp-consumer-filter" className="form-control" type="text" placeholder="חפש לפי לקוח"/>
+                            <div className="consumer-filter" onMouseLeave={this.removeBoxFilter}>
+                            <input onClick={this.getConsumersBoxFilter}  name="inp-consumer-filter" className="form-control" type="text" placeholder="חפש לפי לקוח"/>
                                 <ul className={filterConsumerInput ? 'consumer ul-on' : 'consumer' }>
                                     {/* foreach will be here  */}
                                     <li><i ><HiOutlineUserCircle/></i> <span>בניית אתר תדמית</span></li>
@@ -215,7 +215,7 @@ class HoursPage extends Component {
                         </div>
                     </div>
                     </div>
-                        </React.Fragment>
+                    </React.Fragment>
                 : <p className="no-project-yet">You have not yet created any projects</p>
                 }
                 

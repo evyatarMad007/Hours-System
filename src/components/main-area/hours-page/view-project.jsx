@@ -16,7 +16,9 @@ class ViewProject extends Component {
     paymentBtn: false,
     removeBtn: false,
     dropDown: false,
-    interval: null,
+    intervalCounter: null,
+    intervalPostRequest: null,
+    // SendingTimeToggle: false,
   }
 
   dropDown = () => {
@@ -31,53 +33,58 @@ class ViewProject extends Component {
       startBtnActive ? startBtnActive = false : startBtnActive = true;
       await this.setState({startBtnActive})
 
-
       // call to sendAjaxProjectTime function 
-      this.sendAjaxProjectTime(event);
+      this.sendProjectTime(event);
 
       // setting the counter (project time )
       if(startBtnActive) {
-        const interval = setInterval(() => {
+        const intervalCounter = setInterval(() => {
         count++
         this.setState({count})
        }, 1000);
-       this.setState({interval}) 
+       this.setState({intervalCounter}) 
       }
       if(! startBtnActive) {
-        clearInterval(this.state.interval); 
+        clearInterval(this.state.intervalCounter); 
       }
   }
 
   sendProjectTime = async (project) => {
 
-    const { startBtnActive, count }  = this.state;
+    let { startBtnActive , intervalPostRequest, SendingTimeToggle}  = this.state;
 
-    // If the startBtnActive is true,
-    // The count is in the middle of a process,
-    // so do not start the algorithm
-    // and return 
-    if( startBtnActive ) return;
-
-
-    // get the current time, project_id 
-    let projectId;
-    let currentTime = count;
-    project.nativeEvent.path.forEach( element  => {
-      if( element.className === 'view-project' ) projectId = element.id;
-    })
-
-    // If the count is complete,
+    // If the startBtnActive is TRUE, The count is in the middle of a process,
     // you will start the save algorithm --->
-    if( ! startBtnActive ){
-      console.log(projectId, currentTime, startBtnActive);
+    if(  startBtnActive ) {
 
-      localStorage.setItem(`projectID${projectId}`, projectId)
-      if( localStorage.getItem((`projectID${projectId}`)) ) {
-        localStorage.removeItem(`projectID${projectId}`)
-        localStorage.setItem(`projectID${projectId}`, projectId)
-      }
+      // get the current time, project_id 
+      let projectId;
+      project.nativeEvent.path.forEach( element  => {
+        if( element.className === 'view-project' ) projectId = element.id;
+      })
+
+      // Perform a save(save in localStorage, and send post req) operation every minute.
+      const intervalPostRequest = setInterval( () => {
+        let { count } = this.state;
+        let currentTime = count;
+        // console.log(`Id: ${projectId}`, `\nTime: ${currentTime}`, `\nBtn: ${startBtnActive}`);
+
+
+        // save in localStorage -->
+        localStorage.setItem(`projectID-${projectId}`, currentTime)
+
+        // send post req -->
+        
+
+      }, 100);
+      this.setState({ intervalPostRequest }) 
+    }  
+    
+    // If the startBtnActive is FASLE, The count has not yet taken place
+    // and return 
+    if( ! startBtnActive ) {
+      clearInterval(this.state.intervalPostRequest);
     };
-          
   }
 
   
