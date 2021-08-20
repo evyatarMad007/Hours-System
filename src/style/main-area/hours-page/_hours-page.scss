@@ -46,6 +46,7 @@
         display: flex;
         height: 35px;
         padding: 0 3.5%;
+
         .project-filter, .consumer-filter {
             // background-color: lime;
             padding: 0 0 0 15px;
@@ -54,14 +55,14 @@
         .project-filter, .consumer-filter {
             position: relative;
             input {
-                height: 35px;
+                height: 30px;
                 // border-radius: 5px;
                 outline: none;
                 border: none;
                 border-bottom: 0.5px solid rgb(206, 206, 206);
                 background-color: #fff;
-                font-size: 16.5px;
-                width: 220px;
+                font-size: 14.5px;
+                width: 200px;
             }
             ul {
                 list-style-type: none;
@@ -71,13 +72,14 @@
                 border-bottom-left-radius: 5px;
                 border-bottom-right-radius: 5px;
                 background-color: rgb(255, 255, 255);
-                width: 220px;
+                width: 200px;
                 flex-direction: column;
                 position: absolute;
                 max-height: 200px;
                 overflow: auto;
                 padding: 0;
                 display: none;
+                z-index: 55;
 
                 
                 &::-webkit-scrollbar {
@@ -120,7 +122,7 @@
                     
                     width: 100%;
                     padding: 8px 15px;
-                    font-size: 14px;
+                    font-size: 12px;
                     cursor: pointer;
                     // background-color: rgb(190, 26, 26);
                     // text-align: center;
