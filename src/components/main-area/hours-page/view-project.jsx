@@ -74,9 +74,9 @@ class ViewProject extends Component {
         localStorage.setItem(`projectID-${projectId}`, currentTime)
 
         // send post req -->
-        
 
-      }, 100);
+
+      }, 10000);
       this.setState({ intervalPostRequest }) 
     }  
     
