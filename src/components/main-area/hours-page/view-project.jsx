@@ -4,6 +4,10 @@ import {   RiArrowDropDownLine, RiMoneyDollarCircleFill} from 'react-icons/ri';
 import {  BsPauseFill } from 'react-icons/bs';
 import {  MdDeleteForever } from 'react-icons/md';
 import {  BsPlayFill } from 'react-icons/bs';
+import { apiUrl } from '../../../config/config.json';
+import axios from 'axios';
+import {headersAuth} from '../../../utils/constData';
+import { toast } from 'react-toastify';
 
 
 class ViewProject extends Component {
@@ -74,12 +78,22 @@ class ViewProject extends Component {
         localStorage.setItem(`projectID-${projectId}`, currentTime)
 
         // send post req -->
-
-
+        // project_time: Joi.string().max(15),
+        // endpoint 
+        const projectTime = {
+          projectID: projectId,
+          project_time: currentTime,
+        }
+        try {
+          axios.patch(`${apiUrl}/users/update-time-project`, projectTime, headersAuth)
+      } 
+      catch (err) {
+          // if( err.response && err.response.status === 409 ){}
+      }
       }, 10000);
       this.setState({ intervalPostRequest }) 
     }  
-    
+
     // If the startBtnActive is FASLE, The count has not yet taken place
     // and return 
     if( ! startBtnActive ) {
