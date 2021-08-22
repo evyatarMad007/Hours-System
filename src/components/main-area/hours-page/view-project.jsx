@@ -8,6 +8,9 @@ import { apiUrl } from '../../../config/config.json';
 import axios from 'axios';
 import {headersAuth} from '../../../utils/constData';
 import { toast } from 'react-toastify';
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/scss/sweetalert2.css';
+
 
 
 class ViewProject extends Component {
@@ -54,42 +57,26 @@ class ViewProject extends Component {
   }
 
   sendProjectTime = async (project) => {
-
+    
     let { startBtnActive , intervalPostRequest, SendingTimeToggle}  = this.state;
-
-    // If the startBtnActive is TRUE, The count is in the middle of a process,
-    // you will start the save algorithm --->
+    
     if(  startBtnActive ) {
-
       // get the current time, project_id 
       let projectId;
-      project.nativeEvent.path.forEach( element  => {
-        if( element.className === 'view-project' ) projectId = element.id;
-      })
-
-      // Perform a save(save in localStorage, and send post req) operation every minute.
+      project.nativeEvent.path.forEach( element  => element.className === 'view-project' ? projectId = element.id : '' )
       const intervalPostRequest = setInterval( () => {
         let { count } = this.state;
         let currentTime = count;
-        // console.log(`Id: ${projectId}`, `\nTime: ${currentTime}`, `\nBtn: ${startBtnActive}`);
-
-
-        // save in localStorage -->
-        localStorage.setItem(`projectID-${projectId}`, currentTime)
-
-        // send post req -->
-        // project_time: Joi.string().max(15),
-        // endpoint 
+        // localStorage.setItem(`projectID-${projectId}`, currentTime)
         const projectTime = {
           projectID: projectId,
           project_time: currentTime,
         }
         try {
           axios.patch(`${apiUrl}/users/update-time-project`, projectTime, headersAuth)
-      } 
-      catch (err) {
-          // if( err.response && err.response.status === 409 ){}
-      }
+        } 
+        catch (err) {
+        }
       }, 10000);
       this.setState({ intervalPostRequest }) 
     }  
@@ -101,6 +88,59 @@ class ViewProject extends Component {
     };
   }
 
+  removeProject = async (project) => {
+
+    let projectId, projectRow;
+    let { removeBtn } = this.state;
+
+    project.nativeEvent.path.forEach( element  => element.className === 'view-project' ? projectId = element.id : '' )
+    project.nativeEvent.path.forEach( element  => element.className === 'view-project' ? projectRow = element : '')
+    
+    console.log(projectRow, projectId);
+    console.log(removeBtn);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "Are you sure you want to delete the project permanently?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, Delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        removeBtn = true;
+        this.setState({ removeBtn })
+        // send  delete request --->>> 
+        // await here
+        try {
+          axios.delete(`${apiUrl}/users/remove-project`, projectId, headersAuth)
+          .then( res => { 
+              // delete from the DOM  
+           })
+          .catch( err => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong, Please try again...',
+            })
+          })
+        } 
+        catch (err) {
+        }
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+      }
+
+    })
+    
+
+
+
+  }
+
   
 
   
@@ -110,7 +150,6 @@ class ViewProject extends Component {
     const {props} = this;
     const {count,dropDown,startBtnActive} = this.state;
     // startBtn, pauseBtn, paymentBtn, removeBtn,
-
 
     return ( 
       <div className="view-project" id={ props.id }>
@@ -127,7 +166,7 @@ class ViewProject extends Component {
                 : <button onClick={this.startBtnActiveFunc} className="td-button"><span className="stop-time"><BsPauseFill/></span></button>
             }</div>
             <div className={props.switchMode ? "title-fix actions title-fix-constricted" : "title-fix actions" }><button className="td-button"><span className="payment"><RiMoneyDollarCircleFill/></span></button></div>
-            <div className={props.switchMode ? "title-fix actions title-fix-constricted" : "title-fix actions" }><button  className="td-button"><span className="remove-project"><MdDeleteForever/></span></button></div>
+            <div className={props.switchMode ? "title-fix actions title-fix-constricted" : "title-fix actions" }><button  className="td-button" onClick={this.removeProject}><span className="remove-project"><MdDeleteForever/></span></button></div>
             <div className={props.switchMode ? "title-fix drop-down title-fix-constricted" : "title-fix drop-down" }><span onClick={this.dropDown} className={dropDown ? 'drop-down drop-down-on' : 'drop-down'}><RiArrowDropDownLine/></span></div>
         </div>
         
