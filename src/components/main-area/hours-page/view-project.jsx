@@ -116,6 +116,7 @@ class ViewProject extends Component {
           axios.delete(`${apiUrl}/users/remove-project`, projectId, headersAuth)
           .then( res => { 
               // delete from the DOM  
+              console.log(res);
            })
           .catch( err => {
             Swal.fire({
