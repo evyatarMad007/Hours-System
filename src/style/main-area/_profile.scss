@@ -2,6 +2,102 @@
     @include page-appearance;
     // background-color: red;
     width: 95%;
+    max-width: 150rem;;
 
-    
+    &__page-header {
+        background-color: red;
+        border-radius:  5rem 5rem 0 0;
+        width: 100%;
+        height: 30rem;
+        margin: 0 auto;
+        position: relative;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: bottom;
+
+        .img-profile-box {
+            background-color: rgb(255, 255, 255);
+            width: 23rem;
+            height: 23rem;
+            border-radius: 50%;
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -4rem;
+            margin: auto;
+            border: 5px solid rgb(255, 255, 255);
+            background-position: top;
+            background-size: cover;
+
+            &:hover {
+                .upload-img-btn {
+                    display: flex;
+                }  
+            }
+
+
+            .upload-img-btn {
+                position: absolute;
+                bottom: 1.5rem;
+                right: 2rem;
+                width: 3rem;
+                height: 3rem;
+                background-color: #34c77e;
+                color: white;
+                text-shadow: 0.3px 0.3px 5px rgba(0, 0, 0, 0.466);
+                font-size: 3.5rem;
+                border: none;
+                outline: none;
+                border-radius: 50%;
+                align-items: center;
+                justify-content: center;
+                box-shadow: inset 0 0  2.5px 0.5px rgba(165, 165, 165, 0.308);
+                border: 0.5px solid rgba(161, 161, 161, 0.486);
+                display: none;
+
+                
+                &:hover {
+                    background-color: #2cb36f;
+                }
+                &:active {
+                    box-shadow: inset 0 0  5.5px 2px rgba(0, 0, 0, 0.644);
+                }
+            }
+            #sssss {
+                background-color: red;
+                border-radius: 50%;
+                width: 50px;
+                height: 50px;
+                margin-top: 50rem;
+            }
+        }
+    }
+    &__page-content {
+        padding-top: 6rem;
+        // background-color: rgba(0, 255, 0, 0.418);
+        min-height: 50rem;
+        width: 100%;
+        .profile-title {
+            width: max-content;
+            margin: 0 auto;
+            text-align: center;
+
+            .full-name {
+                // background-color: rgba(0, 0, 255, 0.205);
+                color: $text_color_basic;
+                font-size: 2.5rem;
+                font-weight: bold;
+                line-height: 1rem;
+            }
+            .proffession-name {
+                // background-color: rgba(0, 0, 255, 0.205);
+                color: $text_color_light;
+                font-size: 1.8rem;
+            }
+        }
+
+        .profile-details {
+
+        }
+    }
 }

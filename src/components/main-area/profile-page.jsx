@@ -47,21 +47,35 @@ class Profile extends Component {
             return ( 
                 <div className="profile">
 
-                    <div className="profile__title">
-                        <PageHeader>Profile Page</PageHeader>
+                    <div className="profile__page-header" style={{ backgroundImage: 'url(https://www.ceres.org/sites/default/files/2019-10/nyc-skyline-banner.jpg)' }}>
+
+                        <div className="img-profile-box" style={{ backgroundImage: 'url(https://evyatarmadari.co.il/static/media/profile.427dc728.jpg)' }}>
+                        <button type="button" className="upload-img-btn">+
+                        
+                        </button>
+                        </div>
                     </div>
-                    <div className="profile__content">
-                        {
-                        <ul>
-                            <li>First Name: {userData.firstName}</li>
-                            <li>Last Name: {userData.lastName}</li>
-                            <li>Age: {userData.age}</li>
-                            <li>Gender: {userData.gender}</li>
-                            <li>City Adress: {userData.cityAdress}</li>
-                            <li>Email: {userData.email}</li>
-                            <li>Phone Number: {userData.phoneNumber}</li>
-                        </ul>
-                        }
+
+                    <div className="profile__page-content">
+                        <div className="profile-title">
+                            <p className="full-name">Evyatar Madari</p>
+                            <p className="proffession-name">Developer</p>
+                        </div>
+
+
+                        <div className="profile-details">
+                            {
+                            <ul>
+                                <li>First Name: {userData.firstName}</li>
+                                <li>Last Name: {userData.lastName}</li>
+                                <li>Age: {userData.age}</li>
+                                <li>Gender: {userData.gender}</li>
+                                <li>City Adress: {userData.cityAdress}</li>
+                                <li>Email: {userData.email}</li>
+                                <li>Phone Number: {userData.phoneNumber}</li>
+                            </ul>
+                            }
+                        </div>
                     </div>
                 </div>
              );
