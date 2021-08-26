@@ -10,7 +10,7 @@ import {headersAuth} from '../../../utils/constData';
 import { toast } from 'react-toastify';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/scss/sweetalert2.css';
-
+import { Redirect } from "react-router-dom";
 
 
 class ViewProject extends Component {
@@ -96,8 +96,6 @@ class ViewProject extends Component {
     project.nativeEvent.path.forEach( element  => element.className === 'view-project' ? projectId = element.id : '' )
     project.nativeEvent.path.forEach( element  => element.className === 'view-project' ? projectRow = element : '')
     
-    console.log(projectRow, projectId);
-    console.log(removeBtn);
     Swal.fire({
       title: 'Are you sure?',
       text: "Are you sure you want to delete the project permanently?",
@@ -113,10 +111,18 @@ class ViewProject extends Component {
         // send  delete request --->>> 
         // await here
         try {
-          axios.delete(`${apiUrl}/users/remove-project`, projectId, headersAuth)
+          const data = {
+            projectId: projectId
+          }
+          axios.post(`${apiUrl}/users/remove-project`,  data, headersAuth)  // projectId
           .then( res => { 
               // delete from the DOM  
-              console.log(res);
+              if( res.data === 'OK') {
+                projectRow.remove();
+                if( ! document.querySelector('.line-control') ){
+                  // send to the parent component the new state value for rendering him for the new change
+                }
+              }
            })
           .catch( err => {
             Swal.fire({

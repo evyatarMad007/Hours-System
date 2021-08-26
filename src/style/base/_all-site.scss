@@ -25,13 +25,15 @@ html {
     "navbarX headerX"
     "navbarX mainareaX";
     overflow: hidden;
-    // background-color: $background-site_color;
+    background-color: $Website-background_color;
 }
 .header {
     grid-area: headerX;
+    background-color: $Website-background_color;
 }
 .main-area {
     grid-area: mainareaX;
+    background-color: $Website-background_color;
 }
 .navbar {
     grid-area: navbarX;
