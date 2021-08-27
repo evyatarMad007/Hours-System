@@ -5,16 +5,19 @@
     max-width: 150rem;;
 
     &__page-header {
-        background-color: red;
+        // background-color: red;
         border-radius:  5rem 5rem 0 0;
         width: 100%;
-        height: 30rem;
+        height: 35rem;
         margin: 0 auto;
         position: relative;
         background-size: cover;
         background-repeat: no-repeat;
         background-position: bottom;
-
+        .upload-img-btn {
+            @include upload-button;
+        }
+        
         .img-profile-box {
             background-color: rgb(255, 255, 255);
             width: 23rem;
@@ -37,50 +40,22 @@
 
 
             .upload-img-btn {
-                position: absolute;
-                bottom: 1.5rem;
-                right: 2rem;
-                width: 3rem;
-                height: 3rem;
-                background-color: #34c77e;
-                color: white;
-                text-shadow: 0.3px 0.3px 5px rgba(0, 0, 0, 0.466);
-                font-size: 3.5rem;
-                border: none;
-                outline: none;
-                border-radius: 50%;
-                align-items: center;
-                justify-content: center;
-                box-shadow: inset 0 0  2.5px 0.5px rgba(165, 165, 165, 0.308);
-                border: 0.5px solid rgba(161, 161, 161, 0.486);
-                display: none;
+                @include upload-button;
+            }
 
-                
-                &:hover {
-                    background-color: #2cb36f;
-                }
-                &:active {
-                    box-shadow: inset 0 0  5.5px 2px rgba(0, 0, 0, 0.644);
-                }
-            }
-            #sssss {
-                background-color: red;
-                border-radius: 50%;
-                width: 50px;
-                height: 50px;
-                margin-top: 50rem;
-            }
         }
     }
     &__page-content {
-        padding-top: 6rem;
-        // background-color: rgba(0, 255, 0, 0.418);
+        padding-top: 5.3rem;
         min-height: 50rem;
         width: 100%;
+        padding-bottom: 50rem;
+
         .profile-title {
             width: max-content;
             margin: 0 auto;
             text-align: center;
+            padding-bottom: 2rem;
 
             .full-name {
                 // background-color: rgba(0, 0, 255, 0.205);
@@ -97,7 +72,159 @@
         }
 
         .profile-details {
+            // background-color: blue;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: warp;
 
+
+           .basic-info, .business-info{
+            width: 25%;
+            min-width: 350px;
+            max-width: 450px;
+            min-height: 340px;
+            // border-left: 1px solid rgba(143, 143, 143, 0.171);
+
+            ul {
+                // background-color: lime;
+                height: 100%;
+                list-style-type: none;
+                padding: 0;
+
+                li {
+                    // background-color: rgb(172, 62, 62);
+                    // border: 1px solid rgb(253, 159, 253);
+                    margin: 0 0 1.2rem 0;
+                    height: 3rem;
+                    display: flex;
+                    align-items: center;
+
+                    &:hover {
+                        .icon { 
+                            background-color: #676879;
+                            color: white;
+                        }
+                        .text {
+                            border: 0.5px dashed rgba(0, 0, 0, 0.295);
+                            border-top-right-radius: 15px;
+                            border-bottom-right-radius: 15px;
+                        }
+                    }
+
+                    .icon,.text {
+                        display: flex;
+                        align-items: center;
+                        height: 100%;
+                    }
+                    .icon {
+                        // background-color: blue;
+                        width: 38px;
+                        // padding-left: 5px;
+                        justify-content: center;
+                        font-size: 1.8rem;
+                        cursor: pointer;
+                        // background-color: rgb(190, 190, 190);
+                        color: #676879;
+                        border: 0.5px solid #67687956;
+                        border-radius: 5px 0 0 5px;
+                        
+                    }
+                    .text {
+                        // background-color: red;
+                        width: 100%;
+                        padding-left: 1rem;
+                        cursor: pointer;
+                        font-size: 1.5rem;
+                        font-weight: lighter;
+                        font-family: calibri;
+                        color: $text_color_basic;
+
+                        i {
+                            font-size: 1.3rem;
+                            color: $text_color_empty-values;
+                        }
+                    }
+                }
+            }
+
+           }
+           .explanation-info {
+            width: 25%;
+            min-width: 350px;
+            max-width: 450px;
+            min-height: max-content;
+            height: max-content;
+            background-color: rgb(218, 213, 213);
+            border-radius: 15px;
+            padding: 2rem;
+            // border-left: 1px solid rgba(143, 143, 143, 0.171);
+            .users-type-title {
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                font-size: 1.5rem;
+                font-weight: bold;
+            }
+
+            ul {
+                // background-color: lime;
+                height: 100%;
+                list-style-type: none;
+                padding: 0;
+
+                li {
+                    margin: 0 0 0.5rem 0;
+                    height: 2.5rem;
+                    display: flex;
+                    align-items: center;
+
+                    .icon,.text {
+                        display: flex;
+                        align-items: center;
+                        height: 100%;
+                    }
+                    .icon {
+                        width: 35px;
+                        justify-content: center;
+                        font-size: 1.5rem;
+                        color: #676879;
+                        
+                    }
+                    .basic {
+                        color: rgb(85, 67, 67);
+                    }
+                    .star {
+                        color: #0066ff;
+                    }
+                    .premium {
+                        color: #ffc011;
+                        box-sizing: inset 0 0 2px 2px black;
+                    }
+                    .text {
+                        width: 100%;
+                        padding-left: 0;
+                        font-size: 1.5rem;
+                        font-weight: lighter;
+                        font-family: calibri;
+
+                        &:hover {
+                            i {
+                                transform: translateX(10px);
+                            }
+                        }
+
+                        i {
+                            font-size: 1.3rem;
+                            color: $text_color_basic;
+                            font-style: unset;
+                            transition: all 0.2s;
+                        }
+
+                    }
+                }
+            }
+
+           }
         }
     }
 }
