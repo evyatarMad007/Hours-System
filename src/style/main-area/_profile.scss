@@ -20,7 +20,7 @@
             height: 100%;
             width: 100%;
             @include upload-img-button(-0.5rem, 2rem);
-            @include remove-img-button(-0.5rem, 5rem);
+            @include remove-img-button(-0.5rem, 4.5rem);
         }
         .img-profile-box {
             background-color: rgb(255, 255, 255);
