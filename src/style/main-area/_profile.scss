@@ -5,19 +5,23 @@
     max-width: 150rem;;
 
     &__page-header {
-        // background-color: red;
-        border-radius:  5rem 5rem 0 0;
+        background-color: red;
         width: 100%;
         height: 35rem;
         margin: 0 auto;
         position: relative;
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: bottom;
-        .upload-img-btn {
-            @include upload-button;
-        }
+
         
+        .img-background-box {
+            // border-radius:  5rem 5rem 0 0;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: bottom;
+            height: 100%;
+            width: 100%;
+            @include upload-img-button(-0.5rem, 2rem);
+            @include remove-img-button(-0.5rem, 5rem);
+        }
         .img-profile-box {
             background-color: rgb(255, 255, 255);
             width: 23rem;
@@ -31,17 +35,9 @@
             border: 5px solid rgb(255, 255, 255);
             background-position: top;
             background-size: cover;
+            @include upload-img-button(2rem, 2rem);
+            @include remove-img-button(0.5rem, 4rem);
 
-            &:hover {
-                .upload-img-btn {
-                    display: flex;
-                }  
-            }
-
-
-            .upload-img-btn {
-                @include upload-button;
-            }
 
         }
     }
@@ -154,7 +150,8 @@
             max-width: 450px;
             min-height: max-content;
             height: max-content;
-            background-color: rgb(218, 213, 213);
+            background-color: rgb(212, 212, 212);
+            border: 0.5px solid rgb(201, 201, 201);
             border-radius: 15px;
             padding: 2rem;
             // border-left: 1px solid rgba(143, 143, 143, 0.171);
@@ -177,6 +174,7 @@
                     height: 2.5rem;
                     display: flex;
                     align-items: center;
+                    cursor: pointer;
 
                     .icon,.text {
                         display: flex;
@@ -197,7 +195,7 @@
                         color: #0066ff;
                     }
                     .premium {
-                        color: #ffc011;
+                        color: #b18200;
                         box-sizing: inset 0 0 2px 2px black;
                     }
                     .text {

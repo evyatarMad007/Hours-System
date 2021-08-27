@@ -12,7 +12,11 @@ import { RiUser6Fill, RiFacebookFill,RiLinkedinFill,RiGithubFill, RiToolsFill, R
 import { MdLocationCity, MdPhone, MdEmail } from 'react-icons/md';
 import { HiOutlineMail } from 'react-icons/hi';
 import { GoNote } from 'react-icons/go';
+import { IoIosRemove,IoIosAdd } from 'react-icons/io';
 import { BsFillStarFill } from 'react-icons/bs';
+import ClipLoader from "react-spinners/ClipLoader";
+
+
 
 class Profile extends Component {
     state = { 
@@ -45,20 +49,25 @@ class Profile extends Component {
             return <div>Error: {error.message}</div>;
         }
         else if (!isLoaded) {
-            return <div>Loading...</div>;
+            return <div className="loading-box"><ClipLoader/></div>;
         } 
         else {
             return ( 
                 <div className="profile">
 
-                    <div className="profile__page-header" style={{ backgroundImage: 'url(https://www.ceres.org/sites/default/files/2019-10/nyc-skyline-banner.jpg)' }}>
-                        <div className="img-profile-box" style={{ backgroundImage: 'url(https://evyatarmadari.co.il/static/media/profile.427dc728.jpg)' }}>
-                        <button type="button" className="upload-img-btn">+
-                        
-                        </button>
+                    <div className="profile__page-header">
+                    
+                    
+                        <div className="img-background-box"  style={{ backgroundImage: 'url(https://www.ceres.org/sites/default/files/2019-10/nyc-skyline-banner.jpg)' }}>
+                            <button type="button" className="upload-img-btn"><IoIosAdd/></button>
+                            <button type="button" className="remove-img-btn"><IoIosRemove/></button>
                         </div>
-                        <button type="button" className="upload-img-btn">+
-                        </button>
+
+                        <div className="img-profile-box" style={{ backgroundImage: 'url(https://evyatarmadari.co.il/static/media/profile.427dc728.jpg)' }}>
+                            <button type="button" className="upload-img-btn"><IoIosAdd/></button>
+                            <button type="button" className="remove-img-btn"><IoIosRemove/></button>
+                        </div>
+                       
                     </div>
                     <div className="profile__page-content">
                         <div className="profile-title">
