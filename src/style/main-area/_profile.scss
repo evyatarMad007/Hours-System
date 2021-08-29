@@ -102,8 +102,9 @@
                         }
                         .text {
                             border: 0.5px dashed rgba(0, 0, 0, 0.295);
-                            border-top-right-radius: 15px;
-                            border-bottom-right-radius: 15px;
+                            border-top-right-radius: 8px;
+                            border-bottom-right-radius: 8px;
+
                         }
                     }
 
@@ -128,16 +129,30 @@
                     .text {
                         // background-color: red;
                         width: 100%;
-                        padding-left: 1rem;
                         cursor: pointer;
                         font-size: 1.5rem;
                         font-weight: lighter;
                         font-family: calibri;
                         color: $text_color_basic;
 
-                        i {
-                            font-size: 1.3rem;
-                            color: $text_color_empty-values;
+                        span {
+                            // background-color: lime;
+                            margin-left: 1rem;
+                            i {
+                                font-size: 1.3rem;
+                                color: $text_color_empty-values;
+                            }
+                        }
+                        input {
+                            border: 1px solid rgba(0, 0, 0, 0.274);
+                            border-left: none;
+                            // transform: translateX(-9px);
+                            height: 100%;
+                            width: 100%;
+                            padding-left: 0.9rem;
+                            border-top-right-radius: 8px;
+                            border-bottom-right-radius: 8px;
+                            outline: none;
                         }
                     }
                 }
@@ -205,6 +220,7 @@
                         font-weight: lighter;
                         font-family: calibri;
 
+                        
                         &:hover {
                             i {
                                 transform: translateX(10px);
@@ -217,12 +233,38 @@
                             font-style: unset;
                             transition: all 0.2s;
                         }
-
+                        
                     }
                 }
             }
 
            }
         }
+
+
+        // edit btn 
+        .edit-btn {
+            @include profile-buttons(#22cf56, block)
+        }
+        .edit-btn--edit-hidden {
+            display: none;
+        }
+
+        // cancel edit
+        .cancel-edit-btn {
+            @include profile-buttons(#e2503d, block)
+        }
+        .cancel-edit-btn--hidden {
+            display: none;
+        }
+
+        // save btn 
+        .save-btn {
+            @include profile-buttons(#0066ff, none)
+        }
+        .save-btn--input-change {
+            display: block;
+        }
+        
     }
 }

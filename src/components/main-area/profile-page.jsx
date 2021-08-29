@@ -22,7 +22,9 @@ class Profile extends Component {
     state = { 
         error: null,
         isLoaded: false,
-        userData: []
+        userData: [],
+        editBtnMode: false,
+        inputChange: false,
      }
      
     componentDidMount() {
@@ -42,7 +44,20 @@ class Profile extends Component {
         
     }
 
+    onInputChange = (e) => {
+
+    }
+    editData = () => {
+        let { editBtnMode } = this.state;
+        editBtnMode ? editBtnMode = false : editBtnMode = true;
+        this.setState({ editBtnMode });
+    }
+
+
     render() { 
+
+        const { inputChange,editBtnMode } = this.state;
+
         if( ! userService.getCurrentUser() ) return <Redirect to="/"/>
         const { error, isLoaded, userData } = this.state;
         if (error) {
@@ -77,22 +92,23 @@ class Profile extends Component {
                         <div className="profile-details">
                             <div className="basic-info">
                                 <ul>
-                                    <li><div className="icon"><RiUser6Fill/></div><div className="text">{userData.firstName ? userData.firstName : <i>empty</i>}</div></li>
-                                    <li><div className="icon"><RiUser6Fill/></div><div className="text">{userData.lastName ? userData.lastName  : <i>empty</i>}</div></li>
-                                    <li><div className="icon"><GiPresent/></div><div className="text">{userData.age ? userData.age : <i>empty</i>}</div></li>
-                                    <li><div className="icon"><CgGenderMale/></div><div className="text">{userData.gender ? userData.gender : <i>empty</i>}</div></li>
-                                    <li><div className="icon"><MdLocationCity/></div><div className="text">{userData.cityAdress ? userData.cityAdress : <i>empty</i>}</div></li>
+                                    <li><div className="icon"><RiUser6Fill/></div><div className="text">{editBtnMode ? <input type="text" placeholder={userData.firstName ? userData.firstName : ''}/> : userData.firstName ? <span>{userData.firstName}</span> :  <span><i>empty</i></span> }</div></li>
+                                    <li><div className="icon"><RiUser6Fill/></div><div className="text">{editBtnMode ? <input type="text" placeholder={userData.lastName ? userData.lastName : ''}/> : userData.lastName ? <span>{userData.lastName}</span>  :  <span><i>empty</i></span> }</div></li>
+                                    <li><div className="icon"><GiPresent/></div><div className="text">{editBtnMode ? <input type="text" placeholder={userData.age ? userData.age : ''}/> : userData.age ? <span>{userData.age}</span> :  <span><i>empty</i></span> }</div></li>
+                                    <li><div className="icon"><CgGenderMale/></div><div className="text">{editBtnMode ? <input type="text" placeholder={userData.gender ? userData.gender : ''}/> : userData.gender ?<span>{userData.gender}</span> :  <span><i>empty</i></span> }</div></li>
+                                    <li><div className="icon"><MdLocationCity/></div><div className="text">{editBtnMode ? <input type="text" placeholder={userData.cityAdress ? userData.cityAdress : ''}/> : userData.cityAdress ? <span>{userData.cityAdress}</span> :  <span><i>empty</i></span> }</div></li>
+                                    <li><div className="icon"><MdPhone/></div><div className="text">{editBtnMode ? <input type="text" placeholder={userData.phoneNumber ? userData.phoneNumber : ''}/> : userData.phoneNumber ? <span>{userData.phoneNumber}</span> : <span><i>empty</i></span> }</div></li>
+
                                 </ul>
                             </div>
                             <div className="business-info">
                             <ul>
-                            <li><div className="icon"><GoNote/></div><div className="text">{userData.someData ? userData.someData :  <i>empty</i>}</div></li>
-                                    <li><div className="icon"><RiToolsFill/></div><div className="text">{userData.someData ? userData.someData :  <i>empty</i>}</div></li>
-                                    <li><div className="icon"><MdPhone/></div><div className="text">{userData.phoneNumber ? userData.phoneNumber :  <i>empty</i>}</div></li>
-                                    <li><div className="icon"><HiOutlineMail/></div><div className="text">{userData.email ? userData.email :  <i>empty</i>}</div></li>
-                                    <li><div className="icon"><RiFacebookFill/></div><div className="text">{userData.someData ? userData.someData :  <i>empty</i>}</div></li>
-                                    <li><div className="icon"><RiLinkedinFill/></div><div className="text">{userData.someData ? userData.someData :  <i>empty</i>}</div></li>
-                                    <li><div className="icon"><RiGithubFill/></div><div className="text">{userData.someData ? userData.someData :  <i>empty</i>}</div></li>
+                                    <li><div className="icon"><GoNote/></div><div className="text">{editBtnMode ? <input type="text" placeholder={userData.someData ? userData.someData : ''}/> : userData.someData ? <span>{userData.someData}</span> : <span><i>empty</i></span> }</div></li>
+                                    <li><div className="icon"><RiToolsFill/></div><div className="text">{editBtnMode ? <input type="text" placeholder={userData.someData ? userData.someData : ''}/> : userData.someData ?<span>{userData.someData}</span> :   <span><i>empty</i></span> }</div></li>
+                                    <li><div className="icon"><HiOutlineMail/></div><div className="text">{editBtnMode ? <input type="text" placeholder={userData.email ? userData.email : ''}/> : userData.email ?<span>{userData.email}</span> :  <span><i>empty</i></span> }</div></li>
+                                    <li><div className="icon"><RiFacebookFill/></div><div className="text">{editBtnMode ? <input type="text" placeholder={userData.someData ? userData.someData : ''}/> : userData.someData ? <span>{userData.someData}</span> :  <span><i>empty</i></span> }</div></li>
+                                    <li><div className="icon"><RiLinkedinFill/></div><div className="text">{editBtnMode ? <input type="text" placeholder={userData.someData ? userData.someData : ''}/> : userData.someData ? <span>{userData.someData}</span> :  <span><i>empty</i></span> }</div></li>
+                                    <li><div className="icon"><RiGithubFill/></div><div className="text">{editBtnMode ? <input type="text" placeholder={userData.someData ? userData.someData : ''}/> : userData.someData ? <span>{userData.someData}</span> :  <span><i>empty</i></span> }</div></li>
                                 </ul>
                             </div>
                             <div className="explanation-info">
@@ -104,6 +120,10 @@ class Profile extends Component {
                                 </ul>
                             </div>
                         </div>
+                    <button className={inputChange ? 'save-btn save-btn--input-change' : 'save-btn'}>Save Data</button>
+
+                    <button onClick={this.editData} className={editBtnMode ? 'edit-btn edit-btn--edit-hidden' : 'edit-btn'}>Edit</button>
+                    <button onClick={this.editData} className={editBtnMode ? 'cancel-edit-btn' : 'cancel-edit-btn cancel-edit-btn--hidden'}>Cancel Edit</button>
                     </div>
                 </div>
              );
