@@ -30,6 +30,13 @@ align-items: flex-start;
     color: $background-site_color;
     transition: all .1s;
 
+    
+    &:hover {
+        background-color: rgb(56, 135, 255);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    box-shadow: inset 0 0 5px 1px rgba(255, 255, 255, 0.137);
+    }
 
     
 }

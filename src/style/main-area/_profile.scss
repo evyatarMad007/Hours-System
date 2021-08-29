@@ -127,7 +127,6 @@
                         
                     }
                     .text {
-                        // background-color: red;
                         width: 100%;
                         cursor: pointer;
                         font-size: 1.5rem;
@@ -153,6 +152,9 @@
                             border-top-right-radius: 8px;
                             border-bottom-right-radius: 8px;
                             outline: none;
+                            &:hover {
+                                border: 1px solid rgba(0, 0, 0, 0);
+                            }
                         }
                     }
                 }
