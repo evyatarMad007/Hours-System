@@ -49,7 +49,7 @@ class Header extends Component {
                             {
                                 this.props.userData.imgProfile 
                                 ?  <img src={this.props.userData.imgProfile} alt="" /> 
-                                : <span className="img-text">{ fn ? fn.toUpperCase() : ''}{ln}</span>
+                                : <span className="img-text">{ fn ? fn.toUpperCase() : ''}{ ln ? ln.toLowerCase() : ''}</span>
                             }
                         </div>
                     </div>

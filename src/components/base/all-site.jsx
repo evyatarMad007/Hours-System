@@ -9,6 +9,7 @@ import userService from "../../utils/jwtUser";
 import { apiUrl } from '../../config/config.json';
 import axios from 'axios';
 import {headersAuth} from '../../utils/constData';
+import  Favorites  from '../global/favorites';
 
 class AllSite extends Component {
     
@@ -51,7 +52,8 @@ class AllSite extends Component {
                         ? <Navbar/> 
                         : ''
                     }
-                    <MainArea userData={this.state.user}/> 
+                    <MainArea userData={this.state.user}/>
+                    <Favorites/>
                 </BrowserRouter> 
             </div>
          );

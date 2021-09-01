@@ -4,10 +4,13 @@
 // config by base web 
 @import './base/all-site';
 
+
 // function folder 
 @import './functions/animation';
 @import './functions/mixin';
 
+// global elements 
+@import './global/favorites';
 
 // main elements 
 @import './base/header';
