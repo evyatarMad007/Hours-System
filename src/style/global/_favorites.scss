@@ -12,6 +12,9 @@
         border: 0.5px solid rgba(97, 97, 97, 0.397);
         background-color: #292f4c;
         padding-left: 5px;
+        z-index: 5;
+        position: relative;
+        transition: all 0.1s;
 
         i {
             color: rgb(255, 208, 0);
@@ -22,15 +25,39 @@
             justify-content: center;
             align-items: center;
         }
+        .open {}
+
+        .close {
+            color: rgb(51, 51, 51);
+            font-size: 2.3rem;
+            margin-top: 0.8rem;
+
+            &:hover {
+                color: black;
+                font-weight: bold;
+            }
+        }
+    }
+    &__favorites-icon--box-active {
+        border: 0.5px solid #ffffff00;
+        background-color: #ffffff00;
     }
 
     &__favorites-box {
-        background-color: blue;
+        background-color: rgb(255, 255, 255);
+        border: 0.5px solid rgba(146, 146, 146, 0.452);
+        box-shadow: 1rem 1rem 3rem #00000033;
         width: 25rem;
-        height: 30rem;
+        height: 35rem;
         position: absolute;
-        top: 40px;
+        top: 0;
         right: 0;
         border-radius: 15px 0 0 15px;
+        z-index: 4;
+        transition: all 0.1s;
+    }
+    &__favorites-box--hidden {
+        opacity: 0;
+        visibility: hidden;
     }
 }

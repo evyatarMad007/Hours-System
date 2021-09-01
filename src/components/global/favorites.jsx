@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {BsStarFill} from 'react-icons/bs';
+import {HiOutlineX} from 'react-icons/hi';
 
 
 class Favorites  extends Component {
@@ -18,8 +19,12 @@ class Favorites  extends Component {
 
         return ( 
             <div className="favorites">
-                {favoritesIsActive && <div className="favorites__favorites-box"></div>}
-                    <div onClick={this.showfavoritesBox} className="favorites__favorites-icon"><i><BsStarFill/></i></div>
+                <div className={ favoritesIsActive ? 'favorites__favorites-box' : 'favorites__favorites-box favorites__favorites-box--hidden' }></div>
+
+                    <div onClick={this.showfavoritesBox} className={ favoritesIsActive ? 'favorites__favorites-icon favorites__favorites-icon--box-active' : 'favorites__favorites-icon' }>
+                        { favoritesIsActive ? <i className="close"><HiOutlineX/></i> : <i className="open"><BsStarFill/></i>}
+                    </div>
+                    
             </div>
          );
     }
