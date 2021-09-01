@@ -19,6 +19,8 @@ class Header extends Component {
 
         let fn = this.props.userData.firstName && this.props.userData.firstName.split('')[0];
         let ln = this.props.userData.lastName && this.props.userData.lastName.split('')[0];
+
+        
         
 
         return ( 
@@ -47,7 +49,7 @@ class Header extends Component {
                             {
                                 this.props.userData.imgProfile 
                                 ?  <img src={this.props.userData.imgProfile} alt="" /> 
-                                : <span className="img-text">{fn}{ln}</span>
+                                : <span className="img-text">{ fn ? fn.toUpperCase() : ''}{ln}</span>
                             }
                         </div>
                     </div>
