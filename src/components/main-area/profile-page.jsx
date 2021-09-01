@@ -17,7 +17,6 @@ import { BsFillStarFill } from 'react-icons/bs';
 import ClipLoader from "react-spinners/ClipLoader";
 
 
-
 class Profile extends Component {
     state = { 
         error: null,

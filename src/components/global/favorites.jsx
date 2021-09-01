@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {BsStarFill} from 'react-icons/bs';
 import {HiOutlineX} from 'react-icons/hi';
+import { Redirect } from "react-router-dom";
+import userService from "../../utils/jwtUser";
 
 
 class Favorites  extends Component {
@@ -16,6 +18,8 @@ class Favorites  extends Component {
     
     render() { 
         const { favoritesIsActive } = this.state;
+
+        if( ! userService.getCurrentUser() ) return <Redirect to="/"/>
 
         return ( 
             <div className="favorites">
