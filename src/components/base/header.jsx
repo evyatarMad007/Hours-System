@@ -31,7 +31,7 @@ class Header extends Component {
                     <div className="header__content__left-side">
                         <NavLink className="navLink logo-navLink" to="/">
                             <div className="logo-box">
-                            <span>BizApp</span>
+                            <span>Evyatar</span>
                             <div className="one"></div>
                             <div className="two"></div>
                             <div className="three"></div>

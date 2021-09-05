@@ -51,6 +51,7 @@ class Profile extends Component {
         editBtnMode ? editBtnMode = false : editBtnMode = true;
         this.setState({ editBtnMode });
     }
+
     handlerUpdateProfile = (inpName, inpValue) => {
         let user = this.state.user;
         let {errors, isValid} = this.state;
@@ -132,12 +133,20 @@ class Profile extends Component {
                             <p className="full-name">Evyatar Madari</p>
                             <p className="proffession-name">Developer</p>
                         </div>
+                        <div className="explanation">
+                        <ul>
+                            <li className="users-type-title">Types Of Accounts</li>
+                            <li><div className="icon basic"><RiUserSmileFill/></div><div className="text"><i>Basic - under 20 projects</i></div></li>
+                                <li><div className="icon star"><BsFillStarFill/></div><div className="text"><i>Advance - Over 10 projects</i></div></li>
+                                <li><div className="icon premium"><RiMedalFill/></div><div className="text"><i>Premium - full Tools</i></div></li>
+                            </ul>
+                        </div>
                         <div className="profile-details">
                             <div className="basic-info">
                                 <ul>
                                     <li><div className="icon"><RiUser6Fill/></div><div className="text">{editBtnMode ? <input type="text" onChange={ e => this.handlerUpdateProfile('firstName', e.target.value)} onChange={ e => this.handlerUpdateProfile('firstName', e.target.value)} placeholder={userData.firstName ? userData.firstName : ''}/> : userData.firstName ? <span>{userData.firstName}</span> :  <span><i>empty</i></span> }</div></li>
                                     <li><div className="icon"><RiUser6Fill/></div><div className="text">{editBtnMode ? <input type="text" onChange={ e => this.handlerUpdateProfile('lastName', e.target.value)} placeholder={userData.lastName ? userData.lastName : ''}/> : userData.lastName ? <span>{userData.lastName}</span>  :  <span><i>empty</i></span> }</div></li>
-                                    <li><div className="icon"><GiPresent/></div><div className="text">{editBtnMode ? <input type="text" onChange={ e => this.handlerUpdateProfile('age', e.target.value)} placeholder={userData.age ? userData.age : ''}/> : userData.age ? <span>{userData.age}</span> :  <span><i>empty</i></span> }</div></li>
+                                    <li><div className="icon"><GiPresent/></div><div className="text">{editBtnMode ? <input type="date" onChange={ e => this.handlerUpdateProfile('age', e.target.value)} placeholder={userData.age ? userData.age : ''}/> : userData.age ? <span>{userData.age}</span> :  <span><i>empty</i></span> }</div></li>
                                     <li><div className="icon"><MdLocationCity/></div><div className="text">{editBtnMode ? <input type="text" onChange={ e => this.handlerUpdateProfile('cityAdress', e.target.value)} placeholder={userData.cityAdress ? userData.cityAdress : ''}/> : userData.cityAdress ? <span>{userData.cityAdress}</span> :  <span><i>empty</i></span> }</div></li>
                                     <li><div className="icon"><MdPhone/></div><div className="text">{editBtnMode ? <input type="text" onChange={ e => this.handlerUpdateProfile('phoneNumber', e.target.value)} placeholder={userData.phoneNumber ? userData.phoneNumber : ''}/> : userData.phoneNumber ? <span>{userData.phoneNumber}</span> : <span><i>empty</i></span> }</div></li>
                                     <li><div className="icon"><HiOutlineMail/></div><div className="text">{editBtnMode ? <input type="text" onChange={ e => this.handlerUpdateProfile('email', e.target.value)} placeholder={userData.email ? userData.email : ''}/> : userData.email ?<span>{userData.email}</span> :  <span><i>empty</i></span> }</div></li>
@@ -158,16 +167,6 @@ class Profile extends Component {
                                     <li><div className="icon"><GoNote/></div><div className="text">{editBtnMode ? <textarea type="text" onChange={ e => this.handlerUpdateProfile('aboutMe', e.target.value)} placeholder={userData.aboutMe ? userData.aboutMe : ''}/> : userData.aboutMe ? <span>{userData.aboutMe}</span> : <span><i>empty</i></span> }</div></li>
                             </ul>
                             </div>
-
-
-                            {/* <div className="explanation-info">
-                            <ul>
-                                <li className="users-type-title">Types Of Accounts</li>
-                                <li><div className="icon basic"><RiUserSmileFill/></div><div className="text"><i>Basic - under 20 projects</i></div></li>
-                                    <li><div className="icon star"><BsFillStarFill/></div><div className="text"><i>Advance - Over 10 projects</i></div></li>
-                                    <li><div className="icon premium"><RiMedalFill/></div><div className="text"><i>Premium - full Tools</i></div></li>
-                                </ul>
-                            </div> */}
                         </div>
                     <button className={inputChange ? 'save-btn save-btn--input-change' : 'save-btn'}>Save Data</button>
 

@@ -51,7 +51,6 @@
             width: max-content;
             margin: 0 auto;
             text-align: center;
-            padding-bottom: 2rem;
 
             .full-name {
                 // background-color: rgba(0, 0, 255, 0.205);
@@ -212,7 +211,7 @@
                         z-index: 555;
                         left: 0;
                         top: 0;
-                        height: 95%;
+                        height: 31px;
                     }
                      .text {
                         //  background-color: red;
@@ -252,23 +251,34 @@
                  }
                }
            }
-           .explanation-info {
-            width: 25%;
-            min-width: 350px;
-            max-width: 450px;
-            min-height: max-content;
+           
+        }
+        .explanation {
+            width: max-content;
+            margin: 0 auto 2rem auto;
             height: max-content;
-            background-color: rgb(212, 212, 212);
-            border: 0.5px solid rgb(201, 201, 201);
+            background-color: #e7e7e7;
+            border: 0.5px solid #dddddd;
             border-radius: 15px;
-            padding: 2rem;
+            padding: 3rem 2rem 0 2rem;
+            position: relative;
+            transition: all 0.25s;
             // border-left: 1px solid rgba(143, 143, 143, 0.171);
+
+            &:hover {
+                background-color: #dddddd;;
+            }
             .users-type-title {
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                margin: auto;
                 text-align: center;
-                display: flex;
                 justify-content: center;
                 font-size: 1.5rem;
                 font-weight: bold;
+                // background-color: red;
             }
 
             ul {
@@ -276,13 +286,17 @@
                 height: 100%;
                 list-style-type: none;
                 padding: 0;
+                display: flex;
+                justify-content: space-evenly;
+                align-items: center;
 
                 li {
-                    margin: 0 0 0.5rem 0;
+                    margin: 0 2rem;
                     height: 2.5rem;
                     display: flex;
                     align-items: center;
                     cursor: pointer;
+                    
 
                     .icon,.text {
                         display: flex;
@@ -316,7 +330,7 @@
                         
                         &:hover {
                             i {
-                                transform: translateX(10px);
+                                transform: translateX(5px);
                             }
                         }
 
@@ -331,7 +345,6 @@
                 }
             }
 
-           }
         }
 
 

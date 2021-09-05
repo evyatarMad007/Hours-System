@@ -26,7 +26,7 @@
         }
 
         i {
-            font-size: 1.5rem;
+            font-size: 2rem;
             height:100%;
             width: 100%;
             display: flex;
@@ -36,18 +36,21 @@
         .open {
             color: black;
             padding-left: 1px;
+            // transition: color 0.2s;
+
             &:hover {
-                color: rgb(255, 208, 0);
+                color: rgb(255, 210, 7);
             }
         }
 
         .close {
             color: rgb(51, 51, 51);
-            font-size: 2.3rem;
+            font-size: 2.5rem;
 
             &:hover {
                 color: black;
                 font-weight: bold;
+                // transition: all 0s;
             }
         }
     }
