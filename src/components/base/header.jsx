@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from "react-router-dom";
 import { RiKeyFill } from 'react-icons/ri';
+import { FaUserCircle } from 'react-icons/fa';
 // import { FaWpforms } from 'react-icons/fa';
 import userService from "../../utils/jwtUser";
 
@@ -44,16 +45,8 @@ class Header extends Component {
                     <div className="header__content__right-side">
                     { userService.getCurrentUser() 
                     ? <NavLink className="navLink profile-navLink" to="/profile">
-                    <div className="profile-img">
-                        <div className="img">
-                            {
-                                this.props.userData.imgProfile 
-                                ?  <img src={this.props.userData.imgProfile} alt="" /> 
-                                : <span className="img-text">{ fn ? fn.toUpperCase() : ''}{ ln ? ln.toLowerCase() : ''}</span>
-                            }
-                        </div>
-                    </div>
-                    <span className="username">{! this.props.userData ? '' : `${this.props.userData.firstName}  ${this.props.userData.lastName}`}</span>
+                    
+                    <span className="username"><i><FaUserCircle/></i> {! this.props.userData ? '' : `${this.props.userData.firstName}  ${this.props.userData.lastName}`}</span>
                     </NavLink>
                     : ''} 
                         { userService.getCurrentUser() 

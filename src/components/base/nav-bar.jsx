@@ -16,6 +16,10 @@ class Navbar extends Component {
     }
     
     render() { 
+
+        let fn = this.props.userData.firstName && this.props.userData.firstName.split('')[0];
+        let ln = this.props.userData.lastName && this.props.userData.lastName.split('')[0];
+
         const { openMode } = this.state;
         return ( 
             <nav className={ openMode ? 'navbar navbar--open-mode' : 'navbar'}>
@@ -27,6 +31,18 @@ class Navbar extends Component {
                         <div className="text"><span>Hours system</span></div>
                     </NavLink>
                 </div>
+
+                <div className="profile-img">
+                <NavLink className="navLink profile-navLink" to="/profile">
+                        <div className="img">
+                            {
+                                this.props.userData.imgProfile 
+                                ?  <img src={this.props.userData.imgProfile} alt="" /> 
+                                : <span className="img-text">{ fn ? fn.toUpperCase() : ''}{ ln ? ln.toLowerCase() : ''}</span>
+                            }
+                        </div>
+                </NavLink>
+                    </div>
             </nav>
          );
     }

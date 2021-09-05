@@ -49,7 +49,7 @@ class AllSite extends Component {
                 <ToastContainer/>
                 <Header userData={this.state.user}/> 
                     { userService.getCurrentUser() 
-                        ? <Navbar/> 
+                        ? <Navbar userData={this.state.user}/> 
                         : ''
                     }
                     <MainArea userData={this.state.user}/>
