@@ -272,13 +272,13 @@
                 position: absolute;
                 left: 0;
                 right: 0;
-                top: 0;
+                top: 10%;
                 margin: auto;
+                display: flex;
                 text-align: center;
                 justify-content: center;
-                font-size: 1.5rem;
-                font-weight: bold;
-                // background-color: red;
+                font-size: 1.2rem;
+                text-decoration: underline;
             }
 
             ul {
@@ -293,8 +293,8 @@
                 li {
                     margin: 0 2rem;
                     height: 2.5rem;
-                    display: flex;
-                    align-items: center;
+                    display: grid;
+                    grid-template-columns: auto 1fr;
                     cursor: pointer;
                     
 
@@ -304,21 +304,43 @@
                         height: 100%;
                     }
                     .icon {
-                        width: 35px;
-                        justify-content: center;
-                        font-size: 1.5rem;
+                        width: 20px;
+                        height: 20px;
+                        // display: flex;
+                        overflow: hidden;
+                        // justify-content: center;
+                        // align-items: center;
+                        font-size: 1.3rem;
+                        border-radius: 50%;
                         color: #676879;
+                        margin: 0 0.5rem;
+                        position: relative;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        svg {
+                            margin: 0;
+                            padding: 0;
+                            width: 60%;
+                            height: 60%;
+                        }
                         
                     }
                     .basic {
-                        color: rgb(85, 67, 67);
+                        color: rgb(255, 255, 255);
+                        background-color: rgb(97, 97, 97);
+                        box-shadow: inset 0 0 5px 1px rgba(56, 56, 56, 0.568);
                     }
                     .star {
-                        color: #0066ff;
+                        color: #ffffff;
+                        background-color: rgb(28, 164, 255);
+                        box-shadow: inset 0 0 5px 1px rgba(2, 70, 255, 0.568);
                     }
                     .premium {
-                        color: #b18200;
-                        box-sizing: inset 0 0 2px 2px black;
+                        color: #ffffff;
+                        background-color: rgb(115, 28, 255);
+                        box-shadow: inset 0 0 5px 1px rgba(57, 0, 131, 0.801);
                     }
                     .text {
                         width: 100%;
@@ -346,7 +368,18 @@
             }
 
         }
+        .buttons-area {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: max-content;
+            margin: 2.5rem auto 0 auto;
 
+            button {
+                margin: 0 2rem;
+            }
+        }
+        // <span className={ errors.err_password ? 'err err-on': 'err'}>{errors.err_password}</span>
 
         // edit btn 
         .edit-btn {
@@ -368,9 +401,33 @@
         .save-btn {
             @include profile-buttons(#0066ff, none)
         }
+        .save-btn:disabled {
+            background-color: silver;
+            color: #959494;
+            font-weight: lighter;
+            text-shadow: unset;
+            border: none;
+            box-shadow: unset;
+        }
         .save-btn--input-change {
             display: block;
         }
         
+    }
+}
+
+.test-file-inp {
+    background-color: red;
+    width: max-content;
+    .file-inp {
+        background-color: red;
+        width: 50px;
+        height: 50px;
+        border: none;
+        display: inline-block;
+        overflow: hidden;
+    }
+    i {
+        background-color: lime;
     }
 }

@@ -50,7 +50,7 @@ class Signin extends Component {
                     errors.err_password = 'Password Minimum eight characters, at least one letter and one numbeThe password must contain a minimum of 8 characters, letters and numbers';
                     isValid.password = false;
                 }
-                errors.err_password = 'The password must contain a minimum of 8 characters, letters and numbers';
+                errors.err_password = 'password must contain a min 8 characters, letters and numbers';
                 isValid.password = false;
             } 
             if( regPassword.test(user.password) && user.password.length >= 8 && user.password.length < 20) {
