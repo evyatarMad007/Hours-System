@@ -7,10 +7,10 @@ import {  BsPlayFill } from 'react-icons/bs';
 import { apiUrl } from '../../../config/config.json';
 import axios from 'axios';
 import {headersAuth} from '../../../utils/constData';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import Swal from 'sweetalert2/dist/sweetalert2.js'
-import 'sweetalert2/src/scss/sweetalert2.css';
-import { Redirect } from "react-router-dom";
+// import 'sweetalert2/src/scss/sweetalert2.css';
+// import { Redirect } from "react-router-dom";
 
 
 class ViewProject extends Component {
