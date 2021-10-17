@@ -9,9 +9,19 @@ class Home extends Component {
     render() { 
         return ( 
             <div className="home">
-                <PageHeader>Home Page</PageHeader>
-                <h2 className="home__page-subtitle">home page h2</h2>
-                <p className="home__page-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam quidem libero ab laboriosam harum illo.</p>
+                <PageHeader>Hour counting system</PageHeader>
+                <h2 className="home__page-subtitle">Manage your projects easily</h2>
+                <p className="home__page-description">
+                A free system that allows anyone who wants to count work hours to synchronize with their customer.
+                <br />
+                <br />
+                This system is mainly suitable for freelancers who provide customer service independently.
+                <br />
+                <br />
+                For any questions and answers below we will open an option to leave optimization tips and suggestions.
+                <br /><br />
+                We wish you a pleasant use of our app.
+                </p>
             </div>
          );
     }
